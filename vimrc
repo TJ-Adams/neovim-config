@@ -78,6 +78,10 @@ if filereadable(".project.vim")
 endif
 "}}}
 
+" Add buffer tab line across the top of the window
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 "{{{ Auto relative line numbers
 set number relativenumber
 
