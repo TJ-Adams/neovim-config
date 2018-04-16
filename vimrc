@@ -22,7 +22,7 @@ set wildmenu
 set wildmode=list:longest
 
 " Uncomment if you want to disable soft wrapping
-"set nowrap
+set nowrap
 
 " Uncomment if you want virtual spaces
 "set virtualedit=all
@@ -33,6 +33,7 @@ set wildmode=list:longest
 "set softtabstop=4
 "set shiftround
 "set shiftwidth=4
+set noexpandtab
 
 " Whitespace visualization
 if has('nvim')
@@ -54,6 +55,9 @@ endif
 set cino=^-s,{1s
 set cinw=if,else,while,do,for,switch
 set cink=0{,0},0),:0#,!^F,o,O,e
+
+" Allow modified buffers to be hidden
+set hidden
 "}}}
 
 "{{{ PLUGINS
@@ -76,6 +80,12 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>bw :bp <BAR> bd #<CR>
 nmap <leader>be :BufExplorer<CR>
+
+" Add window navigation commands
+nmap <leader>wl :wincmd l<CR>
+nmap <leader>wh :wincmd h<CR>
+nmap <leader>wk :wincmd k<CR>
+nmap <leader>wj :wincmd j<CR>
 "}}}
 
 "{{{ Miscellaneous
