@@ -66,17 +66,32 @@ nmap <silent> <C-p> :FZF<CR>
 " }}}
 
 " {{{ Grepper
-Plug 'mhinz/vim-grepper'
-    let g:grepper = {
-        \ 'tools': ['rg'],
-        \ 'rg':        { 'grepprg':    'rg -H --ignore-file --no-heading --vimgrep --no-ignore-vcs',
-        \                'grepformat': '%f:%l:%c:%m',
-        \                'escape':     '\^$.*+?()[]{}|' }
-        \ }
+"Plug 'mhinz/vim-grepper'
+"    let g:grepper = {
+"        \ 'tools': ['rg'],
+"        \ 'rg':        { 'grepprg':    'rg -H --ignore-file --no-heading --vimgrep --no-ignore-vcs',
+"        \                'grepformat': '%f:%l:%c:%m',
+"        \                'escape':     '\^$.*+?()[]{}|' }
+"        \ }
 " }}}
 
 " {{{ Bitbake File Support
 Plug 'kergoth/vim-bitbake'
+" }}}
+
+" {{{ ESearch
+Plug 'eugen0329/vim-esearch'
+    let g:esearch = {
+    \  'adapter':       'rg',
+    \  'backend':       'nvim',
+    \  'out':           'win',
+    \  'batch_size':    1000,
+    \  'use':           ['visual', 'hlsearch', 'word_under_cursor'],
+    \ }
+    let g:esearch#adapter#rg#options = '--no-ignore-vcs --ignore-file ".$HOME."/.ignore -i --hidden'
+    let g:esearch#out#win#open = 'new'
+    let g:esearch#out#win#buflisted = 1
+    let g:esearch#util#trunc_omission = '|'
 " }}}
 
 " Required:
