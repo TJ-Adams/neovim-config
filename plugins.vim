@@ -24,9 +24,9 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 " }}}
 
-".{{{.Gruvbox
+" {{{ Gruvbox
 Plug 'morhetz/gruvbox'
-".}}}
+" }}}
 
 " {{{ Multi Cursor
 Plug 'terryma/vim-multiple-cursors'
@@ -89,9 +89,13 @@ Plug 'eugen0329/vim-esearch'
     \  'use':           ['visual', 'hlsearch', 'word_under_cursor'],
     \ }
     let g:esearch#adapter#rg#options = '--no-ignore-vcs --ignore-file ".$HOME."/.ignore -i --hidden'
-    let g:esearch#out#win#open = 'new'
+    let g:esearch#out#win#open = 'vertical botright new'
     let g:esearch#out#win#buflisted = 1
     let g:esearch#util#trunc_omission = '|'
+" }}}
+
+" {{{ Gitgutter
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 " Required:

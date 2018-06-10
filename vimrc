@@ -29,10 +29,10 @@ set nowrap
 
 " tab/spaces configs
 "set expandtab " use tabs instead of spaces
-"set tabstop=4
-"set softtabstop=4
+set tabstop=8
+set softtabstop=4
 "set shiftround
-"set shiftwidth=4
+set shiftwidth=4
 set noexpandtab
 
 " Whitespace visualization
@@ -115,5 +115,8 @@ augroup END
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 set bg=dark
+
+" Update at 100ms so gitgutter works better
+set updatetime=100
 
 " vim: set foldmethod=marker:
