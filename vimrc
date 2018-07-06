@@ -1,4 +1,4 @@
-" Tim's minimal .vimrc
+" Jesse's minimal .vimrc
 
 "{{{ BASIC VIM OPTIONS
 " This is not an exhaustive list of options it is simply the
@@ -23,6 +23,9 @@ set wildmode=list:longest
 
 " Uncomment if you want to disable soft wrapping
 set nowrap
+
+" Update at 100ms so gitgutter works better
+set updatetime=100
 
 " Uncomment if you want virtual spaces
 "set virtualedit=all
@@ -86,6 +89,9 @@ nmap <leader>wl :wincmd l<CR>
 nmap <leader>wh :wincmd h<CR>
 nmap <leader>wk :wincmd k<CR>
 nmap <leader>wj :wincmd j<CR>
+
+" <Leader>+o to open NERDTree to the current buffer's directory
+nmap <leader>o :NERDTreeToggle %<CR>
 "}}}
 
 "{{{ Miscellaneous
@@ -98,10 +104,6 @@ if filereadable(".project.vim")
 endif
 "}}}
 
-" Add buffer tab line across the top of the window
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 "{{{ Auto relative line numbers
 set number relativenumber
 
@@ -112,11 +114,10 @@ augroup numbertoggle
 augroup END
 "}}}
 
+"{{{ Color Scheme
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 set bg=dark
-
-" Update at 100ms so gitgutter works better
-set updatetime=100
+"}}}
 
 " vim: set foldmethod=marker:

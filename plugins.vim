@@ -16,8 +16,10 @@ Plug 'scrooloose/nerdtree'
 
 " {{{ Airline
 Plug 'bling/vim-airline'
-	let g:airline_theme='dark'
-	let g:airline_powerline_fonts=1
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 " }}}
 
 " {{{ Fugitive
@@ -63,16 +65,6 @@ let g:fzf_colors =
 \ 'header': ['fg', 'Comment'] }
 
 nmap <silent> <C-p> :FZF<CR>
-" }}}
-
-" {{{ Grepper
-"Plug 'mhinz/vim-grepper'
-"    let g:grepper = {
-"        \ 'tools': ['rg'],
-"        \ 'rg':        { 'grepprg':    'rg -H --ignore-file --no-heading --vimgrep --no-ignore-vcs',
-"        \                'grepformat': '%f:%l:%c:%m',
-"        \                'escape':     '\^$.*+?()[]{}|' }
-"        \ }
 " }}}
 
 " {{{ Bitbake File Support
