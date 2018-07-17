@@ -92,6 +92,9 @@ nmap <leader>wj :wincmd j<CR>
 
 " <Leader>+o to open NERDTree to the current buffer's directory
 nmap <leader>o :NERDTreeToggle %<CR>
+
+" Don't let git gutter map any keys so <leader>h isn't slowed down for bufnav
+let g:gitgutter_map_keys=0
 "}}}
 
 "{{{ Miscellaneous
