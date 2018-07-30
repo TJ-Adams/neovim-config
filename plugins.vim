@@ -90,6 +90,12 @@ Plug 'eugen0329/vim-esearch'
 Plug 'airblade/vim-gitgutter'
 " }}}
 
+" {{{ Illuminate
+Plug 'RRethy/vim-illuminate'
+    let g:Illuminate_delay = 150
+    let g:Illuminate_ftblacklist = ['nerdtree']
+" }}}
+
 " Required:
 filetype plugin indent on
 
