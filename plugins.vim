@@ -46,7 +46,7 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 if executable('rg')
-  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --follow --glob "!.git/*"'
+  let $FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 endif
 
 " Customize fzf colors to match your color scheme
@@ -80,7 +80,7 @@ Plug 'eugen0329/vim-esearch'
     \  'batch_size':    1000,
     \  'use':           ['visual', 'hlsearch', 'word_under_cursor'],
     \ }
-    let g:esearch#adapter#rg#options = '--no-ignore-vcs --ignore-file ".$HOME."/.ignore -i --hidden'
+    let g:esearch#adapter#rg#options = '--ignore-file ".$HOME."/.ignore -i --hidden'
     let g:esearch#out#win#open = 'vertical botright new'
     let g:esearch#out#win#buflisted = 1
     let g:esearch#util#trunc_omission = '|'
