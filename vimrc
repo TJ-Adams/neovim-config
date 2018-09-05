@@ -95,6 +95,9 @@ nmap <leader>o :NERDTreeToggle %<CR>
 
 " Don't let git gutter map any keys so <leader>h isn't slowed down for bufnav
 let g:gitgutter_map_keys=0
+
+" <Leader>+t to open Tagbar
+nmap <leader>t :TagbarToggle<CR>
 "}}}
 
 "{{{ Miscellaneous
