@@ -96,6 +96,10 @@ Plug 'RRethy/vim-illuminate'
     let g:Illuminate_ftblacklist = ['nerdtree']
 " }}}
 
+" {{{ puppet-syntax-vim
+Plug 'puppetlabs/puppet-syntax-vim'
+" }}}
+
 " Required:
 filetype plugin indent on
 
