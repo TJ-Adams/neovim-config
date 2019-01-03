@@ -6,9 +6,9 @@
 " I feel would be user preference
 
 " Compatibility options
-set nocompatible " No (vi) compatibility mode. Necessary to use vim features
-"set mouse=ar     " Enable mouse support
-set backspace=2  " Fixes backspace cross-platform
+set nocompatible    " No (vi) compatibility mode. Necessary to use vim features
+set mouse=a         " Enable mouse support
+set backspace=2     " Fixes backspace cross-platform
 
 set autoindent   " Enable auto-indentation
 set hlsearch     " Highlight searches

@@ -100,6 +100,22 @@ Plug 'RRethy/vim-illuminate'
 Plug 'puppetlabs/puppet-syntax-vim'
 " }}}
 
+" {{{ Eunuch
+Plug 'tpope/vim-eunuch'
+" }}}
+
+" {{{ Obsession
+Plug 'tpope/vim-obsession'
+" }}}
+
+" {{{ vim-tmux-navigator
+Plug 'christoomey/vim-tmux-navigator'
+" }}}
+
+" {{{ vim-tmux-focus-events
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" }}}
+
 " Required:
 filetype plugin indent on
 
