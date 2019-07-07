@@ -110,6 +110,11 @@ nmap <leader>t :TagbarToggle<CR>
 if filereadable(".project.vim")
 	source .project.vim
 endif
+
+" This will prevent search under cursor from jumping
+" to the next match
+nnoremap * :keepjumps normal! mi*`i<CR>
+
 "}}}
 
 "{{{ Auto relative line numbers
