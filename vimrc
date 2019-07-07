@@ -38,6 +38,10 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" Set the unnamed register as the clipboard. Whatever gets yanked
+" will be available outside of the current vim session
+set clipboard=unnamed
+
 " Whitespace visualization
 if has('nvim')
 	set listchars=tab:>-,space:∙
