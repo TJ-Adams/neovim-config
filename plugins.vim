@@ -116,6 +116,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 
+" {{{ vim-gutentags
+Plug 'ludovicchabant/vim-gutentags'
+" }}}
+
 " Required:
 filetype plugin indent on
 
