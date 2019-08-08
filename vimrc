@@ -40,7 +40,7 @@ set noexpandtab
 
 " Set the unnamed register as the clipboard. Whatever gets yanked
 " will be available outside of the current vim session
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Whitespace visualization
 if has('nvim')
