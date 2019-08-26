@@ -58,11 +58,6 @@ if !has('gui')
 	set guicursor=
 endif
 
-" C indentation options (Garmin Style)
-set cino=^-s,{1s
-set cinw=if,else,while,do,for,switch
-set cink=0{,0},0),:0#,!^F,o,O,e
-
 " Allow modified buffers to be hidden
 set hidden
 "}}}
