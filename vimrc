@@ -62,6 +62,10 @@ endif
 set hidden
 "}}}
 
+" Map leader to space instead of \
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 "{{{ PLUGINS
 source ~/.vim/plugins.vim
 "}}}
@@ -72,10 +76,6 @@ nnoremap <DOWN>  <NOP>
 nnoremap <UP>    <NOP>
 nnoremap <LEFT>  <NOP>
 nnoremap <RIGHT> <NOP>
-
-" Map leader to space instead of \
-nnoremap <SPACE> <Nop>
-let mapleader=" "
 
 " Add buffer navigation commands
 nmap <leader>l :bnext<CR>
