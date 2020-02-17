@@ -86,10 +86,6 @@ Plug 'eugen0329/vim-esearch'
     let g:esearch#util#trunc_omission = '|'
 " }}}
 
-" {{{ Gitgutter
-Plug 'airblade/vim-gitgutter'
-" }}}
-
 " {{{ Illuminate
 Plug 'RRethy/vim-illuminate'
     let g:Illuminate_delay = 150
@@ -112,14 +108,51 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 
-" {{{ vim-gutentags
-Plug 'ludovicchabant/vim-gutentags'
-" }}}
+"{{{ COC
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+set updatetime=300
+au CursorHold * silent call CocActionAsync('highlight')
+au CursorHoldI * silent call CocActionAsync('showSignatureHelp')
+nmap <silent> K :call CocActionAsync('doHover')<cr>
+nmap <silent> <C-]> <Plug>(coc-definition)
+nmap <silent> <C-y> :CocList symbols<cr>
+nmap <silent> [f :CocPrev<cr>
+nmap <silent> ]f :CocNext<cr>
+nmap <silent> [c <Plug>(coc-git-prevchunk)
+nmap <silent> ]c <Plug>(coc-git-nextchunk)
+nmap <silent> <leader>cs :CocCommand git.chunkStage<cr>
+nmap <silent> <leader>cp :CocCommand git.chunkInfo<cr>
+nmap <silent> <leader>cu :CocCommand git.chunkUndo<cr>
 
-" {{{ YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion = 1
-" }}}
+" use <tab> for trigger completion and navigate to the next completion item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Use Tab and Shift+Tab to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use Enter to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Make Enter pick first completion item and confirm when no items have been
+" selected
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+" Close the preview window when completion is done
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+
+
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+"}}}
 
 " Required:
 filetype plugin indent on

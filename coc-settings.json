@@ -1,0 +1,22 @@
+{
+  "codeLens.enable": true,
+  "diagnostic.virtualText": true,
+  "languageserver": {
+    "ccls": {
+      "command": "/home/adamsjrterren/ccls/Release/ccls",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "highlight": { "lsRanges" : true }
+      }
+    }
+  },
+  "explorer": {
+    "icon.enableNerdfont": true
+  },
+  "git.enableGutters": true,
+  "coc.preferences.timeout": 2000
+}

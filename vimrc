@@ -92,11 +92,6 @@ nmap <leader>wj :wincmd j<CR>
 " <Leader>+o to open NERDTree to the current buffer's directory
 nmap <leader>o :NERDTreeToggle %<CR>
 
-" Remap certain git gutter keys so <leader>h isn't slowed down for bufnav
-nmap <Leader>cs <Plug>(GitGutterStageHunk)
-nmap <Leader>cu <Plug>(GitGutterUndoHunk)
-nmap <Leader>cp <Plug>(GitGutterPreviewHunk)
-
 " <Leader>+t to open Tagbar
 nmap <leader>t :TagbarToggle<CR>
 "}}}
