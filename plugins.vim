@@ -12,6 +12,9 @@ Plug 'jlanzarotta/bufexplorer'
 
 " {{{ NerdTree
 Plug 'scrooloose/nerdtree'
+
+" <Leader>+o to open NERDTree to the current buffer's directory
+nmap <leader>o :NERDTreeToggle %<CR>
 " }}}
 
 " {{{ Airline
@@ -28,6 +31,9 @@ Plug 'tpope/vim-fugitive'
 
 " {{{ Gruvbox
 Plug 'morhetz/gruvbox'
+
+let g:gruvbox_contrast_dark="hard"
+set bg=dark
 " }}}
 
 " {{{ Multi Cursor
@@ -40,6 +46,9 @@ Plug 'bronson/vim-visual-star-search'
 
 " {{{ TagBar
 Plug 'majutsushi/tagbar'
+
+" <Leader>+t to open Tagbar
+nmap <leader>t :TagbarToggle<CR>
 " }}}
 
 " {{{ FZF

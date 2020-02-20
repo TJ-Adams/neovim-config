@@ -89,11 +89,6 @@ nmap <leader>wh :wincmd h<CR>
 nmap <leader>wk :wincmd k<CR>
 nmap <leader>wj :wincmd j<CR>
 
-" <Leader>+o to open NERDTree to the current buffer's directory
-nmap <leader>o :NERDTreeToggle %<CR>
-
-" <Leader>+t to open Tagbar
-nmap <leader>t :TagbarToggle<CR>
 "}}}
 
 "{{{ Miscellaneous
@@ -123,8 +118,6 @@ augroup END
 
 "{{{ Color Scheme
 colorscheme gruvbox
-let g:gruvbox_contrast_dark="hard"
-set bg=dark
 "}}}
 
 " vim: set foldmethod=marker:
