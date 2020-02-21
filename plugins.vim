@@ -119,7 +119,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 "{{{ COC
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-set updatetime=300
 au CursorHold * silent call CocActionAsync('highlight')
 au CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 nmap <silent> K :call CocActionAsync('doHover')<cr>

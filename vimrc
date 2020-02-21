@@ -24,8 +24,8 @@ set wildmode=list:longest
 " Uncomment if you want to disable soft wrapping
 set nowrap
 
-" Update at 100ms so gitgutter works better
-set updatetime=100
+" Update at 300ms so coc works smoother
+set updatetime=300
 
 " Uncomment if you want virtual spaces
 "set virtualedit=all
