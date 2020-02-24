@@ -1,4 +1,4 @@
-" Jesse's minimal .vimrc
+" TJ's minimal .vimrc
 
 "{{{ BASIC VIM OPTIONS
 " This is not an exhaustive list of options it is simply the
