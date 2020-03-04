@@ -10,13 +10,6 @@ endif
 Plug 'jlanzarotta/bufexplorer'
 " }}}
 
-" {{{ NerdTree
-Plug 'scrooloose/nerdtree'
-
-" <Leader>+o to open NERDTree to the current buffer's directory
-nmap <leader>o :NERDTreeToggle %<CR>
-" }}}
-
 " {{{ Airline
 Plug 'bling/vim-airline'
 let g:airline_theme='dark'
@@ -158,8 +151,39 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
-
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+"}}}
+
+"{{{ coc-explorer coc-plugin
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\      'root-uri': '~/.vim',
+\   },
+\   'floating': {
+\      'position': 'floating',
+\   },
+\   'floatingLeftside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 50,
+\   },
+\   'floatingRightside': {
+\      'position': 'floating',
+\      'floating-position': 'right-center',
+\      'floating-width': 50,
+\   },
+\   'simplify': {
+\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+
+" Use preset argument to open it
+nmap <leader>o :CocCommand explorer<CR>
+nmap <leader>el :CocCommand explorer --preset floatingRightside<CR>
+nmap <leader>eh :CocCommand explorer --preset floatingLeftside<CR>
+
+" List all presets
+nmap <space>ea :CocList explPresets<CR>
 "}}}
 
 " Required:
