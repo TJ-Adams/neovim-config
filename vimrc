@@ -80,7 +80,7 @@ nnoremap <RIGHT> <NOP>
 " Add buffer navigation commands
 nmap <leader>l :bnext<CR><leader>
 nmap <leader>h :bprevious<CR><leader>
-nmap <leader>bw :bp <BAR> bd #<CR>
+nmap <leader>bw :bp <BAR> bd #<CR><leader>
 nmap <leader>be :BufExplorer<CR>
 
 " Add window navigation commands
