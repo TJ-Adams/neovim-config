@@ -104,6 +104,9 @@ endif
 " to the next match
 nnoremap * :keepjumps normal! mi*`i<CR>
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
 "}}}
 
 "{{{ Auto relative line numbers
