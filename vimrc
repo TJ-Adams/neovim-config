@@ -120,7 +120,9 @@ augroup END
 "}}}
 
 "{{{ Color Scheme
+set termguicolors
 colorscheme gruvbox
+set bg=dark
 "}}}
 
 " vim: set foldmethod=marker:

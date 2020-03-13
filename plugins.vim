@@ -26,7 +26,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
 
 let g:gruvbox_contrast_dark="hard"
-set bg=dark
 " }}}
 
 " {{{ Multi Cursor
