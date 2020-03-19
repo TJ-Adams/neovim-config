@@ -22,10 +22,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 Plug 'tpope/vim-fugitive'
 " }}}
 
-" {{{ Gruvbox
+" {{{ Color Schemes
 Plug 'morhetz/gruvbox'
 
 let g:gruvbox_contrast_dark="hard"
+
+Plug 'rafi/awesome-vim-colorschemes'
 " }}}
 
 " {{{ Multi Cursor
