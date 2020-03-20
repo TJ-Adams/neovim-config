@@ -38,11 +38,22 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'bronson/vim-visual-star-search'
 " }}}
 
-" {{{ TagBar
-Plug 'majutsushi/tagbar'
+" {{{ Vista.vim
+Plug 'liuchengxu/vista.vim'
 
-" <Leader>+t to open Tagbar
-nmap <leader>t :TagbarToggle<CR>
+" Use coc as the default to gather symbols etc from
+let g:vista_default_executive = 'coc'
+
+" <Leader>+v to open vista.vim
+nmap <leader>v :Vista!!<CR>
+
+" Use specified unicode for icons
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "enum": "\uf77a",
+\   "variable": "\u03c7",
+\   "enummember": "#",
+\  }
 " }}}
 
 " {{{ FZF
