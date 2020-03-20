@@ -155,7 +155,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 "}}}
 
-"{{{ coc-explorer coc-plugin
+"{{{ coc-plugin: coc-explorer
 let g:coc_explorer_global_presets = {
 \   '.vim': {
 \      'root-uri': '~/.vim',
@@ -185,6 +185,10 @@ nmap <leader>eh :CocCommand explorer --preset floatingLeftside<CR>
 
 " List all presets
 nmap <space>ea :CocList explPresets<CR>
+"}}}
+
+"{{{ coc-plugin: coc-lists
+nmap <space>cl :CocList<CR>
 "}}}
 
 " Required:
