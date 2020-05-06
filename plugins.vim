@@ -44,8 +44,9 @@ Plug 'liuchengxu/vista.vim'
 " Use coc as the default to gather symbols etc from
 let g:vista_default_executive = 'coc'
 
-" <Leader>+v to open vista.vim
-nmap <leader>v :Vista!!<CR>
+" Mappings to close or Open Vista
+nmap <leader>vo :Vista<CR>
+nmap <leader>vc :Vista!<CR>
 
 " Use specified unicode for icons
 let g:vista#renderer#icons = {
