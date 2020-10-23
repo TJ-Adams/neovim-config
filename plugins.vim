@@ -88,17 +88,58 @@ Plug 'kergoth/vim-bitbake'
 
 " {{{ ESearch
 Plug 'eugen0329/vim-esearch'
-    let g:esearch = {
-    \  'adapter':       'rg',
-    \  'backend':       'nvim',
-    \  'out':           'win',
-    \  'batch_size':    1000,
-    \  'use':           ['visual', 'hlsearch', 'word_under_cursor'],
-    \ }
-    let g:esearch#adapter#rg#options = '--ignore-file ".$HOME."/.ignore -i --hidden'
-    let g:esearch#out#win#open = 'vertical botright new'
-    let g:esearch#out#win#buflisted = 1
-    let g:esearch#util#trunc_omission = '|'
+    let g:esearch = {}
+
+    "Use RipGrep for my searches
+    let g:esearch.adapter = 'rg'
+
+    " Use regex matching with the smart case mode by default and avoid matching text-objects.
+    let g:esearch.regex   = 1
+    let g:esearch.textobj = 0
+    let g:esearch.case    = 'smart'
+
+    " Set the initial pattern content using the highlighted search pattern (if
+    " v:hlsearch is true), or the last searched pattern.
+    let g:esearch.prefill = ['hlsearch', 'last']
+
+    " Open the search window in a vertical split and reuse it for all searches.
+    let g:esearch.name = '[esearch]'
+    let g:esearch.win_new = {esearch -> esearch#buf#goto_or_open(esearch.name, 'vnew')}
+
+    " Save applied changes if :write! with '!' was used. Open modified buffers
+    " in background otherwise.
+    let g:esearch.write_cb = {buf, bang -> bang ? buf.write(bang) : buf.open('')}
+
+    "   Keymap |     What it does
+    " ---------+---------------------------------------------------------------------------------------------
+    "    yf    | Yank a hovered file absolute path.
+    "    t     | Use a custom command to open the file in a tab.
+    "    +     | Render [count] more lines after a line with matches. Ex: + adds 1 line, 10+ adds 10.
+    "    -     | Render [count] less lines after a line with matches. Ex: - hides 1 line, 10- hides 10.
+    "    gq    | Populate QuickFix list using results of the current pattern search.
+    "    gsp   | Sort the results by path. NOTE that it's search util-specific.
+    "    gsd   | Sort the results by modification date. NOTE that it's search util-specific.
+
+    " Each definition contains nvim_set_keymap() args: [{modes}, {lhs}, {rhs}].
+    let g:esearch.win_map = [
+     \ ['n', 'yf',  ':call setreg(esearch#util#clipboard_reg(), b:esearch.filename())<cr>'],
+     "\ ['n', 't',   ':call b:esearch.open("NewTabdrop")<cr>'                              ],
+     \ ['n', '+',   ':call esearch#init(extend(b:esearch, AddAfter(+v:count1)))<cr>'      ],
+     \ ['n', '-',   ':call esearch#init(extend(b:esearch, AddAfter(-v:count1)))<cr>'      ],
+     "\ ['n', 'gq',  ':call esearch#init(extend(copy(b:esearch), {"out": "qflist"}))<cr>'  ],
+     \ ['n', 'gsp', ':call esearch#init(extend(b:esearch, sort_by_path))<cr>'             ],
+     \ ['n', 'gsd', ':call esearch#init(extend(b:esearch, sort_by_date))<cr>'             ],
+     \]
+
+    " Helpers to use in keymaps.
+    " Funny? The triple curly braces at the end must be spaced out otherwise,
+    " it closes out the esearch section
+    let g:sort_by_path = {'adapters': {'rg': {'options': '--sort path'} } }
+    let g:sort_by_date = {'adapters': {'rg': {'options': '--sort modified'} } }
+    " {'backend': 'system'} means synchronous reload using system() call to stay within the
+    " same context
+    let g:AddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
+
 " }}}
 
 " {{{ Illuminate
