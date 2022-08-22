@@ -28,7 +28,6 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 
 keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap("n", "<leader>fig", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 
 keymap(
     "n",
