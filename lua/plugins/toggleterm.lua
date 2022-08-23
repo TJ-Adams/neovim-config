@@ -3,7 +3,14 @@ if not status_ok then
     return
 end
 
-toggleterm.setup()
+toggleterm.setup(
+    {
+        direction = "float",
+        float_opts = {
+            border = "curved",
+        }
+    }
+)
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
