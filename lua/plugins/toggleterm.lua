@@ -16,10 +16,10 @@ local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
 -- Add 4 quickly accessible terminals
-keymap("n", "<leader>tj", ":0 ToggleTerm<cr>", opts)
-keymap("n", "<leader>tk", ":1 ToggleTerm<cr>", opts)
-keymap("n", "<leader>tl", ":2 ToggleTerm<cr>", opts)
-keymap("n", "<leader>t;", ":3 ToggleTerm<cr>", opts)
+keymap("n", "<leader>tj", ":1 ToggleTerm<cr>", opts)
+keymap("n", "<leader>tk", ":2 ToggleTerm<cr>", opts)
+keymap("n", "<leader>tl", ":3 ToggleTerm<cr>", opts)
+keymap("n", "<leader>t;", ":4 ToggleTerm<cr>", opts)
 
 keymap("n", "<leader>tt", ":ToggleTerm<cr>", opts)
 
