@@ -15,6 +15,9 @@ telescope.setup(
     }
 )
 
+-- Add Extensions
+telescope.load_extension('fzf')
+
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
