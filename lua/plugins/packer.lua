@@ -55,6 +55,7 @@ return packer.startup(
 
         -- Git Integration
         use "lewis6991/gitsigns.nvim"
+        use "tpope/vim-fugitive"
 
         -- Lazy Git Usage
         use "kdheepak/lazygit.nvim"
