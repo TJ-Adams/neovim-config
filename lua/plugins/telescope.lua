@@ -11,12 +11,20 @@ telescope.setup(
             path_display = {"smart"}
         },
         pickers = {},
-        extensions = {}
+        extensions = {
+            project = {
+                base_dirs = {
+                    "~/projects"
+                },
+                theme = "dropdown"
+            }
+        }
     }
 )
 
 -- Add Extensions
 telescope.load_extension('fzf')
+telescope.load_extension('project')
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
@@ -31,6 +39,8 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 
 keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
+
+keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 
 keymap(
     "n",
