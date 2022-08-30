@@ -5,7 +5,9 @@ end
 
 toggleterm.setup(
     {
+        persist_mode = true,
         direction = "float",
+        auto_scroll = false,
         float_opts = {
             border = "curved",
         }
@@ -24,10 +26,10 @@ keymap("n", "<leader>t;", ":4 ToggleTerm<cr>", opts)
 keymap("n", "<leader>tt", ":ToggleTerm<cr>", opts)
 
 -- Allow quick access to terminals in terminal mode as well
-keymap("t", "<leader>tj", "<C-\\><C-n>:1 ToggleTerm<cr>", opts)
-keymap("t", "<leader>tk", "<C-\\><C-n>:2 ToggleTerm<cr>", opts)
-keymap("t", "<leader>tl", "<C-\\><C-n>:3 ToggleTerm<cr>", opts)
-keymap("t", "<leader>t;", "<C-\\><C-n>:4 ToggleTerm<cr>", opts)
+keymap("t", "<leader>tj", "<cmd>1 ToggleTerm<cr>", opts)
+keymap("t", "<leader>tk", "<cmd>2 ToggleTerm<cr>", opts)
+keymap("t", "<leader>tl", "<cmd>3 ToggleTerm<cr>", opts)
+keymap("t", "<leader>t;", "<cmd>4 ToggleTerm<cr>", opts)
 
 keymap("t", "<leader>tt", "<C-\\><C-n>:ToggleTerm<cr>", opts)
 
