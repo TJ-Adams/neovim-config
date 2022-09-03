@@ -36,6 +36,7 @@ keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<leader>ft", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
+keymap("n", "<leader>fu", "<cmd>Telescope treesitter<cr>i:function:<esc>", opts) -- Fuzzy search functions
 
 keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
