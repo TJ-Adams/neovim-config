@@ -12,6 +12,8 @@ vim.opt.listchars = {space = "·", tab = ">-"} -- Assing whitespace colors
 vim.opt.list = true -- Turn on whitespace visualization
 vim.opt.mouse = "a" -- Allow Mouse Support
 
+vim.opt.scrollback = 25000 -- See further back into terminal output
+
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
