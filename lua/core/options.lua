@@ -14,6 +14,9 @@ vim.opt.mouse = "a" -- Allow Mouse Support
 
 vim.opt.scrollback = 25000 -- See further back into terminal output
 
+vim.opt.wildmode = "longest,list,full" -- Change command tab completion to be like terminal
+vim.opt.wildmenu = true
+
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
