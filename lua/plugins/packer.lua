@@ -96,6 +96,9 @@ return packer.startup(
         -- nvim-treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
+        -- Aerial for outline of file
+        use "stevearc/aerial.nvim"
+
         -- Tmux Navigation
         use "akinsho/toggleterm.nvim"
 
