@@ -67,7 +67,7 @@ return packer.startup(
         use "nvim-lualine/lualine.nvim"
 
         -- Show context around code
-        use "wellle/context.vim"
+        use "nvim-treesitter/nvim-treesitter-context"
 
         -- Quick Movements
         use "ggandor/lightspeed.nvim"
