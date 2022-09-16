@@ -1,0 +1,2 @@
+require('tldr').setup({})
+

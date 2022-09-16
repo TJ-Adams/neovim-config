@@ -118,6 +118,9 @@ return packer.startup(
         -- Help remember keymaps
         use "folke/which-key.nvim"
 
+        -- tldr searcher with telescope
+        use "mrjones2014/tldr.nvim"
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
