@@ -31,7 +31,7 @@ keymap("t", "<leader>tk", "<cmd>2 ToggleTerm<cr>", opts)
 keymap("t", "<leader>tl", "<cmd>3 ToggleTerm<cr>", opts)
 keymap("t", "<leader>t;", "<cmd>4 ToggleTerm<cr>", opts)
 
-keymap("t", "<leader>tt", "<C-\\><C-n>:ToggleTerm<cr>", opts)
+keymap("t", "<leader>tt", "<cmd>ToggleTerm<cr>", opts)
 
 function _G.set_terminal_keymaps_options()
     local opts = {buffer = 0}
