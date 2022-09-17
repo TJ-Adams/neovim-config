@@ -3,8 +3,11 @@ if not status_ok then
     return
 end
 
-aerial.setup({})
-
+aerial.setup(
+    {
+        backends = {"lsp", "treesitter"} -- Prioritize lsp, fallback to treesitter
+    }
+)
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
