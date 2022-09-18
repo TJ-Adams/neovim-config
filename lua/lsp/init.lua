@@ -5,3 +5,4 @@ require "lsp/lsp_signature"
 
 require "lsp/pyright"
 require "lsp/clangd"
+require "lsp/sumneko_lua"
