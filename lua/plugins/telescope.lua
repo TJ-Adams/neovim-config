@@ -41,6 +41,8 @@ keymap("n", "<leader>fm", "<cmd>Telescope treesitter<cr>i:macro:<esc>", opts) --
 
 keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap("n", "<leader>fic", "<cmd>Telescope lsp_incoming_calls<cr>", opts)
+keymap("n", "<leader>foc", "<cmd>Telescope lsp_outgoing_calls<cr>", opts)
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 
