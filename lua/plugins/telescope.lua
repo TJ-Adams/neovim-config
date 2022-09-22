@@ -25,11 +25,12 @@ telescope.setup(
 -- Add Extensions
 telescope.load_extension('fzf')
 telescope.load_extension('project')
+telescope.load_extension('live_grep_args')
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>", opts)

@@ -48,6 +48,7 @@ return packer.startup(
 
         -- Telescope Extensions
         use "https://github.com/nvim-telescope/telescope-project.nvim"
+        use "nvim-telescope/telescope-live-grep-args.nvim"
         use {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
