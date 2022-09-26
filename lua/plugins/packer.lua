@@ -122,6 +122,9 @@ return packer.startup(
         -- tldr searcher with telescope
         use "mrjones2014/tldr.nvim"
 
+        -- Improved highlighting for searching
+        use 'kevinhwang91/nvim-hlslens'
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
