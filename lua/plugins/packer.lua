@@ -53,6 +53,11 @@ return packer.startup(
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
         }
+        -- Neorg
+        use "nvim-neorg/neorg"
+
+        -- Neorg Extensions
+        use "nvim-neorg/neorg-telescope"
 
         -- File Explorer
         use "kyazdani42/nvim-tree.lua"
