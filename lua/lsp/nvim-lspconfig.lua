@@ -16,6 +16,6 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-vim.keymap.set('n', '<leader>bf', vim.lsp.buf.formatting, bufopts)
+vim.keymap.set('n', '<leader>bf', vim.lsp.buf.format, bufopts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 
