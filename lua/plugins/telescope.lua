@@ -33,6 +33,10 @@ local opts = {noremap = true, silent = true}
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
+
+keymap("n", "<leader>ic", "<cmd>Telescope lsp_incoming_calls<cr>", opts)
+keymap("n", "<leader>oc", "<cmd>Telescope lsp_outgoing_calls<cr>", opts)
+
 keymap("n", "<leader>fd", "<cmd>Telescope tldr<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
@@ -47,8 +51,6 @@ keymap("n", "<leader>fn", "<cmd>Telescope neorg switch_workspace<cr>", opts)
 
 keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap("n", "<leader>fic", "<cmd>Telescope lsp_incoming_calls<cr>", opts)
-keymap("n", "<leader>foc", "<cmd>Telescope lsp_outgoing_calls<cr>", opts)
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 
