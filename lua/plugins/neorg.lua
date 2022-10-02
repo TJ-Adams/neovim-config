@@ -11,7 +11,8 @@ neorg.setup(
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        work = "~/.local/notes/work"
+                        work = "~/.local/notes/work",
+                        personal = "~/.local/notes/personal",
                     }
                 }
             }
