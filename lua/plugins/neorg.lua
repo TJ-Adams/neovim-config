@@ -9,6 +9,11 @@ neorg.setup(
             ["core.defaults"] = {},
             ["core.norg.concealer"] = {},
             ["core.integrations.telescope"] = {},
+            ["core.norg.completion"] = {
+                config = {
+                    engine = "nvim-cmp",
+                }
+            },
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
