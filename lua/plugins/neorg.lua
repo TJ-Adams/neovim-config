@@ -11,6 +11,11 @@ neorg.setup(
             ["core.integrations.telescope"] = {},
             ["core.norg.manoeuvre"] = {},
 
+            ["core.export"] = {
+                config = {
+                    export_dir = "/tmp/neorg_export/"
+                }
+            },
             ["core.norg.completion"] = {
                 config = {
                     engine = "nvim-cmp",
