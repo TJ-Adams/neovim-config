@@ -130,6 +130,9 @@ return packer.startup(
         -- Improved highlighting for searching
         use 'kevinhwang91/nvim-hlslens'
 
+        -- Various small changes
+        use "echasnovski/mini.nvim"
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
