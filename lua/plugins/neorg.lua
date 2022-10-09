@@ -35,6 +35,8 @@ neorg.setup(
                                     -- Keybinds to make moving sections up and down easily
                                     keybinds.map("norg", "n", "gj", "<cmd>Neorg keybind norg core.norg.manoeuvre.item_down<cr>")
                                     keybinds.map("norg", "n", "gk", "<cmd>Neorg keybind norg core.norg.manoeuvre.item_up<cr>")
+                                    keybinds.map("norg", "n", "]s", "<cmd>Neorg keybind norg core.integrations.treesitter.next.heading<cr>")
+                                    keybinds.map("norg", "n", "[s", "<cmd>Neorg keybind norg core.integrations.treesitter.previous.heading<cr>")
                             end,
                     }
             }
