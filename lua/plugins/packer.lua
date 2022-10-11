@@ -96,9 +96,6 @@ return packer.startup(
         -- Show buffers like web browser tabs
         use "akinsho/bufferline.nvim"
 
-        -- Minimap Support, Depends on code-minimap
-        use "wfxr/minimap.vim"
-
         -- nvim-treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
