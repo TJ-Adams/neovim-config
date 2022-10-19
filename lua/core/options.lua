@@ -17,6 +17,8 @@ vim.opt.scrollback = 25000 -- See further back into terminal output
 vim.opt.wildmode = "longest,list,full" -- Change command tab completion to be like terminal
 vim.opt.wildmenu = true
 
+vim.opt.conceallevel = 2 -- Hide text with the "conceal" attribute
+
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
