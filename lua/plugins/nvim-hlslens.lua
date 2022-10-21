@@ -1,3 +1,10 @@
+local status_ok, hlslens = pcall(require, "hlslens")
+if not status_ok then
+    return
+end
+
+hlslens.setup()
+
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
