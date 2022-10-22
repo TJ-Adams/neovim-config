@@ -45,7 +45,7 @@ keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<leader>ft", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-keymap("n", "<leader>fu", "<cmd>Telescope treesitter<cr>i:function:<esc>", opts) -- Fuzzy search functions
+keymap("n", "<leader>fu", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols({ symbols = 'function' })<cr>", opts) -- Fuzzy search functions
 keymap("n", "<leader>fm", "<cmd>Telescope treesitter<cr>i:macro:<esc>", opts) -- Fuzzy search macros
 keymap("n", "<leader>fn", "<cmd>Telescope neorg switch_workspace<cr>", opts)
 
