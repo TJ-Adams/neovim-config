@@ -4,6 +4,8 @@ utilizedPrograms = []
 allProgramsInstalled = True
 
 # Add necessary installs
+utilizedPrograms.append("nvim")
+utilizedPrograms.append("nvr")
 utilizedPrograms.append("rg")
 utilizedPrograms.append("lazygit")
 utilizedPrograms.append("tldr")
