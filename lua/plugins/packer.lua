@@ -98,6 +98,7 @@ return packer.startup(
 
         -- nvim-treesitter
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use "nvim-treesitter/playground"
 
         -- Aerial for outline of file
         use "stevearc/aerial.nvim"
