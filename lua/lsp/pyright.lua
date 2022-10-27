@@ -13,6 +13,5 @@ local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_cli
 lspconfig["pyright"].setup(
     {
         capabilities = capabilities,
-        on_attach = require("aerial").on_attach
     }
 )

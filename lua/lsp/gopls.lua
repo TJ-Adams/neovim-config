@@ -5,6 +5,5 @@ end
 
 lspconfig["gopls"].setup(
     {
-        on_attach = require("aerial").on_attach
     }
 )

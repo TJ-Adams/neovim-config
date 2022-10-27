@@ -5,6 +5,5 @@ end
 
 lspconfig["rust_analyzer"].setup(
     {
-        on_attach = require("aerial").on_attach
     }
 )
