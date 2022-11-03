@@ -131,6 +131,9 @@ return packer.startup(
         -- Various small changes
         use "echasnovski/mini.nvim"
 
+        -- Minimap Plugin
+        use "gorbit99/codewindow.nvim"
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
