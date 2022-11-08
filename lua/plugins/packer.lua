@@ -137,6 +137,9 @@ return packer.startup(
         -- Auto Pairs
         use "windwp/nvim-autopairs"
 
+        -- Surround plugin
+        use "kylechui/nvim-surround"
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
