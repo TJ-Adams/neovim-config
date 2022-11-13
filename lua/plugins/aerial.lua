@@ -17,5 +17,5 @@ keymap("n", "<leader>a", "<cmd>AerialToggle! left<cr>", opts)
 keymap("n", "{", "<cmd>AerialPrev<CR>", opts)
 keymap("n", "}", "<cmd>AerialNext<CR>", opts)
 
-keymap("n", "[[", "<cmd>AerialPrevUp<CR>", opts)
-keymap("n", "]]", "<cmd>AerialNextUp<CR>", opts)
+keymap("n", "[[", "<cmd>lua require('aerial').prev_up()<CR>", opts)
+keymap("n", "]]", "<cmd>lua require('aerial').next_up()<CR>", opts)
