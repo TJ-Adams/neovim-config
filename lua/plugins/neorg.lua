@@ -43,3 +43,10 @@ neorg.setup(
         }
     }
 )
+
+local keymap = vim.api.nvim_set_keymap
+local opts = {noremap = true, silent = true}
+
+keymap("n", "<leader>fnw", "<cmd>Telescope neorg switch_workspace<cr>", opts)
+keymap("n", "<leader>fni", "<cmd>Telescope neorg insert_link<cr>", opts)
+keymap("n", "<leader>fnh", "<cmd>Telescope neorg search_headings<cr>", opts)
