@@ -17,6 +17,9 @@ telescope.setup(
                     "~/projects"
                 },
                 theme = "dropdown"
+            },
+            live_grep_args = {
+                auto_quoting = false
             }
         }
     }
