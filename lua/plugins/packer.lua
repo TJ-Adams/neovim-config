@@ -53,6 +53,11 @@ return packer.startup(
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
         }
+
+        -- Telescope media previewer
+        use "nvim-lua/popup.nvim"
+        use "nvim-telescope/telescope-media-files.nvim"
+
         -- Neorg
         use "nvim-neorg/neorg"
 

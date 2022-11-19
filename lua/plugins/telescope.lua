@@ -29,6 +29,7 @@ telescope.setup(
 telescope.load_extension('fzf')
 telescope.load_extension('project')
 telescope.load_extension('live_grep_args')
+telescope.load_extension('media_files')
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
