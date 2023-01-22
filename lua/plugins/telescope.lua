@@ -3,33 +3,32 @@ if not status_ok then
     return
 end
 
-telescope.setup(
-    {
-        defaults = {
-            prompt_prefix = " ",
-            selection_caret = "  ",
-            path_display = {"truncate"}
+-- Setup.
+local border_chars_none = { " ", " ", " ", " ", " ", " ", " ", " " }
+telescope.setup({
+    defaults = {
+        sort_mru = true,
+        sorting_strategy = "ascending",
+        prompt_prefix = "   ",
+        results_title = "",
+        path_display = {"truncate"},
+
+        layout_config = {
+            prompt_position = "top"
         },
-        pickers = {},
-        extensions = {
-            project = {
-                base_dirs = {
-                    "~/projects"
-                },
-                theme = "dropdown"
-            },
-            live_grep_args = {
-                auto_quoting = false
-            }
-        }
+        borderchars = {
+            prompt = border_chars_none,
+            results = border_chars_none,
+            preview = border_chars_none
+        },
     }
-)
+})
 
 -- Add Extensions
-telescope.load_extension('fzf')
-telescope.load_extension('project')
-telescope.load_extension('live_grep_args')
-telescope.load_extension('media_files')
+telescope.load_extension("fzf")
+telescope.load_extension("project")
+telescope.load_extension("live_grep_args")
+telescope.load_extension("media_files")
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
