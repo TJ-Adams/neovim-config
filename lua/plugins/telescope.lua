@@ -21,6 +21,16 @@ telescope.setup({
             results = border_chars_none,
             preview = border_chars_none
         },
+    },
+    extensions = {
+        project = {
+            base_dirs = {
+                "~/projects"
+            },
+        },
+        live_grep_args = {
+            auto_quoting = false
+        },
     }
 })
 
