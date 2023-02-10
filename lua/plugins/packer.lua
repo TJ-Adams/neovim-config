@@ -108,6 +108,9 @@ return packer.startup(
         -- Aerial for outline of file
         use "stevearc/aerial.nvim"
 
+        -- Trouble
+        use "folke/trouble.nvim"
+
         -- Tmux Navigation
         use "akinsho/toggleterm.nvim"
 
