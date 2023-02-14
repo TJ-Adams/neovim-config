@@ -5,7 +5,7 @@ require "lsp/lsp_signature"
 
 require "lsp/pyright"
 require "lsp/clangd"
-require "lsp/sumneko_lua"
+require "lsp/lua_ls"
 require "lsp/gopls"
 require "lsp/rust-analyzer"
 require "lsp/html-lsp"
