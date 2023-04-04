@@ -148,6 +148,10 @@ return packer.startup(
         -- Surround plugin
         use "kylechui/nvim-surround"
 
+        -- AI Plugins
+        use "MunifTanjim/nui.nvim"
+        use "jackMort/ChatGPT.nvim"
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then
