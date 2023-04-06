@@ -5,7 +5,7 @@ end
 
 chatgpt.setup( {
     keymaps = {
-        submit = "<C-Space>",
+        submit = "<C-s>",
     }
 })
 
