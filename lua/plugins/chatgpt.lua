@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 chatgpt.setup( {
-    keymaps = {
+    popup_input = {
         submit = "<C-s>",
     }
 })
