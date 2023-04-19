@@ -7,21 +7,21 @@ neorg.setup(
     {
         load = {
             ["core.defaults"] = {},
-            ["core.norg.concealer"] = {},
+            ["core.concealer"] = {},
             ["core.integrations.telescope"] = {},
-            ["core.norg.manoeuvre"] = {},
+            ["core.manoeuvre"] = {},
 
             ["core.export"] = {
                 config = {
                     export_dir = "/tmp/neorg_export/"
                 }
             },
-            ["core.norg.completion"] = {
+            ["core.completion"] = {
                 config = {
                     engine = "nvim-cmp",
                 }
             },
-            ["core.norg.dirman"] = {
+            ["core.dirman"] = {
                 config = {
                     workspaces = {
                         work = "~/.local/notes/work",
