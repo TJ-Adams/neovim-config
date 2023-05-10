@@ -48,6 +48,12 @@ lazy.setup({
         dependencies = {
             "nvim-telescope/telescope.nvim",
         },
+        config = function ()
+            dofile(plugins_path .. "tldr.lua")
+        end,
+        keys = {
+            { "<leader>fd", desc = "Go through tldr pages"},
+        },
     },
     {
         "https://github.com/nvim-telescope/telescope-project.nvim",
@@ -90,7 +96,10 @@ lazy.setup({
         "kyazdani42/nvim-tree.lua",
         config = function ()
             dofile(plugins_path .. "nvim-tree.lua")
-        end
+        end,
+        keys = {
+            { "<leader>e", desc = "Toggle File Explorer"},
+        },
     },
 
     -- Git Integration
@@ -107,7 +116,11 @@ lazy.setup({
         "kdheepak/lazygit.nvim",
         config = function ()
             dofile(plugins_path .. "lazygit.lua")
-        end
+        end,
+        keys = {
+            { "<leader>lg", desc = "lazygit"},
+            { "<leader>lb", desc = "Commits in current buffer"},
+        },
     },
 
     -- Status Line
@@ -190,7 +203,14 @@ lazy.setup({
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
-        }
+        },
+        keys = {
+            { "<leader>a", desc = "Toggle Aerial Side Panel"},
+            { "{", desc = "AerialPrev"},
+            { "}", desc = "AerialNext"},
+            { "[[", desc = "Aerial prev_up"},
+            { "]]", desc = "Aerial next_up"},
+        },
     },
 
     -- Trouble
@@ -243,7 +263,11 @@ lazy.setup({
         "kevinhwang91/nvim-hlslens",
         config = function ()
             dofile(plugins_path .. "nvim-hlslens.lua")
-        end
+        end,
+        keys = {
+            {"/"},
+            {"*"},
+        }
     },
 
     -- Various small changes
