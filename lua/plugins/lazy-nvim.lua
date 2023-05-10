@@ -218,7 +218,12 @@ lazy.setup({
         "folke/trouble.nvim",
         config = function ()
             dofile(plugins_path .. "trouble.lua")
-        end
+        end,
+        keys = {
+            {"<leader>xx"},
+            {"<leader>xd"},
+            {"<leader>xw"},
+        }
     },
 
     -- Built in Terminal into Vim
