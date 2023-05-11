@@ -50,3 +50,27 @@ local opts = {noremap = true, silent = true}
 keymap("n", "<leader>fnw", "<cmd>Telescope neorg switch_workspace<cr>", opts)
 keymap("n", "<leader>fni", "<cmd>Telescope neorg insert_link<cr>", opts)
 keymap("n", "<leader>fnh", "<cmd>Telescope neorg search_headings<cr>", opts)
+
+-- Which Key Registration
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+    return
+end
+
+wk.register(
+    {
+        t = {
+            name = "Tasks or Terminal",
+
+            d = "Tasks: Done",
+            c = "Tasks: Cancel",
+            i = "Tasks: High Priority",
+            h = "Tasks: Put on Hold",
+            u = "Tasks: Unfinished",
+            p = "Tasks: In Progress",
+            r = "Tasks: Recurring",
+        },
+    },
+    {prefix = "<leader>"}
+)
+
