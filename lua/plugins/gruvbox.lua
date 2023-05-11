@@ -8,6 +8,8 @@ local gruvbox_text  = "#EBDBB2"
 local grey  = "#303030"
 local dark_grey  = "#202020"
 
+vim.cmd([[colorscheme gruvbox]])
+
 vim.api.nvim_set_hl(0, "TelescopeTitle", { bg=orange })
 vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg=black, bg=orange })
 vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg=black, bg=orange })
@@ -24,5 +26,3 @@ vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg=dark_grey })
 -- I think the yellow highlight is very distracting so I'm removing it
 vim.api.nvim_set_hl(0, "Todo", { fg = gruvbox_text, bold=true})
 vim.api.nvim_set_hl(0, "@text.todo", { fg=gruvbox_text, bold=true})
-
-vim.cmd([[colorscheme gruvbox]])
