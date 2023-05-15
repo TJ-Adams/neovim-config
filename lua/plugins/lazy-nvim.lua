@@ -261,7 +261,12 @@ lazy.setup({
     {"karb94/neoscroll.nvim", config = true},
 
     -- Help remember keymaps
-    {"folke/which-key.nvim", config = true},
+    {
+        "folke/which-key.nvim",
+        config = function ()
+            dofile(plugins_path .. "which-key.lua")
+        end,
+    },
 
     -- Improved highlighting for searching
     {
