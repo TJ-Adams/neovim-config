@@ -10,6 +10,7 @@ neorg.setup(
             ["core.concealer"] = {},
             ["core.integrations.telescope"] = {},
             ["core.manoeuvre"] = {},
+            ["core.journal"] = {},
 
             ["core.export"] = {
                 config = {
@@ -37,6 +38,11 @@ neorg.setup(
                                     keybinds.map("norg", "n", "gk", "<cmd>Neorg keybind norg core.manoeuvre.item_up<cr>")
                                     keybinds.map("norg", "n", "]s", "<cmd>Neorg keybind norg core.integrations.treesitter.next.heading<cr>")
                                     keybinds.map("norg", "n", "[s", "<cmd>Neorg keybind norg core.integrations.treesitter.previous.heading<cr>")
+
+                                    -- Keybinds for the journal module
+                                    keybinds.map("norg", "n", "<leader>njt", '<cmd>Neorg journal today<cr>')
+                                    keybinds.map("norg", "n", "<leader>njf", '<cmd>Neorg journal tomorrow<cr>')
+                                    keybinds.map("norg", "n", "<leader>njy", '<cmd>Neorg journal yesterday<cr>')
                             end,
                     }
             }
