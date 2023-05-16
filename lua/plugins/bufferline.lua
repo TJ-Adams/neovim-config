@@ -28,3 +28,18 @@ keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 -- Reorder buffers left and right
 keymap("n", "<leader>bl", ":BufferLineMoveNext<CR>", opts)
 keymap("n", "<leader>bh", ":BufferLineMovePrev<CR>", opts)
+
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+    return
+end
+
+wk.register(
+    {
+        b = {
+            h = "Move buffer tab to the left",
+            l = "Move buffer tab to the right",
+        },
+    },
+    {prefix = "<leader>"}
+)
