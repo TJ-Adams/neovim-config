@@ -11,6 +11,7 @@ neorg.setup(
             ["core.integrations.telescope"] = {},
             ["core.manoeuvre"] = {},
             ["core.journal"] = {},
+            ["core.ui.calendar"] = {},
 
             ["core.export"] = {
                 config = {
@@ -40,9 +41,13 @@ neorg.setup(
                                     keybinds.map("norg", "n", "[s", "<cmd>Neorg keybind norg core.integrations.treesitter.previous.heading<cr>")
 
                                     -- Keybinds for the journal module
+                                    keybinds.map("norg", "n", "<leader>njc", '<cmd>Neorg journal custom<cr>')
                                     keybinds.map("norg", "n", "<leader>njt", '<cmd>Neorg journal today<cr>')
                                     keybinds.map("norg", "n", "<leader>njf", '<cmd>Neorg journal tomorrow<cr>')
                                     keybinds.map("norg", "n", "<leader>njy", '<cmd>Neorg journal yesterday<cr>')
+
+                                    -- Keybinds for the calendar module
+                                    keybinds.map("norg", "n", "<leader>nc", '<cmd>:lua neorg.modules.get_module("core.ui.calendar").select_date({})<cr>')
                             end,
                     }
             }
