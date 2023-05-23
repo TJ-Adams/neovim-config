@@ -25,7 +25,8 @@ telescope.setup({
     extensions = {
         project = {
             base_dirs = {
-                "~/projects"
+                "~/projects",
+                "~/.local/share/nvim/lazy"
             },
         },
         live_grep_args = {
