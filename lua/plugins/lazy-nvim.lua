@@ -37,7 +37,7 @@ lazy.setup({
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-	    "nvim-tree/nvim-web-devicons",
+            "nvim-tree/nvim-web-devicons",
         },
         config = function ()
             dofile(plugins_path .. "telescope.lua")
@@ -317,6 +317,11 @@ lazy.setup({
             { "<leader>ch", desc = "ChatGPT" },
         },
     }
+}, {
+        git = {
+            -- Avoid partial clones so I have git history even offline
+            filter = false,
+        }
 })
 
 local keymap = vim.api.nvim_set_keymap
