@@ -21,3 +21,7 @@ keymap("n", "<leader>sv", ":source $MYVIMRC<CR>", opts)
 
 -- Prevent jumping to next match on highlight
 keymap("n", "*", ":keepjumps normal! mi*`i<CR>", opts)
+
+-- Keymap for creating a terminal buffer and naming it
+keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
+keymap("t", "<esc>", [[<C-\><C-n>]], opts)
