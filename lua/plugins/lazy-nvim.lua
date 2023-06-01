@@ -205,7 +205,8 @@ lazy.setup({
             "nvim-tree/nvim-web-devicons",
         },
         keys = {
-            { "<leader>a", desc = "Toggle Aerial Side Panel"},
+            { "<leader>aa", desc = "Toggle Aerial Side Panel"},
+            { "<leader>an", desc = "Aerial Navigation Toggle"},
             { "{", desc = "AerialPrev"},
             { "}", desc = "AerialNext"},
             { "[[", desc = "Aerial prev_up"},

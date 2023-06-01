@@ -5,6 +5,9 @@ end
 
 wk.register(
     {
+        a = {
+            name = "Aerial Commands"
+        },
         b = {
             name = "Buffer Specific Actions"
         },
