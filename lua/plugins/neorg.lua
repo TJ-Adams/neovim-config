@@ -73,6 +73,7 @@ wk.register(
         t = {
             name = "Tasks or Terminal",
 
+            a = "Tasks: Needs More Input",
             d = "Tasks: Done",
             c = "Tasks: Cancel",
             i = "Tasks: High Priority",
