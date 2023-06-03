@@ -26,6 +26,12 @@ wk.register(
         l = {
             name = "Lazy Git | Lazy Packer"
         },
+        n = {
+            name = "Neorg",
+            j = {
+                name = "Journal"
+            }
+        },
         o = {
             name = "Outgoing Calls"
         },

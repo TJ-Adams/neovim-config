@@ -42,7 +42,6 @@ neorg.setup(
 
                                     -- Keybinds for the journal module
                                     keybinds.map("norg", "n", "<leader>njc", '<cmd>Neorg journal custom<cr>')
-                                    keybinds.map("norg", "n", "<leader>njt", '<cmd>Neorg journal today<cr>')
                                     keybinds.map("norg", "n", "<leader>njf", '<cmd>Neorg journal tomorrow<cr>')
                                     keybinds.map("norg", "n", "<leader>njy", '<cmd>Neorg journal yesterday<cr>')
 
@@ -61,6 +60,9 @@ local opts = {noremap = true, silent = true}
 keymap("n", "<leader>fnw", "<cmd>Telescope neorg switch_workspace<cr>", opts)
 keymap("n", "<leader>fni", "<cmd>Telescope neorg insert_link<cr>", opts)
 keymap("n", "<leader>fnh", "<cmd>Telescope neorg search_headings<cr>", opts)
+
+-- Global Neorg Journal Keymap
+keymap("n", "<leader>njt", '<cmd>Neorg journal today<cr>', opts)
 
 -- Which Key Registration
 local wk_status, wk = pcall(require, "which-key")

@@ -81,7 +81,10 @@ lazy.setup({
         ft = "norg",
         config = function ()
             dofile(plugins_path .. "neorg.lua")
-        end
+        end,
+        keys = {
+            { "<leader>njt", desc = "Neorg Journal Today"},
+        },
     },
     {
         "nvim-neorg/neorg-telescope",
