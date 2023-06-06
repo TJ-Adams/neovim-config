@@ -16,3 +16,11 @@ keymap("n", "<leader>lb", "<cmd>:LazyGitFilterCurrentFile<cr>", opts)
 keymap("n", "<leader>lr", "<cmd>:lua require('telescope').extensions.lazygit.lazygit()<cr>", opts)
 
 vim.cmd([[ autocmd BufEnter * :lua require('lazygit.utils').project_root_dir() ]])
+
+-- Ensure lazygit recieves the escape key
+function _G.set_lazygit_keymaps()
+    local lazygit_opts = {buffer = 0}
+    vim.keymap.set("t", "<esc>", "<esc>", lazygit_opts)
+end
+
+vim.cmd("autocmd! TermEnter term://*lazygit* lua set_lazygit_keymaps()")
