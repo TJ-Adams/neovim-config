@@ -5,7 +5,14 @@ end
 
 aerial.setup(
     {
-        backends = {"lsp", "treesitter"} -- Prioritize lsp, fallback to treesitter
+        -- Prioritize lsp, fallback to treesitter
+        backends = {"lsp", "treesitter"},
+        nav = {
+            -- Make 'q' quit instead of C-c
+            keymaps = {
+              ["q"] = "actions.close",
+            },
+      },
     }
 )
 
