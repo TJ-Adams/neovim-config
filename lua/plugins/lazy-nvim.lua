@@ -20,8 +20,7 @@ end
 
 local plugins_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/"
 
-
-lazy.setup({
+local plugins = {
     -- Colorscheme Plugins
     {
         'ellisonleao/gruvbox.nvim',
@@ -321,12 +320,16 @@ lazy.setup({
             { "<leader>ch", desc = "ChatGPT" },
         },
     }
-}, {
-        git = {
-            -- Avoid partial clones so I have git history even offline
-            filter = false,
-        }
-})
+}
+
+local lazy_nvim_opts = {
+    git = {
+       -- Avoid partial clones so I have git history even offline
+       filter = false,
+    }
+}
+
+lazy.setup(plugins, lazy_nvim_opts)
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
