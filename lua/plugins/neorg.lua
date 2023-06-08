@@ -46,6 +46,9 @@ neorg.setup(
                                     keybinds.map("norg", "n", "<leader>njy", '<cmd>Neorg journal yesterday<cr>')
                                     keybinds.map("norg", "n", "<leader>njY", '<cmd>edit journal/2023/year.norg<cr>')
                                     keybinds.map("norg", "n", "<leader>njL", '<cmd>edit journal/life.norg<cr>')
+                                    keybinds.map("norg", "n", "<leader>njw", '<cmd>edit journal/2023/week.norg<cr>')
+                                    keybinds.map("norg", "n", "<leader>njm", '<cmd>edit journal/2023/month.norg<cr>')
+                                    keybinds.map("norg", "n", "<leader>njq", '<cmd>edit journal/2023/quarter.norg<cr>')
 
                                     -- Keybinds for the calendar module
                                     keybinds.map("norg", "n", "<leader>nc", '<cmd>:lua neorg.modules.get_module("core.ui.calendar").select_date({})<cr>')
