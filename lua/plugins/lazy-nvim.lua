@@ -260,9 +260,6 @@ local plugins = {
         end
     },
 
-    -- Smooth Scrolling
-    {"karb94/neoscroll.nvim", config = true},
-
     -- Help remember keymaps
     {
         "folke/which-key.nvim",
@@ -283,11 +280,13 @@ local plugins = {
         }
     },
 
-    -- Various small changes
+    -- Underline word under cursor & Smoother scrolling
+    { 'echasnovski/mini.cursorword', version = '*', config = true},
     {
-        "echasnovski/mini.nvim",
+        'echasnovski/mini.animate',
+        version = '*',
         config = function ()
-            dofile(plugins_path .. "mini.lua")
+            dofile(plugins_path .. "mini-animate.lua")
         end
     },
 
