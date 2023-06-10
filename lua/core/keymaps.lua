@@ -1,5 +1,5 @@
 -- Shorten functions
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 --Remap space as leader key

@@ -5,7 +5,7 @@ end
 
 goto_preview.setup()
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>df", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", opts)

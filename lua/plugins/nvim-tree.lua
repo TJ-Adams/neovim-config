@@ -83,7 +83,7 @@ nvim_tree.setup(
     }
 )
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local keymap_opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", keymap_opts)

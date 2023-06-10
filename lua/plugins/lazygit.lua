@@ -7,7 +7,7 @@ end
 -- the current working directory
 telescope.load_extension("lazygit")
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>lg", "<cmd>:LazyGit<cr>", opts)

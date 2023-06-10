@@ -40,7 +40,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("project")
 telescope.load_extension("live_grep_args")
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)

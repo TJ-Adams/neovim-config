@@ -22,7 +22,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Add tree-sitter playground toggle. Hack to fix neorg folds.
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr><cmd>TSPlaygroundToggle<cr>", opts)

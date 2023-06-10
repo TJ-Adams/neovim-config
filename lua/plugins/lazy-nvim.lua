@@ -330,7 +330,7 @@ local lazy_nvim_opts = {
 
 lazy.setup(plugins, lazy_nvim_opts)
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>ll", "<cmd>Lazy<cr>", opts)
