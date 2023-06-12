@@ -207,7 +207,8 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
         keys = {
-            { "<leader>aa", desc = "Toggle Aerial Side Panel"},
+            { "<leader>ah", desc = "Toggle Aerial Left Side Panel"},
+            { "<leader>al", desc = "Toggle Aerial Right Side Panel"},
             { "<leader>an", desc = "Aerial Navigation Toggle"},
             { "{", desc = "AerialPrev"},
             { "}", desc = "AerialNext"},

@@ -19,7 +19,8 @@ aerial.setup(
 local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
-keymap("n", "<leader>aa", "<cmd>AerialToggle! left<cr>", opts)
+keymap("n", "<leader>ah", "<cmd>AerialToggle! left<cr>", opts)
+keymap("n", "<leader>al", "<cmd>AerialToggle! right<cr>", opts)
 keymap("n", "<leader>an", "<cmd>AerialNavToggle<cr>", opts)
 
 keymap("n", "{", "<cmd>AerialPrev<CR>", opts)
