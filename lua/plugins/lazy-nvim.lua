@@ -230,6 +230,12 @@ local plugins = {
         }
     },
 
+    -- Overseer to manage tasks
+    {
+        'stevearc/overseer.nvim',
+        config = true
+    },
+
     -- Built in Terminal into Vim
     {
          "akinsho/toggleterm.nvim",
