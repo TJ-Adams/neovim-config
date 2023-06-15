@@ -37,7 +37,8 @@ end
 wk.register(
     {
         a = {
-            a = "Toggle Aerial Window",
+            h = "Toggle Left Aerial Window",
+            l = "Toggle Right Aerial Window",
             n = "Toggle Aerial Navigation",
         },
     },
