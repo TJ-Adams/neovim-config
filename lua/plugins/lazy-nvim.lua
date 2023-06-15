@@ -261,7 +261,7 @@ local plugins = {
 
     -- Cool Notifications
     {
-         "rcarriga/nvim-notify",
+        "rcarriga/nvim-notify",
         config = function ()
             dofile(plugins_path .. "nvim-notify.lua")
         end
