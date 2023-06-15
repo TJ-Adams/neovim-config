@@ -217,6 +217,13 @@ local plugins = {
         },
     },
 
+    -- UI Changes
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+
+
     -- Trouble
     {
         "folke/trouble.nvim",
@@ -233,7 +240,9 @@ local plugins = {
     -- Overseer to manage tasks
     {
         'stevearc/overseer.nvim',
-        config = true
+        config = function ()
+            dofile(plugins_path .. "overseer.lua")
+        end,
     },
 
     -- Built in Terminal into Vim
