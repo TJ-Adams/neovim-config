@@ -25,7 +25,7 @@ local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>or", "<cmd>OverseerRun<cr>", opts)
-keymap("n", "<leader>on", "<cmd>OverSeerRunCmd<cr>", opts)
+keymap("n", "<leader>on", "<cmd>OverseerRunCmd<cr>", opts)
 keymap("n", "<leader>oh", "<cmd>OverseerToggle left<cr>", opts)
 keymap("n", "<leader>ol", "<cmd>OverseerToggle right<cr>", opts)
 
