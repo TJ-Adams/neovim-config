@@ -19,6 +19,15 @@ overseer.setup({
             ["f"] = "OpenFloat" -- open in floating window
         },
     },
+    component_aliases = {
+        -- Change defaults to keep tasks until I manually remove them
+        default = {
+          { "display_duration", detail_level = 2 },
+          "on_output_summarize",
+          "on_exit_set_status",
+          "on_complete_notify",
+        }
+    },
 })
 
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
