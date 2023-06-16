@@ -17,20 +17,8 @@ toggleterm.setup(
 local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
--- Add 4 quickly accessible terminals
-keymap("n", "<leader>tj", ":1 ToggleTerm<cr>", opts)
-keymap("n", "<leader>tk", ":2 ToggleTerm<cr>", opts)
-keymap("n", "<leader>tl", ":3 ToggleTerm<cr>", opts)
-keymap("n", "<leader>t;", ":4 ToggleTerm<cr>", opts)
-
+-- Add keymap to trigger toggle term
 keymap("n", "<leader>tt", ":ToggleTerm<cr>", opts)
-
--- Allow quick access to terminals in terminal mode as well
-keymap("t", "<leader>tj", "<cmd>1 ToggleTerm<cr>", opts)
-keymap("t", "<leader>tk", "<cmd>2 ToggleTerm<cr>", opts)
-keymap("t", "<leader>tl", "<cmd>3 ToggleTerm<cr>", opts)
-keymap("t", "<leader>t;", "<cmd>4 ToggleTerm<cr>", opts)
-
 keymap("t", "<leader>tt", "<cmd>ToggleTerm<cr>", opts)
 
 function _G.set_terminal_keymaps_options()
