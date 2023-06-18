@@ -253,10 +253,6 @@ local plugins = {
         end,
         keys = {
             { "<leader>tt", desc = "Toggles Terminal"},
-            { "<leader>tj", desc = "Toggle Terminal 1"},
-            { "<leader>tk", desc = "Toggle Terminal 2"},
-            { "<leader>tl", desc = "Toggle Terminal 3"},
-            { "<leader>t;", desc = "Toggle Terminal 4"},
         },
     },
 
