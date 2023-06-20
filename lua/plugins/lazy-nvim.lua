@@ -156,6 +156,9 @@ local plugins = {
     {"hrsh7th/cmp-nvim-lsp"},
     {"ray-x/lsp_signature.nvim"},
 
+    -- DAP Plugins
+    {"mfussenegger/nvim-dap"},
+
     -- Show definition in floating preview window
     {
         "rmagatti/goto-preview",
