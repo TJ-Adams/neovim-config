@@ -7,6 +7,11 @@ end
 local border_chars_none = { " ", " ", " ", " ", " ", " ", " ", " " }
 telescope.setup({
     defaults = {
+        mappings = {
+            n = {
+                ["d"] = require('telescope.actions').delete_buffer,
+            }
+        },
         sort_mru = true,
         sorting_strategy = "ascending",
         prompt_prefix = "   ",
