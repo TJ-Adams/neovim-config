@@ -48,3 +48,7 @@ keymap("n", "<leader>th", "<cmd>OverseerToggle left<cr>", opts)
 keymap("n", "<leader>tl", "<cmd>OverseerToggle right<cr>", opts)
 keymap("n", "<leader>tp", "<cmd>OverseerRestartLast<cr>", opts)
 
+-- Project specific tasks: Overseer supports vscode tasks. My recommendation is
+-- to utilize that. At the root of your project you can put a .vscode/tasks.json
+-- and overseer will see it and you can have tasks you only want to run for that
+-- project and that project only.
