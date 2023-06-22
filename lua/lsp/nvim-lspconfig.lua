@@ -17,3 +17,17 @@ vim.keymap.set('n', '<leader>bf', vim.lsp.buf.format, bufopts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 
 vim.keymap.set('v', '<leader>bf', vim.lsp.buf.format, bufopts)
+
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+    return
+end
+
+wk.register(
+    {
+        d = {
+            o = "Show Diagnostics on Line",
+        },
+    },
+    {prefix = "<leader>"}
+)
