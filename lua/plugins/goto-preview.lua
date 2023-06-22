@@ -1,5 +1,6 @@
 local status_ok, goto_preview = pcall(require, "goto-preview")
 if not status_ok then
+    vim.notify("Couldn't find plugin: goto-preview", vim.log.levels.WARN, nil)
     return
 end
 
@@ -10,4 +11,3 @@ local opts = {noremap = true, silent = true}
 
 keymap("n", "<leader>df", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)

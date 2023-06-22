@@ -19,6 +19,7 @@ if not status_ok then
 end
 
 local plugins_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/"
+local dap_path = os.getenv("HOME") .. "/.config/nvim/lua/dap-config/"
 
 local plugins = {
     -- Colorscheme Plugins
@@ -158,6 +159,24 @@ local plugins = {
 
     -- DAP Plugins
     {"mfussenegger/nvim-dap"},
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {"mfussenegger/nvim-dap"},
+        config = function ()
+            dofile(dap_path .. "../dap-config/nvim-dap-ui.lua")
+        end,
+        keys = {
+            {"<leader>du", desc = "Toggle DAP UI"}
+        }
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        dependencies = {"mfussenegger/nvim-dap"}
+    },
+    {
+        "nvim-telescope/telescope-dap.nvim",
+        dependencies = {"mfussenegger/nvim-dap"}
+    },
 
     -- Show definition in floating preview window
     {
