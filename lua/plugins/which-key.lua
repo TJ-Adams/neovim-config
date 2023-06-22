@@ -24,7 +24,7 @@ wk.register(
             name = "Incoming Calls"
         },
         l = {
-            name = "Lazy Git | Lazy Packer"
+            name = "Lazy Git | Lazy Package Manager"
         },
         n = {
             name = "Neorg",
