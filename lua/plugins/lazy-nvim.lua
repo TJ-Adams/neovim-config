@@ -177,6 +177,7 @@ local plugins = {
         "nvim-telescope/telescope-dap.nvim",
         dependencies = {"mfussenegger/nvim-dap"}
     },
+    { "jbyuki/one-small-step-for-vimkind" },
 
     -- Show definition in floating preview window
     {
