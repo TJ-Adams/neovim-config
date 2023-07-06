@@ -9,7 +9,7 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+-- Using ufo provider need remap `zR` and `zM`.
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
@@ -22,7 +22,7 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true
 }
 
-local language_servers = {"clangd", "pyright"} -- like {'gopls', 'clangd'}
+local language_servers = require("lspconfig").util.available_servers()
 for _, ls in ipairs(language_servers) do
     require("lspconfig")[ls].setup(
         {
