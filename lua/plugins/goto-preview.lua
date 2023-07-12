@@ -9,5 +9,5 @@ goto_preview.setup()
 local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
-keymap("n", "<leader>df", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", opts)
+keymap("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", opts)
+keymap("n", "<leader>gt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", opts)
