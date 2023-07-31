@@ -22,11 +22,11 @@ keymap("n", "<leader>tt", ":ToggleTerm<cr>", opts)
 
 function _G.set_terminal_keymaps_options()
     local opts = {buffer = 0}
-    vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-    vim.keymap.set("t", "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
-    vim.keymap.set("t", "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
-    vim.keymap.set("t", "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", opts)
-    vim.keymap.set("t", "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts)
+    keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+    keymap("t", "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
+    keymap("t", "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
+    keymap("t", "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", opts)
+    keymap("t", "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts)
 
     keymap("t", "<leader>tt", "<cmd>ToggleTerm<cr>", opts)
 
