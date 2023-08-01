@@ -9,7 +9,6 @@ neorg.setup(
             ["core.defaults"] = {},
             ["core.concealer"] = {},
             ["core.integrations.telescope"] = {},
-            ["core.manoeuvre"] = {},
             ["core.journal"] = {},
             ["core.ui.calendar"] = {},
 
@@ -35,8 +34,6 @@ neorg.setup(
                     config = {
                             hook = function(keybinds)
                                     -- Keybinds to make moving sections up and down easily
-                                    keybinds.map("norg", "n", "gj", "<cmd>Neorg keybind norg core.manoeuvre.item_down<cr>")
-                                    keybinds.map("norg", "n", "gk", "<cmd>Neorg keybind norg core.manoeuvre.item_up<cr>")
                                     keybinds.map("norg", "n", "]s", "<cmd>Neorg keybind norg core.integrations.treesitter.next.heading<cr>")
                                     keybinds.map("norg", "n", "[s", "<cmd>Neorg keybind norg core.integrations.treesitter.previous.heading<cr>")
 
