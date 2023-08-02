@@ -145,6 +145,9 @@ local plugins = {
         end
     },
 
+    -- Erase Trailing White Space
+    {"lewis6991/spaceless.nvim"},
+
     -- LSP Plugins
     {
         "williamboman/mason.nvim",
