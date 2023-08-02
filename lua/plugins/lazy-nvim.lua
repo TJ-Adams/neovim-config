@@ -247,6 +247,21 @@ local plugins = {
     },
 
 
+    -- todo comments
+    -- NOTE: Using my fork until my change gets merged or
+    --       maintainer adds ability to turn off highlight
+    --       overrides without breaking other features.
+    {
+        "tj-adams/todo-comments.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "folke/trouble.nvim"},
+        config = function ()
+            dofile(plugins_path .. "todo-comments.lua")
+        end,
+        keys = {"<leader>xt"}
+    },
+
     -- Trouble
     {
         "folke/trouble.nvim",
