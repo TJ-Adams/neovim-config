@@ -134,6 +134,14 @@ local plugins = {
         end
     },
 
+    -- Hydra
+    {
+        "anuvyklack/hydra.nvim",
+        config = function ()
+            dofile(plugins_path .. "hydra.lua")
+        end
+    },
+
     -- Quick Movements
     {"ggandor/lightspeed.nvim"},
 
