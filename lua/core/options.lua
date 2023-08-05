@@ -19,6 +19,9 @@ vim.opt.wildmenu = true
 
 vim.opt.conceallevel = 2 -- Hide text with the "conceal" attribute
 
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 4 -- Make indents 4 spaces
+
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
