@@ -1,14 +1,14 @@
 -- Bootstraps and Downloads lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -18,13 +18,13 @@ if not status_ok then
     return
 end
 
-local plugins_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/"
-local dap_path = os.getenv("HOME") .. "/.config/nvim/lua/dap-config/"
+local plugins_path = os.getenv "HOME" .. "/.config/nvim/lua/plugins/"
+local dap_path = os.getenv "HOME" .. "/.config/nvim/lua/dap-config/"
 
 local plugins = {
     -- Colorscheme Plugins
     {
-        'ellisonleao/gruvbox.nvim',
+        "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
@@ -39,7 +39,7 @@ local plugins = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
         },
-        config = function ()
+        config = function()
             dofile(plugins_path .. "telescope.lua")
         end,
     },
@@ -48,11 +48,11 @@ local plugins = {
         dependencies = {
             "nvim-telescope/telescope.nvim",
         },
-        config = function ()
+        config = function()
             dofile(plugins_path .. "tldr.lua")
         end,
         keys = {
-            { "<leader>fd", desc = "Go through tldr pages"},
+            { "<leader>fd", desc = "Go through tldr pages" },
         },
     },
     {
@@ -79,11 +79,11 @@ local plugins = {
     {
         "nvim-neorg/neorg",
         ft = "norg",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "neorg.lua")
         end,
         keys = {
-            { "<leader>njt", desc = "Neorg Journal Today"},
+            { "<leader>njt", desc = "Neorg Journal Today" },
         },
     },
     {
@@ -97,143 +97,143 @@ local plugins = {
     -- File Explorer
     {
         "kyazdani42/nvim-tree.lua",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-tree.lua")
         end,
         keys = {
-            { "<leader>e", desc = "Toggle File Explorer"},
+            { "<leader>e", desc = "Toggle File Explorer" },
         },
     },
 
     -- Git Integration
     {
         "lewis6991/gitsigns.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "gitsigns.lua")
-        end
+        end,
     },
-    {"tpope/vim-fugitive"},
+    { "tpope/vim-fugitive" },
 
     -- Lazy Git Usage
     {
         "kdheepak/lazygit.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "lazygit.lua")
         end,
         keys = {
-            { "<leader>lg", desc = "lazygit"},
-            { "<leader>lb", desc = "Commits in current buffer"},
+            { "<leader>lg", desc = "lazygit" },
+            { "<leader>lb", desc = "Commits in current buffer" },
         },
     },
 
     -- Status Line
     {
         "nvim-lualine/lualine.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "lualine.lua")
-        end
+        end,
     },
 
     -- Hydra
     {
         "anuvyklack/hydra.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "hydra.lua")
-        end
+        end,
     },
 
     -- Quick Movements
-    {"ggandor/lightspeed.nvim"},
+    { "ggandor/lightspeed.nvim" },
 
     -- Nice Folds
     {
         "kevinhwang91/nvim-ufo",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-ufo.lua")
-        end
+        end,
     },
 
     -- Erase Trailing White Space
-    {"lewis6991/spaceless.nvim"},
+    { "lewis6991/spaceless.nvim" },
 
     -- LSP Plugins
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
     },
-    {"williamboman/mason-lspconfig.nvim"},
-    {"neovim/nvim-lspconfig"},
-    {"hrsh7th/nvim-cmp"},
-    {"L3MON4D3/LuaSnip"},
-    {"hrsh7th/cmp-nvim-lsp"},
-    {"ray-x/lsp_signature.nvim"},
+    { "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
+    { "hrsh7th/nvim-cmp" },
+    { "L3MON4D3/LuaSnip" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "ray-x/lsp_signature.nvim" },
 
     -- DAP Plugins
-    {"mfussenegger/nvim-dap"},
+    { "mfussenegger/nvim-dap" },
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = {"mfussenegger/nvim-dap"},
-        config = function ()
+        dependencies = { "mfussenegger/nvim-dap" },
+        config = function()
             dofile(dap_path .. "../dap-config/nvim-dap-ui.lua")
         end,
         keys = {
-            {"<leader>du", desc = "Toggle DAP UI"}
-        }
+            { "<leader>du", desc = "Toggle DAP UI" },
+        },
     },
     {
         "theHamsta/nvim-dap-virtual-text",
-        dependencies = {"mfussenegger/nvim-dap"}
+        dependencies = { "mfussenegger/nvim-dap" },
     },
     {
         "nvim-telescope/telescope-dap.nvim",
-        dependencies = {"mfussenegger/nvim-dap"}
+        dependencies = { "mfussenegger/nvim-dap" },
     },
     { "jbyuki/one-small-step-for-vimkind" },
 
     -- Show definition in floating preview window
     {
         "rmagatti/goto-preview",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "goto-preview.lua")
-        end
+        end,
     },
 
     -- Show buffers like web browser tabs
     {
-         "akinsho/bufferline.nvim",
-        config = function ()
+        "akinsho/bufferline.nvim",
+        config = function()
             dofile(plugins_path .. "bufferline.lua")
-        end
+        end,
     },
 
     -- Treesitter Highlighting and Plugins
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-treesitter.lua")
-        end
+        end,
     },
     {
         "nvim-treesitter/playground",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-        }
+        },
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-treesitter-context.lua")
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-        }
+        },
     },
 
     -- Aerial for outline of file
     {
         "stevearc/aerial.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "aerial.lua")
         end,
         dependencies = {
@@ -241,22 +241,21 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
         keys = {
-            { "<leader>ah", desc = "Toggle Aerial Left Side Panel"},
-            { "<leader>al", desc = "Toggle Aerial Right Side Panel"},
-            { "<leader>an", desc = "Aerial Navigation Toggle"},
-            { "{", desc = "AerialPrev"},
-            { "}", desc = "AerialNext"},
-            { "[[", desc = "Aerial prev_up"},
-            { "]]", desc = "Aerial next_up"},
+            { "<leader>ah", desc = "Toggle Aerial Left Side Panel" },
+            { "<leader>al", desc = "Toggle Aerial Right Side Panel" },
+            { "<leader>an", desc = "Aerial Navigation Toggle" },
+            { "{", desc = "AerialPrev" },
+            { "}", desc = "AerialNext" },
+            { "[[", desc = "Aerial prev_up" },
+            { "]]", desc = "Aerial next_up" },
         },
     },
 
     -- UI Changes
     {
-        'stevearc/dressing.nvim',
+        "stevearc/dressing.nvim",
         opts = {},
     },
-
 
     -- todo comments
     -- NOTE: Using my fork until my change gets merged or
@@ -266,65 +265,66 @@ local plugins = {
         "tj-adams/todo-comments.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "folke/trouble.nvim"},
-        config = function ()
+            "folke/trouble.nvim",
+        },
+        config = function()
             dofile(plugins_path .. "todo-comments.lua")
         end,
-        keys = {"<leader>xt"}
+        keys = { "<leader>xt" },
     },
 
     -- Trouble
     {
         "folke/trouble.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "trouble.lua")
         end,
         keys = {
-            {"<leader>xx"},
-            {"<leader>xd"},
-            {"<leader>xw"},
-        }
+            { "<leader>xx" },
+            { "<leader>xd" },
+            { "<leader>xw" },
+        },
     },
 
     -- Overseer to manage tasks
     {
-        'stevearc/overseer.nvim',
-        config = function ()
+        "stevearc/overseer.nvim",
+        config = function()
             dofile(plugins_path .. "overseer.lua")
         end,
     },
 
     -- Built in Terminal into Vim
     {
-         "akinsho/toggleterm.nvim",
-        config = function ()
+        "akinsho/toggleterm.nvim",
+        config = function()
             dofile(plugins_path .. "toggleterm.lua")
         end,
         keys = {
-            { "<leader>tt", desc = "Toggles Terminal"},
+            { "<leader>tt", desc = "Toggles Terminal" },
         },
     },
 
     -- Tmux Navigation
     {
         "alexghergh/nvim-tmux-navigation",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-tmux-navigation.lua")
-        end
+        end,
     },
 
     -- Cool Notifications
     {
         "rcarriga/nvim-notify",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-notify.lua")
-        end
+        end,
     },
 
     -- Help remember keymaps
     {
         "folke/which-key.nvim",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "which-key.lua")
         end,
     },
@@ -332,23 +332,23 @@ local plugins = {
     -- Improved highlighting for searching
     {
         "kevinhwang91/nvim-hlslens",
-        config = function ()
+        config = function()
             dofile(plugins_path .. "nvim-hlslens.lua")
         end,
         keys = {
-            {"/"},
-            {"*"},
-        }
+            { "/" },
+            { "*" },
+        },
     },
 
     -- Underline word under cursor & Smoother scrolling
-    { 'echasnovski/mini.cursorword', version = '*', config = true},
+    { "echasnovski/mini.cursorword", version = "*", config = true },
     {
-        'echasnovski/mini.animate',
-        version = '*',
-        config = function ()
+        "echasnovski/mini.animate",
+        version = "*",
+        config = function()
             dofile(plugins_path .. "mini-animate.lua")
-        end
+        end,
     },
 
     -- Auto Pairs
@@ -356,12 +356,12 @@ local plugins = {
         "windwp/nvim-autopairs",
         config = true,
         dependencies = {
-            "kevinhwang91/promise-async"
-        }
+            "kevinhwang91/promise-async",
+        },
     },
 
     -- Surround plugin
-    {"kylechui/nvim-surround", config = true},
+    { "kylechui/nvim-surround", config = true },
 
     -- AI Plugins
     {
@@ -373,25 +373,25 @@ local plugins = {
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
+            "nvim-telescope/telescope.nvim",
         },
 
         keys = {
             { "<leader>ch", desc = "ChatGPT" },
         },
-    }
+    },
 }
 
 local lazy_nvim_opts = {
     git = {
-       -- Avoid partial clones so I have git history even offline
-       filter = false,
-    }
+        -- Avoid partial clones so I have git history even offline
+        filter = false,
+    },
 }
 
 lazy.setup(plugins, lazy_nvim_opts)
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>ll", "<cmd>Lazy<cr>", opts)

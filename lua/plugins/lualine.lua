@@ -3,10 +3,8 @@ if not status_ok then
     return
 end
 
-lualine.setup(
-    {
-        options = {
-            theme = "gruvbox"
-        }
-    }
-)
+lualine.setup({
+    options = {
+        theme = "gruvbox",
+    },
+})

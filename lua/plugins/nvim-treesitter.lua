@@ -4,18 +4,16 @@ if not status_ok then
 end
 
 -- Enable Tree Sitter Syntax Highlighting
-configs.setup(
-    {
-        highlight = {
-            enable = true,
-            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-            -- Using this option may slow down your editor, and you may see some duplicate highlights.
-            -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false
-        }
-    }
-)
+configs.setup({
+    highlight = {
+        enable = true,
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+    },
+})
 
 -- Add tree-sitter based folding
 vim.opt.foldmethod = "expr"
@@ -23,6 +21,6 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Add tree-sitter playground toggle. Hack to fix neorg folds.
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr><cmd>TSPlaygroundToggle<cr>", opts)

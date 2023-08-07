@@ -1,7 +1,4 @@
-require "lspconfig".clangd.setup(
-    {
-    }
-)
+require("lspconfig").clangd.setup({})
 
 -- NOTE: Some compile_commands.json will have gcc specific arguments
 -- that are unknown to clangd. For example -fno-diagnostics-show-caret

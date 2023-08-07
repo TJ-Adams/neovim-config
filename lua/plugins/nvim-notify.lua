@@ -3,4 +3,4 @@ if not status_ok then
     return
 end
 
-vim.notify = require("notify")
+vim.notify = require "notify"

@@ -6,6 +6,6 @@ end
 tldr.setup({})
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>fd", "<cmd>Telescope tldr<cr>", opts)

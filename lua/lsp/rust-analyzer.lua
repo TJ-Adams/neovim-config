@@ -3,7 +3,4 @@ if not status_ok then
     return
 end
 
-lspconfig["rust_analyzer"].setup(
-    {
-    }
-)
+lspconfig["rust_analyzer"].setup({})

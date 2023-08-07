@@ -3,7 +3,4 @@ if not status_ok then
     return
 end
 
-lspconfig["gopls"].setup(
-    {
-    }
-)
+lspconfig["gopls"].setup({})

@@ -3,7 +3,4 @@ if not status_ok then
     return
 end
 
-lspconfig["texlab"].setup(
-    {
-    }
-)
+lspconfig["texlab"].setup({})

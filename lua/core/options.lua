@@ -8,7 +8,7 @@ vim.opt.cursorline = true -- Highlight current line
 vim.opt.scrolloff = 8 -- Give me >=8 lines of context above and below when scrolling
 vim.opt.termguicolors = true -- More color options. Better looking
 
-vim.opt.listchars = {space = "·", tab = ">-"} -- Assing whitespace colors
+vim.opt.listchars = { space = "·", tab = ">-" } -- Assing whitespace colors
 vim.opt.list = true -- Turn on whitespace visualization
 vim.opt.mouse = "a" -- Allow Mouse Support
 

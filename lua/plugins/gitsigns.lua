@@ -6,7 +6,7 @@ end
 gitsigns.setup()
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>cp", "<cmd>Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>cs", "<cmd>Gitsigns stage_hunk<cr>", opts)

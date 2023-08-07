@@ -3,25 +3,23 @@ if not status_ok then
     return
 end
 
-toggleterm.setup(
-    {
-        persist_mode = true,
-        direction = "float",
-        auto_scroll = false,
-        float_opts = {
-            border = "curved",
-        }
-    }
-)
+toggleterm.setup({
+    persist_mode = true,
+    direction = "float",
+    auto_scroll = false,
+    float_opts = {
+        border = "curved",
+    },
+})
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Add keymap to trigger toggle term
 keymap("n", "<leader>tt", ":ToggleTerm<cr>", opts)
 
 function _G.set_terminal_keymaps_options()
-    local opts = {buffer = 0}
+    local opts = { buffer = 0 }
     keymap("t", "<esc>", [[<C-\><C-n>]], opts)
     keymap("t", "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
     keymap("t", "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
@@ -36,4 +34,4 @@ end
 
 -- Have the aformentioned mappings only for toggleterm rather than terminal
 -- mode in general
-vim.cmd("autocmd! TermEnter term://*toggleterm#* lua set_terminal_keymaps_options()")
+vim.cmd "autocmd! TermEnter term://*toggleterm#* lua set_terminal_keymaps_options()"

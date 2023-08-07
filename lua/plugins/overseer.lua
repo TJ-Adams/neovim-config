@@ -1,6 +1,6 @@
 local status_ok, overseer = pcall(require, "overseer")
 if not status_ok then
-        return
+    return
 end
 
 overseer.setup({
@@ -16,31 +16,31 @@ overseer.setup({
             ["<C-j>"] = false,
 
             ["q"] = "OpenQuickFix", -- open in quickfix
-            ["f"] = "OpenFloat" -- open in floating window
+            ["f"] = "OpenFloat", -- open in floating window
         },
     },
     component_aliases = {
         -- Change defaults to keep tasks until I manually remove them
         default = {
-          { "display_duration", detail_level = 2 },
-          "on_output_summarize",
-          "on_exit_set_status",
-          "on_complete_notify",
-        }
+            { "display_duration", detail_level = 2 },
+            "on_output_summarize",
+            "on_exit_set_status",
+            "on_complete_notify",
+        },
     },
 })
 
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
-        local tasks = overseer.list_tasks({ recent_first = true })
-        if vim.tbl_isempty(tasks) then
-                vim.notify("No tasks found", vim.log.levels.WARN)
-        else
-                overseer.run_action(tasks[1], "restart")
-        end
+    local tasks = overseer.list_tasks({ recent_first = true })
+    if vim.tbl_isempty(tasks) then
+        vim.notify("No tasks found", vim.log.levels.WARN)
+    else
+        overseer.run_action(tasks[1], "restart")
+    end
 end, {})
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>tr", "<cmd>OverseerRun<cr>", opts)
 keymap("n", "<leader>tc", "<cmd>OverseerRunCmd<cr>", opts)

@@ -3,21 +3,19 @@ if not status_ok then
     return
 end
 
-aerial.setup(
-    {
-        -- Prioritize lsp, fallback to treesitter
-        backends = {"lsp", "treesitter"},
-        nav = {
-            -- Make 'q' quit instead of C-c
-            keymaps = {
-              ["q"] = "actions.close",
-            },
-      },
-    }
-)
+aerial.setup({
+    -- Prioritize lsp, fallback to treesitter
+    backends = { "lsp", "treesitter" },
+    nav = {
+        -- Make 'q' quit instead of C-c
+        keymaps = {
+            ["q"] = "actions.close",
+        },
+    },
+})
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>ah", "<cmd>AerialToggle! left<cr>", opts)
 keymap("n", "<leader>al", "<cmd>AerialToggle! right<cr>", opts)
@@ -34,13 +32,10 @@ if not wk_status then
     return
 end
 
-wk.register(
-    {
-        a = {
-            h = "Toggle Left Aerial Window",
-            l = "Toggle Right Aerial Window",
-            n = "Toggle Aerial Navigation",
-        },
+wk.register({
+    a = {
+        h = "Toggle Left Aerial Window",
+        l = "Toggle Right Aerial Window",
+        n = "Toggle Aerial Navigation",
     },
-    {prefix = "<leader>"}
-)
+}, { prefix = "<leader>" })

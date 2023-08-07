@@ -7,10 +7,10 @@ todo.setup({
     signs = false,
     highlight = {
         override = false,
-    }
+    },
 })
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>xt", "<cmd>TodoTrouble<cr>", opts)

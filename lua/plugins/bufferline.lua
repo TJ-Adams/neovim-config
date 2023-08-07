@@ -3,23 +3,21 @@ if not status_ok then
     return
 end
 
-bufferline.setup(
-    {
-        options = {
-            offsets = {
-                {
-                    filetype = "NvimTree",
-                    text = "File Explorer",
-                    highlight = "Directory",
-                    text_align = "left"
-                }
-            }
-        }
-    }
-)
+bufferline.setup({
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                highlight = "Directory",
+                text_align = "left",
+            },
+        },
+    },
+})
 
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -- Navigate buffers Based on how bufferline displays them
 keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
@@ -34,12 +32,9 @@ if not wk_status then
     return
 end
 
-wk.register(
-    {
-        b = {
-            h = "Move buffer tab to the left",
-            l = "Move buffer tab to the right",
-        },
+wk.register({
+    b = {
+        h = "Move buffer tab to the left",
+        l = "Move buffer tab to the right",
     },
-    {prefix = "<leader>"}
-)
+}, { prefix = "<leader>" })
