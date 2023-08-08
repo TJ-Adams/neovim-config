@@ -229,6 +229,15 @@ local plugins = {
             "nvim-treesitter/nvim-treesitter",
         },
     },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        config = function()
+            dofile(plugins_path .. "nvim-treesitter-textobjects.lua")
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
 
     -- Aerial for outline of file
     {
