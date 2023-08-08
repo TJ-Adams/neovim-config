@@ -16,6 +16,16 @@ textobjects.setup({
                 ["<leader>H"] = "@parameter.inner",
             },
         },
+        move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+                ["]f"] = "@function.outer",
+            },
+            goto_previous_start = {
+                ["[f"] = "@function.outer",
+            },
+        },
     },
 })
 
