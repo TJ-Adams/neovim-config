@@ -61,7 +61,7 @@ neorg.setup({
                         "norg",
                         "n",
                         "<leader>nc",
-                        '<cmd>:lua neorg.modules.get_module("core.ui.calendar").select_date({})<cr>'
+                        '<cmd>:lua require"neorg".modules.get_module("core.ui.calendar").select_date({})<cr>'
                     )
                 end,
             },
