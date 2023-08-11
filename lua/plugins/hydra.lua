@@ -1,9 +1,10 @@
-local hydra = require "hydra"
+local status_ok, hydra = pcall(require, "hydra")
+if not status_ok then
+    return
+end
 
-hydra({
+local scroll_hydra = hydra({
     name = "Screen Scroll",
-    mode = "n",
-    body = "<leader>",
     heads = {
         { "j", "<C-e>" },
         { "k", "<C-y>" },
@@ -12,3 +13,13 @@ hydra({
         { "q", nil, { exit = true } },
     },
 })
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<leader>j", function()
+    scroll_hydra:activate()
+end, opts)
+keymap("n", "<leader>k", function()
+    scroll_hydra:activate()
+end, opts)
