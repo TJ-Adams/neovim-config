@@ -28,3 +28,14 @@ wk.register({
         o = "Show Diagnostics on Line",
     },
 }, { prefix = "<leader>" })
+
+local inlay_hints_enabled = false
+local function toggle_inlay_hints()
+    inlay_hints_enabled = not inlay_hints_enabled
+
+    vim.lsp.inlay_hint(0, inlay_hints_enabled)
+end
+
+keymap("n", "<leader>h", function()
+    toggle_inlay_hints()
+end, opts)
