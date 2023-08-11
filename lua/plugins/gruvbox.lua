@@ -25,3 +25,6 @@ vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = dark_grey })
 -- I think the yellow highlight is very distracting so I'm removing it
 vim.api.nvim_set_hl(0, "Todo", { fg = gruvbox_text, bold = true })
 vim.api.nvim_set_hl(0, "@text.todo", { fg = gruvbox_text, bold = true })
+
+-- For Gitsigns current line blame feature
+vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {link = "@Comment"})
