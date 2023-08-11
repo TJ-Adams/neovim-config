@@ -29,7 +29,35 @@ textobjects.setup({
     },
 })
 
--- TODO: Add hydra support. The below keymap is an example of how to
---       call some of the swap capabilities because the plugin doesn't
---       normally expose it
---keymap("n", "<leader>X", "<cmd>lua require 'nvim-treesitter.textobjects.swap'.swap_next('@function.outer', 'textobjects')<cr>", opts)
+local hydra_ok, hydra = pcall(require, "hydra")
+if not hydra_ok then
+    return
+end
+
+local movement_hydra_hydra = hydra({
+    name = "Function Movement Hydra",
+    config = {
+        -- TODO: Convert to a red Hydra. Because Hydra occupies the event loop
+        --       you have to do extra work to release it and still be in a hydra
+        --       state
+        color = "pink",
+    },
+    heads = {
+        {
+            "j",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_next_start('@function.outer', 'textobjects')<cr>",
+        },
+        {
+            "k",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_previous_start('@function.outer', 'textobjects')<cr>",
+        },
+        { "q", nil, { exit = true } },
+    },
+})
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<leader>mf", function()
+    movement_hydra_hydra:activate()
+end, opts)
