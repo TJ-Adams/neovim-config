@@ -114,6 +114,15 @@ local plugins = {
     },
     { "tpope/vim-fugitive" },
 
+    -- Resolving Git Conflicts
+    {
+        "akinsho/git-conflict.nvim",
+        version = "*",
+        config = function()
+            dofile(plugins_path .. "git-conflict.lua")
+        end,
+    },
+
     -- Lazy Git Usage
     {
         "kdheepak/lazygit.nvim",
