@@ -22,6 +22,11 @@ vim.opt.conceallevel = 2 -- Hide text with the "conceal" attribute
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.shiftwidth = 4 -- Make indents 4 spaces
 
+-- Set ignorecase and smartcase so command will autocomplete even if
+-- I don't have their cases correct
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
