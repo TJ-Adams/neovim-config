@@ -339,10 +339,15 @@ local plugins = {
 
     -- Cool Notifications
     {
-        "rcarriga/nvim-notify",
+        "folke/noice.nvim",
         config = function()
-            dofile(plugins_path .. "nvim-notify.lua")
+            dofile(plugins_path .. "noice.lua")
         end,
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
     },
 
     -- Help remember keymaps
