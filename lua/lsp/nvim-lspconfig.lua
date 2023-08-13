@@ -27,6 +27,10 @@ wk.register({
     d = {
         o = "Show Diagnostics on Line",
     },
+    r = {
+        n = "Rename Variable",
+    },
+    h = "Toggle Inlay Hints",
 }, { prefix = "<leader>" })
 
 local inlay_hints_enabled = false

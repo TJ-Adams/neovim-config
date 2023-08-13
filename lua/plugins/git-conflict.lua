@@ -42,3 +42,14 @@ local opts = { noremap = true, silent = true }
 keymap("n", "gc", function()
     conflict_hydra:activate()
 end, opts)
+
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+    return
+end
+
+wk.register({
+    g = {
+        c = "Git Conflicts Mode",
+    },
+}, { prefix = "<leader>" })
