@@ -274,6 +274,12 @@ local plugins = {
         "stevearc/dressing.nvim",
         opts = {},
     },
+    {
+        "mrjones2014/smart-splits.nvim",
+        config = function()
+            dofile(plugins_path .. "smart-splits.lua")
+        end,
+    },
 
     -- todo comments
     -- NOTE: Using my fork until my change gets merged or
