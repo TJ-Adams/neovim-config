@@ -152,7 +152,13 @@ local plugins = {
     },
 
     -- Quick Movements
-    { "ggandor/lightspeed.nvim" },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        config = function()
+            dofile(plugins_path .. "flash.lua")
+        end,
+    },
 
     -- Nice Folds
     {
