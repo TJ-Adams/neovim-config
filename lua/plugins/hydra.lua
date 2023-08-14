@@ -18,8 +18,12 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>j", function()
+    local key = vim.api.nvim_replace_termcodes("<C-e>", true, false, true)
+    vim.api.nvim_feedkeys(key, "n", true)
     scroll_hydra:activate()
 end, opts)
 keymap("n", "<leader>k", function()
+    local key = vim.api.nvim_replace_termcodes("<C-y>", true, false, true)
+    vim.api.nvim_feedkeys(key, "n", true)
     scroll_hydra:activate()
 end, opts)
