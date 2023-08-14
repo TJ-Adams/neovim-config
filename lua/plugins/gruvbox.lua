@@ -27,4 +27,4 @@ vim.api.nvim_set_hl(0, "Todo", { fg = gruvbox_text, bold = true })
 vim.api.nvim_set_hl(0, "@text.todo", { fg = gruvbox_text, bold = true })
 
 -- For Gitsigns current line blame feature
-vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {link = "@Comment"})
+vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "@Comment" })
