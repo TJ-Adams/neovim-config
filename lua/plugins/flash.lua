@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+flash.setup()
+
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
