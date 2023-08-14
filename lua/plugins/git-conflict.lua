@@ -21,6 +21,7 @@ local conflict_hydra = hydra({
     name = "Git Conflicts",
     hint = hint,
     config = {
+        color = "pink",
         hint = {
             border = "rounded",
         },
