@@ -11,6 +11,9 @@ telescope.setup({
             n = {
                 ["d"] = require("telescope.actions").delete_buffer,
             },
+            i = {
+                ["<c-space>"] = require("telescope.actions").to_fuzzy_refine,
+            }
         },
         sort_mru = true,
         sorting_strategy = "ascending",
