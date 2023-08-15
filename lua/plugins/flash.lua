@@ -14,3 +14,7 @@ end, opts)
 keymap("o", "r", function()
     flash.remote()
 end, opts)
+
+keymap({ "n", "o", "x" }, "S", function()
+    flash.treesitter()
+end, opts)
