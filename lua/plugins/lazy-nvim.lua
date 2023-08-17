@@ -35,7 +35,7 @@ local plugins = {
         "goolord/alpha-nvim",
         event = "VimEnter",
         opts = function()
-            local dashboard = require("alpha.themes.dashboard")
+            local dashboard = require "alpha.themes.dashboard"
             local logo = [[
 
      ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
@@ -134,8 +134,7 @@ local plugins = {
         dependencies = {
             "nvim-telescope/telescope.nvim",
         },
-        build =
-        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
 
     -- Neorg & Extensions
@@ -331,10 +330,10 @@ local plugins = {
             { "<leader>ah", desc = "Toggle Aerial Left Side Panel" },
             { "<leader>al", desc = "Toggle Aerial Right Side Panel" },
             { "<leader>an", desc = "Aerial Navigation Toggle" },
-            { "{",          desc = "AerialPrev" },
-            { "}",          desc = "AerialNext" },
-            { "[[",         desc = "Aerial prev_up" },
-            { "]]",         desc = "Aerial next_up" },
+            { "{", desc = "AerialPrev" },
+            { "}", desc = "AerialNext" },
+            { "[[", desc = "Aerial prev_up" },
+            { "]]", desc = "Aerial next_up" },
         },
     },
 
@@ -440,7 +439,7 @@ local plugins = {
     },
 
     -- Underline word under cursor & Smoother scrolling
-    { "echasnovski/mini.cursorword",      version = "*", config = true },
+    { "echasnovski/mini.cursorword", version = "*", config = true },
     {
         "echasnovski/mini.animate",
         version = "*",

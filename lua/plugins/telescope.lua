@@ -13,7 +13,7 @@ telescope.setup({
             },
             i = {
                 ["<c-space>"] = require("telescope.actions").to_fuzzy_refine,
-            }
+            },
         },
         sort_mru = true,
         sorting_strategy = "ascending",
