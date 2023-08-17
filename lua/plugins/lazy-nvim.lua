@@ -36,15 +36,33 @@ local plugins = {
         event = "VimEnter",
         opts = function()
             local dashboard = require "alpha.themes.dashboard"
-            local logo = [[
+            local function get_current_directory()
+                local file_path = os.getenv "PWD"
+                local current_dir_limit = 0
+                local str_length = string.len(file_path)
 
-     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-    ]]
+                -- Parse backwards and find the first '/'
+                for i = str_length, 1, -1 do
+                    local char = string.sub(file_path, i, i)
+                    if char == '/' then
+                        current_dir_limit = i
+                        break
+                    end
+                end
+
+                local current_dir = string.sub(file_path, current_dir_limit + 1)
+
+                return current_dir
+            end
+
+            local current_dir = get_current_directory()
+            if current_dir == "" then
+                current_dir = "root"
+            end
+            local font_path = os.getenv("HOME") .. "/.config/nvim/media/ansi_shadow.flf"
+            local handle = io.popen("figlet -f " .. font_path .. " " .. current_dir .. " -w 200")
+
+            local logo = handle:read("*a")
 
             local TOP_PADDING = 2
             dashboard.section.header.val = vim.split(logo, "\n")
