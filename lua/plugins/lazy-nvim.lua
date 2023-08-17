@@ -46,6 +46,7 @@ local plugins = {
      ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
     ]]
 
+            local TOP_PADDING = 2
             dashboard.section.header.val = vim.split(logo, "\n")
             dashboard.section.buttons.val = {
                 dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -64,7 +65,7 @@ local plugins = {
             dashboard.section.header.opts.hl = "AlphaHeader"
             dashboard.section.buttons.opts.hl = "AlphaButtons"
             dashboard.section.footer.opts.hl = "AlphaFooter"
-            dashboard.opts.layout[1].val = 8
+            dashboard.opts.layout[1].val = TOP_PADDING
             return dashboard
         end,
         config = function(_, dashboard)
