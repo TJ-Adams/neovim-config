@@ -33,6 +33,7 @@ local resize_hydra = hydra({
                 require("smart-splits").resize_right(1)
             end,
         },
+        { "e", "<c-w>=" }, -- Make panes equal
         { "q", nil, { exit = true } },
     },
 })
