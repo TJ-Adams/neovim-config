@@ -31,6 +31,8 @@ local plugins = {
             dofile(plugins_path .. "gruvbox.lua")
         end,
     },
+
+    -- Start Screen Plugin
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
