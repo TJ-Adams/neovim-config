@@ -60,7 +60,7 @@ local plugins = {
                 current_dir = "root"
             end
             local font_path = os.getenv("HOME") .. "/.config/nvim/media/ansi_shadow.flf"
-            local handle = io.popen("figlet -f " .. font_path .. " " .. current_dir .. " -w 200")
+            local handle = io.popen("figlet -f " .. font_path .. " -w 200" .. " " .. current_dir)
 
             local logo = handle:read("*a")
 
