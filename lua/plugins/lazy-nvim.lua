@@ -46,7 +46,7 @@ local plugins = {
                 -- Parse backwards and find the first '/'
                 for i = str_length, 1, -1 do
                     local char = string.sub(file_path, i, i)
-                    if char == '/' then
+                    if char == "/" then
                         current_dir_limit = i
                         break
                     end
@@ -61,10 +61,10 @@ local plugins = {
             if current_dir == "" then
                 current_dir = "root"
             end
-            local font_path = os.getenv("HOME") .. "/.config/nvim/media/ansi_shadow.flf"
+            local font_path = os.getenv "HOME" .. "/.config/nvim/media/ansi_shadow.flf"
             local handle = io.popen("figlet -f " .. font_path .. " -w 200" .. " " .. current_dir)
 
-            local logo = handle:read("*a")
+            local logo = handle:read "*a"
 
             local TOP_PADDING = 2
             dashboard.section.header.val = vim.split(logo, "\n")
