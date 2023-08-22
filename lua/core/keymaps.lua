@@ -25,3 +25,7 @@ keymap("n", "*", ":keepjumps normal! mi*`i<CR>", opts)
 -- Keymap for creating a terminal buffer and naming it
 keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+
+-- Yank file paths
+keymap("n", "<leader>ya", "<cmd>let @+ = expand('%:p')<cr>", opts) -- absolute file path
+keymap("n", "<leader>yr", "<cmd>let @+ = expand('%')<cr>", opts) -- relative file path
