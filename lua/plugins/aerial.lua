@@ -12,6 +12,7 @@ aerial.setup({
             ["q"] = "actions.close",
         },
     },
+    highlight_mode = "last",
 })
 
 local keymap = vim.keymap.set
