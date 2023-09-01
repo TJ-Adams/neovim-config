@@ -3,6 +3,20 @@ if not status_ok then
     return
 end
 
+local slow_scroll = function(prompt_bufnr, direction)
+    local state = require "telescope.state"
+    local action_state = require "telescope.actions.state"
+    local previewer = action_state.get_current_picker(prompt_bufnr).previewer
+    local status = state.get_status(prompt_bufnr)
+
+    -- Check if we actually have a previewer and a preview window
+    if type(previewer) ~= "table" or previewer.scroll_fn == nil or status.preview_win == nil then
+        return
+    end
+
+    previewer:scroll_fn(1 * direction)
+end
+
 -- Setup.
 local border_chars_none = { " ", " ", " ", " ", " ", " ", " ", " " }
 telescope.setup({
@@ -10,9 +24,21 @@ telescope.setup({
         mappings = {
             n = {
                 ["d"] = require("telescope.actions").delete_buffer,
+                ["<C-e>"] = function(bufnr)
+                    slow_scroll(bufnr, 1)
+                end,
+                ["<C-y>"] = function(bufnr)
+                    slow_scroll(bufnr, -1)
+                end,
             },
             i = {
                 ["<c-space>"] = require("telescope.actions").to_fuzzy_refine,
+                ["<C-e>"] = function(bufnr)
+                    slow_scroll(bufnr, 1)
+                end,
+                ["<C-y>"] = function(bufnr)
+                    slow_scroll(bufnr, -1)
+                end,
             },
         },
         sort_mru = true,
