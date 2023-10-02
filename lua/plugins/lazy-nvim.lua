@@ -398,6 +398,12 @@ local plugins = {
         },
     },
 
+    -- Improved mark support
+    {
+        "chentoast/marks.nvim",
+        config = true
+    },
+
     -- Overseer to manage tasks
     {
         "stevearc/overseer.nvim",
