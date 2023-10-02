@@ -404,6 +404,12 @@ local plugins = {
         config = true
     },
 
+    -- Spectre (Search and Replace)
+    {
+        "nvim-pack/nvim-spectre",
+        config = true
+    },
+
     -- Overseer to manage tasks
     {
         "stevearc/overseer.nvim",
