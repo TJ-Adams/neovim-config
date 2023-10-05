@@ -401,13 +401,20 @@ local plugins = {
     -- Improved mark support
     {
         "chentoast/marks.nvim",
-        config = true
+        config = true,
+    },
+
+    {
+        "BartSte/nvim-project-marks",
+        config = function()
+            dofile(plugins_path .. "nvim-project-marks.lua")
+        end,
     },
 
     -- Spectre (Search and Replace)
     {
         "nvim-pack/nvim-spectre",
-        config = true
+        config = true,
     },
 
     -- Overseer to manage tasks
