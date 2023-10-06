@@ -398,16 +398,13 @@ local plugins = {
         },
     },
 
-    -- Improved mark support
+    -- Marks that you can Name
     {
-        "chentoast/marks.nvim",
-        config = true,
-    },
-
-    {
-        "BartSte/nvim-project-marks",
+        "crusj/bookmarks.nvim",
+        branch = "main",
+        dependencies = { "nvim-web-devicons" },
         config = function()
-            dofile(plugins_path .. "nvim-project-marks.lua")
+            dofile(plugins_path .. "bookmarks.lua")
         end,
     },
 
