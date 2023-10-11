@@ -157,6 +157,17 @@ local plugins = {
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
 
+    -- Project Based Notes
+    {
+        "RutaTang/quicknote.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            dofile(plugins_path .. "quicknote.lua")
+        end,
+    },
+
     -- Neorg & Extensions
     {
         "nvim-neorg/neorg",
