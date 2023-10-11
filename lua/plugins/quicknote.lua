@@ -23,14 +23,13 @@ require("telescope").load_extension "quicknote"
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap("n", "mna", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<cr>", opts)
-keymap("n", "mno", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<cr>", opts)
-keymap("n", "mnd", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<cr>", opts)
+keymap("n", "<leader>na", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<cr>", opts)
+keymap("n", "<leader>no", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<cr>", opts)
+keymap("n", "<leader>nd", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<cr>", opts)
 
 -- TODO: List doesn't seem to work. Maybe look into and make pull request
-keymap("n", "mnpa", "<cmd>:lua require('quicknote').NewNoteAtCWD()<cr>", opts)
-keymap("n", "mnpd", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<cr>", opts)
-keymap("n", "mnpl", "<cmd>:lua require('quicknote').ListNotesForCWD()<cr>", opts)
-keymap("n", "mnpo", "<cmd>:lua require('quicknote').OpenNoteAtCWD()<cr>", opts)
+keymap("n", "<leader>npa", "<cmd>:lua require('quicknote').NewNoteAtCWD()<cr>", opts)
+keymap("n", "<leader>npd", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<cr>", opts)
+keymap("n", "<leader>npo", "<cmd>Telescope quicknote scope=CWD<cr>", opts)
 
-keymap("n", "mnb", "<cmd>:lua require('quicknote').ListNotesForCurrentBuffer()<cr>", opts)
+keymap("n", "<leader>nb", "<cmd>:lua require('quicknote').ListNotesForCurrentBuffer()<cr>", opts)
