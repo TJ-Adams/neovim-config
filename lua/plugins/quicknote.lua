@@ -7,7 +7,7 @@ quicknote.setup({
     mode = "resident",
     sign = "N", -- This is used for the signs on the left side
     filetype = "norg",
-    git_branch_recognizable = true, -- Separate notes by git branch
+    git_branch_recognizable = false, -- Don't separate notes by git branch
 })
 
 require("telescope").setup({
