@@ -13,6 +13,7 @@ bufferline.setup({
                 text_align = "left",
             },
         },
+        truncate_names = false,
     },
 })
 
