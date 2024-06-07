@@ -207,6 +207,12 @@ local plugins = {
     },
     { "tpope/vim-fugitive" },
 
+    -- Diff viewer
+    {
+        "sindrets/diffview.nvim",
+        config = true,
+    },
+
     -- Resolving Git Conflicts
     {
         "akinsho/git-conflict.nvim",
