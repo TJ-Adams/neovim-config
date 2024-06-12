@@ -238,6 +238,14 @@ local plugins = {
         },
     },
 
+    -- Show change status for vcs' that aren't git
+    {
+        "mhinz/vim-signify",
+        config = function()
+            vim.cmd [[ let g:signify_skip = {'vcs': {'deny': ['git']} }]]
+        end,
+    },
+
     -- Status Line
     {
         "nvim-lualine/lualine.nvim",
