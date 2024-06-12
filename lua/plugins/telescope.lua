@@ -18,7 +18,6 @@ local slow_scroll = function(prompt_bufnr, direction)
 end
 
 -- Setup.
-local border_chars_none = { " ", " ", " ", " ", " ", " ", " ", " " }
 telescope.setup({
     defaults = {
         mappings = {
@@ -49,12 +48,10 @@ telescope.setup({
 
         layout_config = {
             prompt_position = "top",
+            height = 0.4,
+            width = 0.5,
         },
-        borderchars = {
-            prompt = border_chars_none,
-            results = border_chars_none,
-            preview = border_chars_none,
-        },
+        layout_strategy = "cursor",
     },
     extensions = {
         project = {
