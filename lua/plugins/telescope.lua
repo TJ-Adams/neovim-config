@@ -63,6 +63,9 @@ telescope.setup({
         live_grep_args = {
             auto_quoting = false,
         },
+        file_browser = {
+            display_stat = { date = true, size = true, mode = nil },
+        },
     },
 })
 
