@@ -423,7 +423,8 @@ local plugins = {
         keys = {
             { "<leader>xx" },
             { "<leader>xd" },
-            { "<leader>xw" },
+            { "<leader>xl" },
+            { "<leader>xq" },
         },
     },
 
