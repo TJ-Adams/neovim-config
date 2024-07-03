@@ -341,12 +341,6 @@ local plugins = {
         end,
     },
     {
-        "nvim-treesitter/playground",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
-    },
-    {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()
             dofile(plugins_path .. "nvim-treesitter-context.lua")
