@@ -24,6 +24,9 @@ if not wk_status then
 end
 
 wk.register({
+    b = {
+        f = "Format Buffer (LSP)",
+    },
     d = {
         o = "Show Diagnostics on Line",
     },
