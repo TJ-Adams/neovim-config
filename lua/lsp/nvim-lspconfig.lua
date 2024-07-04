@@ -2,8 +2,6 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 keymap("n", "<leader>do", vim.diagnostic.open_float, opts)
-keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-keymap("n", "]d", vim.diagnostic.goto_next, opts)
 
 -- Mappings.
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
