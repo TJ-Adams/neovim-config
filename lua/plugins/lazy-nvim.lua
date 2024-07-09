@@ -393,11 +393,8 @@ local plugins = {
     },
 
     -- todo comments
-    -- NOTE: Using my fork until my change gets merged or
-    --       maintainer adds ability to turn off highlight
-    --       overrides without breaking other features.
     {
-        "tj-adams/todo-comments.nvim",
+        "folke/todo-comments.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "folke/trouble.nvim",
