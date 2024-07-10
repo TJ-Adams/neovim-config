@@ -114,6 +114,12 @@ local plugins = {
         end,
     },
 
+    -- Improved quickfix window
+    {
+        "kevinhwang91/nvim-bqf",
+        config = true,
+    },
+
     -- Telescope & Extensions
     {
         "nvim-telescope/telescope.nvim",
