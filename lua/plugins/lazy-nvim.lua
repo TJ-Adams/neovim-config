@@ -114,6 +114,14 @@ local plugins = {
         end,
     },
 
+    -- minimap plugin
+    {
+        "gorbit99/codewindow.nvim",
+        config = function()
+            dofile(plugins_path .. "codewindow.lua")
+        end,
+    },
+
     -- Improved quickfix window
     {
         "kevinhwang91/nvim-bqf",
