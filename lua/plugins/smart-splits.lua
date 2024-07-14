@@ -47,8 +47,6 @@ if not wk_status then
     return
 end
 
-wk.register({
-    r = {
-        s = "Resize Split Mode",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>rs", desc = "Resize Split Mode" },
+})

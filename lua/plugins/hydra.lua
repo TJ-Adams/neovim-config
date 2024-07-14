@@ -27,3 +27,13 @@ keymap("n", "<leader>k", function()
     vim.api.nvim_feedkeys(key, "n", true)
     scroll_hydra:activate()
 end, opts)
+
+local wk_status, wk = pcall(require, "which-key")
+if not wk_status then
+    return
+end
+
+wk.add({
+    { "<leader>j", desc = "Scroll Mode" },
+    { "<leader>k", desc = "Scroll Mode" },
+})

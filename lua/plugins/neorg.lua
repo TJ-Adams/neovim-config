@@ -48,17 +48,14 @@ if not wk_status then
     return
 end
 
-wk.register({
-    t = {
-        name = "Tasks or Terminal",
-
-        a = "Tasks: Needs More Input",
-        d = "Tasks: Done",
-        c = "Tasks: Cancel",
-        i = "Tasks: High Priority",
-        h = "Tasks: Put on Hold",
-        u = "Tasks: Unfinished",
-        p = "Tasks: In Progress",
-        r = "Tasks: Recurring",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>t", group = "Tasks or Terminal" },
+    { "<leader>ta", desc = "Tasks: Needs More Input" },
+    { "<leader>tc", desc = "Tasks: Cancel" },
+    { "<leader>td", desc = "Tasks: Done" },
+    { "<leader>th", desc = "Tasks: Put on Hold" },
+    { "<leader>ti", desc = "Tasks: High Priority" },
+    { "<leader>tp", desc = "Tasks: In Progress" },
+    { "<leader>tr", desc = "Tasks: Recurring" },
+    { "<leader>tu", desc = "Tasks: Unfinished" },
+})

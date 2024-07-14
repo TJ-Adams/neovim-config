@@ -3,47 +3,27 @@ if not status_ok then
     return
 end
 
-wk.register({
-    a = {
-        name = "Aerial Commands",
-    },
-    b = {
-        name = "Buffer Specific Actions",
-    },
-    c = {
-        name = "Git Hunks | ChatGPT | Code Actions",
-    },
-    d = {
-        name = "Preview in Floating Window",
-    },
-    f = {
-        name = "Find with Telescope",
-    },
-    i = {
-        name = "Incoming Calls",
-    },
-    l = {
-        name = "Lazy Git | Lazy Package Manager",
-    },
-    n = {
-        name = "Neorg",
-        j = {
-            name = "Journal",
-        },
-    },
-    o = {
-        name = "Outgoing Calls",
-    },
-    r = {
-        name = "Rename",
-    },
-    s = {
-        name = "Source $MYVIMRC",
-    },
-    t = {
-        name = "ToggleTerm | Treesitter",
-    },
-    x = {
-        name = "Trouble",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>a", group = "Aerial Commands" },
+    { "<leader>b", group = "Buffer Specific Actions" },
+    { "<leader>c", group = "Git Hunks | ChatGPT | Code Actions" },
+    { "<leader>d", group = "DAP | Diagnostics" },
+    { "<leader>f", group = "Find with Telescope" },
+    { "<leader>g", group = "Preview Symbols" },
+    { "<leader>i", group = "Incoming Calls" },
+    { "<leader>l", group = "Lazy Git | Lazy Package Manager" },
+    { "<leader>m", group = "Movement Mode | Minimap" },
+    { "<leader>n", group = "Neorg" },
+    { "<leader>nj", group = "Journal" },
+    { "<leader>o", group = "Outgoing Calls" },
+    { "<leader>r", group = "Rename | Resize" },
+    { "<leader>s", group = "Source $MYVIMRC" },
+    { "<leader>t", group = "Terminal | Overseer" },
+    { "<leader>x", group = "Trouble" },
+    { "<leader>y", group = "Yank Current File" },
+})
+
+wk.add({
+    { "<leader>ya", desc = "Yank Absolute Filepath" },
+    { "<leader>yr", desc = "Yank Relative Filepath" },
+})

@@ -80,3 +80,13 @@ goto_preview.setup({
 
 keymap("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", opts)
+
+local wk_ok, wk = pcall(require, "which-key")
+if not wk_ok then
+    return
+end
+
+wk.add({
+    { "<leader>gd", desc = "Preview Definition" },
+    { "<leader>gt", desc = "Preview Type" },
+})

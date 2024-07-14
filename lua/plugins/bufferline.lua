@@ -33,9 +33,7 @@ if not wk_status then
     return
 end
 
-wk.register({
-    b = {
-        h = "Move buffer tab to the left",
-        l = "Move buffer tab to the right",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>bh", desc = "Move buffer tab to the left" },
+    { "<leader>bl", desc = "Move buffer tab to the right" },
+})

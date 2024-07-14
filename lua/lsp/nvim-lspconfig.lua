@@ -21,18 +21,12 @@ if not wk_status then
     return
 end
 
-wk.register({
-    b = {
-        f = "Format Buffer (LSP)",
-    },
-    d = {
-        o = "Show Diagnostics on Line",
-    },
-    r = {
-        n = "Rename Variable",
-    },
-    h = "Toggle Inlay Hints",
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>bf", desc = "Format Buffer (LSP)" },
+    { "<leader>do", desc = "Show Diagnostics on Line" },
+    { "<leader>h", desc = "Toggle Inlay Hints" },
+    { "<leader>rn", desc = "Rename Variable" },
+})
 
 keymap("n", "<leader>h", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())

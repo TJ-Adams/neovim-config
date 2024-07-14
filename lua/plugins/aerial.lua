@@ -33,10 +33,8 @@ if not wk_status then
     return
 end
 
-wk.register({
-    a = {
-        h = "Toggle Left Aerial Window",
-        l = "Toggle Right Aerial Window",
-        n = "Toggle Aerial Navigation",
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>ah", desc = "Toggle Left Aerial Window" },
+    { "<leader>al", desc = "Toggle Right Aerial Window" },
+    { "<leader>an", desc = "Toggle Aerial Navigation" },
+})

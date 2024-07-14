@@ -18,4 +18,3 @@ configs.setup({
 -- Add tree-sitter based folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
