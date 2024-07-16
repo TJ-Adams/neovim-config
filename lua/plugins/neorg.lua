@@ -10,7 +10,6 @@ neorg.setup({
         ["core.keybinds"] = {},
         ["core.integrations.telescope"] = {},
         ["core.journal"] = {},
-        -- ["core.ui.calendar"] = {}, // currently breaking neorg journal
     },
 })
 
