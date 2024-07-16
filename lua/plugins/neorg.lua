@@ -35,6 +35,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
         -- Keybinds for the calendar module
         keymap("n", "<leader>nc", '<cmd>:lua require"neorg".modules.get_module("core.ui.calendar").select_date({})<cr>')
 
+        -- Keybinds for Tasks
+        keymap("n", "<leader>tc", '<Plug>(neorg.qol.todo-items.todo.task-cancelled)')
+        keymap("n", "<leader>td", '<Plug>(neorg.qol.todo-items.todo.task-done)')
+        keymap("n", "<leader>th", '<Plug>(neorg.qol.todo-items.todo.task-on-hold)')
+        keymap("n", "<leader>tp", '<Plug>(neorg.qol.todo-items.todo.task-pending)')
+        keymap("n", "<leader>tu", '<Plug>(neorg.qol.todo-items.todo.task-undone)')
+
         -- Misc
         keymap("n", "<leader>fni", "<cmd>Telescope neorg insert_link<cr>", opts)
         keymap("n", "<leader>fnh", "<cmd>Telescope neorg search_headings<cr>", opts)
