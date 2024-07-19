@@ -17,7 +17,6 @@ wk.add({
     { "<leader>nj", group = "Journal" },
     { "<leader>o", group = "Outgoing Calls" },
     { "<leader>r", group = "Rename | Resize" },
-    { "<leader>s", group = "Source $MYVIMRC" },
     { "<leader>t", group = "Terminal | Overseer" },
     { "<leader>x", group = "Trouble" },
     { "<leader>y", group = "Yank Current File" },
