@@ -175,17 +175,6 @@ local plugins = {
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     },
 
-    -- Project Based Notes
-    {
-        "RutaTang/quicknote.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            dofile(plugins_path .. "quicknote.lua")
-        end,
-    },
-
     -- Neorg & Extensions
     {
         "nvim-neorg/neorg",
