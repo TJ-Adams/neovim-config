@@ -285,14 +285,6 @@ local plugins = {
         end,
     },
 
-    -- Nice Folds
-    {
-        "kevinhwang91/nvim-ufo",
-        config = function()
-            dofile(plugins_path .. "nvim-ufo.lua")
-        end,
-    },
-
     -- Erase Trailing White Space
     { "lewis6991/spaceless.nvim" },
 

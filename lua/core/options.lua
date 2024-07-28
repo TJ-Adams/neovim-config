@@ -30,3 +30,7 @@ vim.opt.smartcase = true
 -- Assumes nvr is installed
 -- Needed to open another instance of vim inside vim for lazygit
 vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
+
+-- Folds with syntax highlighting
+vim.opt.foldtext = ""
+vim.opt.fillchars = "fold: "
