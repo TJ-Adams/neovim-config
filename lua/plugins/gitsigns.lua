@@ -15,3 +15,13 @@ keymap("n", "<leader>cs", "<cmd>Gitsigns stage_hunk<cr>", opts)
 keymap("n", "<leader>cu", "<cmd>Gitsigns reset_hunk<cr>", opts)
 keymap("n", "[c", "<cmd>Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]c", "<cmd>Gitsigns next_hunk<cr>", opts)
+
+local function toggle_diffview()
+    vim.cmd "Gitsigns toggle_word_diff"
+    vim.cmd "Gitsigns toggle_linehl"
+    vim.cmd "Gitsigns toggle_deleted"
+end
+
+keymap("n", "<leader>dg", function()
+    toggle_diffview()
+end, opts)
