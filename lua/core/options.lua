@@ -34,3 +34,6 @@ vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
 -- Folds with syntax highlighting
 vim.opt.foldtext = ""
 vim.opt.fillchars = "fold: "
+
+-- Don't default to folding everything
+vim.opt.foldenable = false
