@@ -114,6 +114,12 @@ local plugins = {
         end,
     },
 
+    -- Automatic indentation settings
+    {
+        "NMAC427/guess-indent.nvim",
+        config = true,
+    },
+
     -- minimap plugin
     {
         "gorbit99/codewindow.nvim",
