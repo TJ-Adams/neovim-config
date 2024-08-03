@@ -26,6 +26,16 @@ textobjects.setup({
                 ["[f"] = "@function.outer",
             },
         },
+        select = {
+            enable = true,
+            keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["of"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["oc"] = "@class.outer",
+                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+            },
+        },
     },
 })
 
