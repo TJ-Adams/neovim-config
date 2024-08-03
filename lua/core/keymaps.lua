@@ -16,9 +16,6 @@ keymap("n", "<right>", "<NOP>", opts)
 -- Close Buffer
 keymap("n", "<leader>bb", ":bp <BAR> bd #<CR>", opts)
 
--- Prevent jumping to next match on highlight
-keymap("n", "*", ":keepjumps normal! mi*`i<CR>", opts)
-
 -- Keymap for creating a terminal buffer and naming it
 keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
