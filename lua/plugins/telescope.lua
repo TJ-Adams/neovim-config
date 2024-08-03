@@ -103,7 +103,7 @@ keymap(
 keymap("n", "<leader>fm", "<cmd>Telescope treesitter<cr>i:macro:<esc>", opts) -- Fuzzy search macros
 keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- see recent files
 
-keymap("n", "<leader>fiw", "<cmd>Telescope grep_string<cr>", opts)
+keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
