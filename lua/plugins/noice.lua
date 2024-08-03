@@ -21,3 +21,8 @@ noice.setup({
         },
     },
 })
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<leader>nd", "<cmd>Noice dismiss<cr>", opts)
