@@ -3,4 +3,6 @@ if not status_ok then
     return
 end
 
-context.setup({})
+context.setup({
+    enable = false,
+})

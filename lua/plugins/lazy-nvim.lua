@@ -120,6 +120,20 @@ local plugins = {
         config = true,
     },
 
+    -- Breadcrumb Bar
+    {
+        {
+            "Bekaboo/dropbar.nvim",
+            -- optional, but required for fuzzy finder support
+            dependencies = {
+                "nvim-telescope/telescope-fzf-native.nvim",
+            },
+            config = function()
+                dofile(plugins_path .. "dropbar.lua")
+            end,
+        },
+    },
+
     -- minimap plugin
     {
         "gorbit99/codewindow.nvim",
