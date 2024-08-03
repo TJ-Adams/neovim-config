@@ -35,7 +35,7 @@ if not hydra_ok then
 end
 
 local movement_hydra_hydra = hydra({
-    name = "Function Movement Hydra",
+    name = "Function Movement Hydra\n",
     config = {
         -- TODO: Convert to a red Hydra. Because Hydra occupies the event loop
         --       you have to do extra work to release it and still be in a hydra
@@ -43,13 +43,44 @@ local movement_hydra_hydra = hydra({
         color = "pink",
     },
     heads = {
+        -- Functions
         {
-            "j",
+            "f",
             "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_next_start('@function.outer', 'textobjects')<cr>",
         },
         {
-            "k",
+            "F",
             "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_previous_start('@function.outer', 'textobjects')<cr>",
+        },
+
+        -- Objects / Classes
+        {
+            "o",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_next_start('@class.outer', 'textobjects')<cr>",
+        },
+        {
+            "O",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_previous_start('@class.outer', 'textobjects')<cr>",
+        },
+
+        -- Conditionals
+        {
+            "i",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_next_start('@conditional.outer', 'textobjects')<cr>",
+        },
+        {
+            "I",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_previous_start('@conditional.outer', 'textobjects')<cr>",
+        },
+
+        -- Loops
+        {
+            "l",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_next_start('@loop.outer', 'textobjects')<cr>",
+        },
+        {
+            "L",
+            "<cmd>lua require 'nvim-treesitter.textobjects.move'.goto_previous_start('@loop.outer', 'textobjects')<cr>",
         },
         { "q", nil, { exit = true } },
     },
@@ -58,6 +89,6 @@ local movement_hydra_hydra = hydra({
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap("n", "<leader>mf", function()
+keymap("n", "<leader>mt", function()
     movement_hydra_hydra:activate()
 end, opts)
