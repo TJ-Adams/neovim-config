@@ -7,3 +7,9 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<leader>dp", function()
     require("dropbar.api").pick()
 end, opts)
+
+require("dropbar").setup({
+    bar = {
+        truncate = false,
+    },
+})
