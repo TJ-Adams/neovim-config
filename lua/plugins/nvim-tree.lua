@@ -78,6 +78,9 @@ nvim_tree.setup({
         relativenumber = true,
         adaptive_size = true,
     },
+    renderer = {
+        symlink_destination = false,
+    },
 })
 
 local keymap = vim.keymap.set
