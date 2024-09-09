@@ -52,3 +52,11 @@ end
 keymap("v", "*", function()
     search_vselection()
 end)
+
+-- Keymap for searching for a pattern but not jumping anywhere
+keymap("n", "<leader>/", function()
+    vim.ui.input({ prompt = "Search: " }, function(input)
+        vim.fn.setreg("/", input)
+        vim.opt.hls = true
+    end)
+end)
