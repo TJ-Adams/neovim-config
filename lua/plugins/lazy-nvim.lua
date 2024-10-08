@@ -232,7 +232,6 @@ local plugins = {
             dofile(plugins_path .. "gitsigns.lua")
         end,
     },
-    { "tpope/vim-fugitive" },
 
     -- Diff viewer
     {
