@@ -457,17 +457,6 @@ local plugins = {
         end,
     },
 
-    -- Built in Terminal into Vim
-    {
-        "akinsho/toggleterm.nvim",
-        config = function()
-            dofile(plugins_path .. "toggleterm.lua")
-        end,
-        keys = {
-            { "<leader>tt", desc = "Toggles Terminal" },
-        },
-    },
-
     -- Tmux Navigation
     {
         "alexghergh/nvim-tmux-navigation",
