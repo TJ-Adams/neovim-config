@@ -7,7 +7,7 @@ wk.add({
     { "<leader>a", group = "Aerial Commands" },
     { "<leader>b", group = "Buffer Specific Actions" },
     { "<leader>c", group = "Git Hunks | ChatGPT | Code Actions" },
-    { "<leader>d", group = "DAP | Diagnostics" },
+    { "<leader>d", group = "DAP | Diagnostics | Diff" },
     { "<leader>f", group = "Find with Telescope" },
     { "<leader>g", group = "Preview Symbols" },
     { "<leader>i", group = "Incoming Calls" },
