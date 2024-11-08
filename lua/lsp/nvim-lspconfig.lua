@@ -23,6 +23,7 @@ end
 
 wk.add({
     { "<leader>bf", desc = "Format Buffer (LSP)" },
+    { "<leader>ca", desc = "Code Action" },
     { "<leader>do", desc = "Show Diagnostics on Line" },
     { "<leader>h", desc = "Toggle Inlay Hints" },
     { "<leader>rn", desc = "Rename Variable" },
