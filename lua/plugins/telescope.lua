@@ -64,7 +64,7 @@ telescope.setup({
             auto_quoting = false,
         },
         file_browser = {
-            display_stat = { date = true, size = true, mode = nil },
+            display_stat = { date = nil, size = nil, mode = nil },
         },
     },
 })
