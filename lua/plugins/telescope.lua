@@ -105,6 +105,7 @@ keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- see recent fil
 
 keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", opts)
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap("n", "<leader>fob", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", opts)
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 
