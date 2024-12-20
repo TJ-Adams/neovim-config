@@ -77,33 +77,30 @@ telescope.load_extension "dap"
 telescope.load_extension "file_browser"
 
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
-keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
+keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", {desc = "Go To Definition", silent = true})
+keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {desc = "Go to References", silent = true})
+keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", {desc = "Go to Definition of Type", silent = true})
 
-keymap("n", "<leader>ic", "<cmd>Telescope lsp_incoming_calls<cr>", opts)
-keymap("n", "<leader>oc", "<cmd>Telescope lsp_outgoing_calls<cr>", opts)
+keymap("n", "<leader>ic", "<cmd>Telescope lsp_incoming_calls<cr>", {desc = "See Incoming Calls", silent = true})
+keymap("n", "<leader>oc", "<cmd>Telescope lsp_outgoing_calls<cr>", {desc = "See Outgoing Calls", silent = true})
 
-keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<leader>ft", "<cmd>Telescope<cr>", opts)
-keymap("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
-keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-keymap("n", "<leader>fu", "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>", opts) -- Fuzzy search functions
-keymap("n", "<leader>fm", "<cmd>Telescope treesitter<cr>i:macro:<esc>", opts) -- Fuzzy search macros
-keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- see recent files
+keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", {desc = "Grep in CWD", silent = true})
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", {desc = "Find Files in CWD", silent = true})
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", {desc = "Search Through Open Buffers", silent = true})
+keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>", {desc = "Resume Last Telescope Command", silent = true})
+keymap("n", "<leader>ft", "<cmd>Telescope<cr>", {desc = "Telescope", silent = true})
+keymap("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", {desc = "File Explorer at Buffer", silent = true})
+keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", {desc = "Search Keymaps", silent = true})
+keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", {desc = "Search Help Files", silent = true})
+keymap("n", "<leader>fu", "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>", {desc = "Fuzzy Search Functions", silent = true}) -- Fuzzy search functions
 
-keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", opts)
-keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap("n", "<leader>fob", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", opts)
+keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", {desc = "Grep Word Under Cursor", silent = true})
+keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {desc = "Grep Within Buffer", silent = true})
+keymap("n", "<leader>fob", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", {desc = "Grep Within Open Buffers", silent = true})
 
-keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
+keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", {desc = "CD to a Project", silent = true})
 
-keymap("n", "<leader>fnf", "<cmd>lua require'telescope.builtin'.find_files({ cwd = require'telescope.utils'.buffer_dir() })<cr>", opts)
-keymap("n", "<leader>fng", "<cmd>lua require'telescope.builtin'.live_grep({ cwd = require'telescope.utils'.buffer_dir() })<cr>", opts)
-keymap("n", "<leader>fii", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>", opts)
+keymap("n", "<leader>fnf", "<cmd>lua require'telescope.builtin'.find_files({ cwd = require'telescope.utils'.buffer_dir() })<cr>", {desc = "Find Files in Buffer Dir", silent = true})
+keymap("n", "<leader>fng", "<cmd>lua require'telescope.builtin'.live_grep({ cwd = require'telescope.utils'.buffer_dir() })<cr>", {desc = "Grep in Buffer Dir", silent = true})
+keymap("n", "<leader>fii", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>", {desc = "Grep Including Ignores", silent = true})
