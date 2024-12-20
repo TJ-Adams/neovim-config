@@ -94,12 +94,7 @@ keymap("n", "<leader>ft", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
-keymap(
-    "n",
-    "<leader>fu",
-    "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>",
-    opts
-) -- Fuzzy search functions
+keymap("n", "<leader>fu", "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>", opts) -- Fuzzy search functions
 keymap("n", "<leader>fm", "<cmd>Telescope treesitter<cr>i:macro:<esc>", opts) -- Fuzzy search macros
 keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- see recent files
 
@@ -109,15 +104,6 @@ keymap("n", "<leader>fob", "<cmd>lua require('telescope.builtin').live_grep({gre
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 
-keymap(
-    "n",
-    "<leader>fc",
-    "<cmd>lua require'telescope.builtin'.find_files({ cwd = require'telescope.utils'.buffer_dir() })<cr>",
-    opts
-)
-keymap(
-    "n",
-    "<leader>fii",
-    "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>",
-    opts
-)
+keymap("n", "<leader>fnf", "<cmd>lua require'telescope.builtin'.find_files({ cwd = require'telescope.utils'.buffer_dir() })<cr>", opts)
+keymap("n", "<leader>fng", "<cmd>lua require'telescope.builtin'.live_grep({ cwd = require'telescope.utils'.buffer_dir() })<cr>", opts)
+keymap("n", "<leader>fii", "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>", opts)
