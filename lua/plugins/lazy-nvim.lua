@@ -236,7 +236,9 @@ local plugins = {
     -- Diff viewer
     {
         "sindrets/diffview.nvim",
-        config = true,
+        config = function()
+            dofile(plugins_path .. "diffview.lua")
+        end,
     },
 
     -- Resolving Git Conflicts
