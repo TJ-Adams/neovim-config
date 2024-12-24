@@ -22,7 +22,3 @@ wk.add({
     { "<leader>y", group = "Yank Current File" },
 })
 
-wk.add({
-    { "<leader>ya", desc = "Yank Absolute Filepath" },
-    { "<leader>yr", desc = "Yank Relative Filepath" },
-})

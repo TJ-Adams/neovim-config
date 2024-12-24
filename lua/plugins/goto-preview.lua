@@ -86,7 +86,3 @@ if not wk_ok then
     return
 end
 
-wk.add({
-    { "<leader>gd", desc = "Preview Definition" },
-    { "<leader>gt", desc = "Preview Type" },
-})

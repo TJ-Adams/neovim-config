@@ -101,12 +101,4 @@ end
 
 wk.add({
     { "<leader>t", group = "Tasks or Terminal" },
-    { "<leader>ta", desc = "Tasks: Needs More Input" },
-    { "<leader>tc", desc = "Tasks: Cancel" },
-    { "<leader>td", desc = "Tasks: Done" },
-    { "<leader>th", desc = "Tasks: Put on Hold" },
-    { "<leader>ti", desc = "Tasks: High Priority" },
-    { "<leader>tp", desc = "Tasks: In Progress" },
-    { "<leader>tr", desc = "Tasks: Recurring" },
-    { "<leader>tu", desc = "Tasks: Unfinished" },
 })

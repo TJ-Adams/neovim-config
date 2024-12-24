@@ -33,8 +33,3 @@ if not wk_status then
     return
 end
 
-wk.add({
-    { "<leader>ah", desc = "Toggle Left Aerial Window" },
-    { "<leader>al", desc = "Toggle Right Aerial Window" },
-    { "<leader>an", desc = "Toggle Aerial Navigation" },
-})

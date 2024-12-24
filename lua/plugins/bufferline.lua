@@ -33,7 +33,3 @@ if not wk_status then
     return
 end
 
-wk.add({
-    { "<leader>bh", desc = "Move buffer tab to the left" },
-    { "<leader>bl", desc = "Move buffer tab to the right" },
-})

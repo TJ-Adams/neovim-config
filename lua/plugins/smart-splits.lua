@@ -47,6 +47,3 @@ if not wk_status then
     return
 end
 
-wk.add({
-    { "<leader>rs", desc = "Resize Split Mode" },
-})
