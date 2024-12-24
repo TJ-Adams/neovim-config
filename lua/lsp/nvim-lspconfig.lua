@@ -1,27 +1,17 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
-keymap("n", "<leader>do", vim.diagnostic.open_float, opts)
+-- Normal Mode Mappings
+keymap("n", "gD", vim.lsp.buf.declaration, {desc = "Go To Declarations", silent = true })
+keymap("n", "K", vim.lsp.buf.hover, {desc = "Info Under Cursor", silent = true })
 
--- Mappings.
-local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-keymap("n", "gD", vim.lsp.buf.declaration, bufopts)
-
-keymap("n", "K", vim.lsp.buf.hover, bufopts)
-
-keymap("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-keymap("n", "<leader>bf", vim.lsp.buf.format, bufopts)
-keymap("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-
-keymap("v", "<leader>bf", vim.lsp.buf.format, bufopts)
-
-local wk_status, wk = pcall(require, "which-key")
-if not wk_status then
-    return
-end
-
+keymap("n", "<leader>do", vim.diagnostic.open_float, {desc = "Show Diagnostics", silent = true })
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action", silent = true })
+keymap("n", "<leader>bf", vim.lsp.buf.format, {desc = "Format Buffer", silent = true })
+keymap("n", "<leader>rn", vim.lsp.buf.rename, {desc = "Rename", silent = true })
 
 keymap("n", "<leader>h", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, opts)
+end, {desc = "Toggle Inlay Hints", silent = true })
+
+-- Visual Mode Mappings
+keymap("v", "<leader>bf", vim.lsp.buf.format, {desc = "Format Buffer", silent = true })
