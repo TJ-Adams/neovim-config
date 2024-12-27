@@ -5,9 +5,6 @@ end
 
 local resize_hydra = hydra({
     name = "Resize Split",
-    config = {
-        color = "pink",
-    },
     heads = {
         {
             "j",
@@ -41,9 +38,4 @@ local resize_hydra = hydra({
 vim.keymap.set("n", "<leader>rs", function()
     resize_hydra:activate()
 end)
-
-local wk_status, wk = pcall(require, "which-key")
-if not wk_status then
-    return
-end
 
