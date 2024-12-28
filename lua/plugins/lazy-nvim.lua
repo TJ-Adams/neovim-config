@@ -280,7 +280,7 @@ local plugins = {
 
     -- Hydra
     {
-        "anuvyklack/hydra.nvim",
+        "nvimtools/hydra.nvim",
         config = function()
             dofile(plugins_path .. "hydra.lua")
         end,
