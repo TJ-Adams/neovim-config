@@ -528,24 +528,6 @@ local plugins = {
         event = "BufReadPre",
         opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
     },
-
-    -- AI Plugins
-    {
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            dofile(plugins_path .. "chatgpt.lua")
-        end,
-
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-
-        keys = {
-            { "<leader>ch", desc = "ChatGPT" },
-        },
-    },
 }
 
 local lazy_nvim_opts = {
