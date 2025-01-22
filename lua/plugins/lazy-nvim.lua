@@ -519,6 +519,12 @@ local plugins = {
         },
     },
 
+    -- Markdown Tables
+    {
+        "Myzel394/easytables.nvim",
+        config = true,
+    },
+
     -- Surround plugin
     { "kylechui/nvim-surround", config = true },
 
