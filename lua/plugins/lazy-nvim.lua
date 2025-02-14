@@ -526,7 +526,13 @@ local plugins = {
     },
 
     -- Surround plugin
-    { "kylechui/nvim-surround", config = true },
+    {
+        "echasnovski/mini.surround",
+        version = '*',
+        config = function()
+            dofile(plugins_path .. "mini-surround.lua")
+        end,
+    },
 
     -- Persistent Sessions
     {
