@@ -81,6 +81,14 @@ nvim_tree.setup({
     renderer = {
         symlink_destination = false,
     },
+
+    -- open file explorer at the file even outside of cwd
+    update_focused_file = {
+        enable = true,
+        update_root = {
+            enable = true,
+        },
+    },
 })
 
 local keymap = vim.keymap.set
