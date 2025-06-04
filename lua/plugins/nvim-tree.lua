@@ -80,6 +80,7 @@ nvim_tree.setup({
     },
     renderer = {
         symlink_destination = false,
+        highlight_opened_files = "all",
     },
 
     -- open file explorer at the file even outside of cwd
