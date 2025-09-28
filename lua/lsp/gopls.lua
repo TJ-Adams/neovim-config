@@ -1,6 +1,3 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-    return
-end
+vim.lsp.config("gopls", {})
 
-lspconfig["gopls"].setup({})
+vim.lsp.enable("gopls")

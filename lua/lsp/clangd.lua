@@ -1,4 +1,7 @@
-require("lspconfig").clangd.setup({})
+vim.lsp.config("clangd", {
+    root_markers = { ".clang-format", "compile_commands.json" },
+})
+vim.lsp.enable("clangd")
 
 -- NOTE: Some compile_commands.json will have gcc specific arguments
 -- that are unknown to clangd. For example -fno-diagnostics-show-caret

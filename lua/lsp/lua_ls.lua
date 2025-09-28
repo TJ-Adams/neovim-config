@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-lspconfig["lua_ls"].setup({
+vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {

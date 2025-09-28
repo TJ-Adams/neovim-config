@@ -1,1 +1,4 @@
-require("lspconfig").html.setup({})
+vim.lsp.config("html", {
+})
+
+vim.lsp.enable("html")

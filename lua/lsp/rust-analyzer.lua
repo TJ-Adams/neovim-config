@@ -1,6 +1,2 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-    return
-end
-
-lspconfig["rust_analyzer"].setup({})
+vim.lsp.config("rust_analyzer", {})
+vim.lsp.enable("rust_analyzer")
