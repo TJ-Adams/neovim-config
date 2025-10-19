@@ -198,13 +198,9 @@ local plugins = {
     -- Neorg & Extensions
     {
         "nvim-neorg/neorg",
-        ft = "norg",
         config = function()
             dofile(plugins_path .. "neorg.lua")
         end,
-        keys = {
-            { "<leader>njt", desc = "Neorg Journal Today" },
-        },
     },
     {
         "nvim-neorg/neorg-telescope",
