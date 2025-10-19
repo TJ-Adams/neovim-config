@@ -502,13 +502,6 @@ local plugins = {
 
     -- Underline word under cursor & Smoother scrolling
     { "echasnovski/mini.cursorword", version = "*", config = true },
-    {
-        "echasnovski/mini.animate",
-        version = "*",
-        config = function()
-            dofile(plugins_path .. "mini-animate.lua")
-        end,
-    },
 
     -- Auto Pairs
     {
