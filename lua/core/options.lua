@@ -5,7 +5,7 @@ vim.opt.wrap = false -- Don't wrap text
 vim.opt.clipboard = "unnamedplus" -- Allows global clipboard usage
 
 vim.opt.cursorline = true -- Highlight current line
-vim.opt.scrolloff = 8 -- Give me >=8 lines of context above and below when scrolling
+vim.opt.scrolloff = 1 -- Give me 1 line of context above and below when scrolling
 vim.opt.termguicolors = true -- More color options. Better looking
 
 vim.opt.listchars = { space = "·", tab = ">-" } -- Assign whitespace colors
