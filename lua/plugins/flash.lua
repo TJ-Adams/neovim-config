@@ -8,6 +8,9 @@ flash.setup({
         -- Don't allow uppercase labels
         uppercase = false,
     },
+    highlight = {
+        backdrop = false,
+    },
     modes = {
         -- options used when flash is activated through
         -- a regular search with `/` or `?`
