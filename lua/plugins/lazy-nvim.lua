@@ -463,6 +463,14 @@ local plugins = {
         end,
     },
 
+    -- Jump between Tmux windows through telescope
+    {
+        "pre-z/telescope-tmuxing.nvim",
+        opts = {},
+        -- error message on start if there's no config function
+        config = function() end
+    },
+
     -- Cool Notifications
     {
         "folke/noice.nvim",
@@ -517,7 +525,7 @@ local plugins = {
     -- Surround plugin
     {
         "echasnovski/mini.surround",
-        version = '*',
+        version = "*",
         config = function()
             dofile(plugins_path .. "mini-surround.lua")
         end,

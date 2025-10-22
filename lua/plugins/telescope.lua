@@ -75,6 +75,7 @@ telescope.load_extension "project"
 telescope.load_extension "live_grep_args"
 telescope.load_extension "dap"
 telescope.load_extension "file_browser"
+telescope.load_extension "tmux"
 
 local keymap = vim.keymap.set
 
@@ -94,6 +95,7 @@ keymap("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", {desc = "Search Keymaps", silent = true})
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", {desc = "Search Help Files", silent = true})
 keymap("n", "<leader>fu", "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>", {desc = "Fuzzy Search Functions", silent = true}) -- Fuzzy search functions
+keymap("n", "<leader>fw",  "<cmd>lua require('telescope').extensions.tmux.switch_window()<cr>", {desc = "List tmux windows", silent = true})
 
 keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", {desc = "Grep Word Under Cursor", silent = true})
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {desc = "Grep Within Buffer", silent = true})
