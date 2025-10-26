@@ -114,6 +114,17 @@ local plugins = {
         end,
     },
 
+    -- Yank history
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = {
+            { "kkharji/sqlite.lua", module = "sqlite" },
+        },
+        config = function()
+            dofile(plugins_path .. "neoclip.lua")
+        end
+    },
+
     -- Automatic indentation settings
     {
         "NMAC427/guess-indent.nvim",
@@ -468,7 +479,7 @@ local plugins = {
         "pre-z/telescope-tmuxing.nvim",
         opts = {},
         -- error message on start if there's no config function
-        config = function() end
+        config = function() end,
     },
 
     -- Cool Notifications
