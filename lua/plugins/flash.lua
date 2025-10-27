@@ -22,6 +22,12 @@ flash.setup({
                 multi_window = false,
             },
         },
+        char = {
+            jump_labels = true,
+            highlight = {
+                backdrop = false,
+            },
+        },
     },
 })
 
