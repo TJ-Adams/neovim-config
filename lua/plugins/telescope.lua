@@ -49,7 +49,8 @@ telescope.setup({
         layout_config = {
             prompt_position = "top",
             height = 0.4,
-            width = 0.5,
+            width = 0.75,
+            preview_width = 0.6,
         },
         layout_strategy = "cursor",
     },
