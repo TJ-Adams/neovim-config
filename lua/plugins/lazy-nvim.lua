@@ -122,7 +122,7 @@ local plugins = {
         },
         config = function()
             dofile(plugins_path .. "neoclip.lua")
-        end
+        end,
     },
 
     -- Automatic indentation settings
@@ -150,6 +150,15 @@ local plugins = {
         "gorbit99/codewindow.nvim",
         config = function()
             dofile(plugins_path .. "codewindow.lua")
+        end,
+    },
+
+    -- Focus / Split Management
+    {
+        "nvim-focus/focus.nvim",
+        version = "*",
+        config = function()
+            dofile(plugins_path .. "focus.lua")
         end,
     },
 
