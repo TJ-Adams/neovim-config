@@ -22,4 +22,5 @@ keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap("n", "*", function()
     vim.fn.setreg("/", "\\<" .. vim.fn.expand "<cword>" .. "\\>")
     vim.opt.hls = true
+    require("hlslens").start()
 end, opts)
