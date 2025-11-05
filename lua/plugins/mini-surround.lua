@@ -6,9 +6,9 @@ require("mini.surround").setup({
     mappings = {
         add = "<space>sa", -- Add surrounding in Normal and Visual modes
         delete = "<space>sd", -- Delete surrounding
-        find = "<space>sf", -- Find surrounding (to the right)
-        find_left = "<space>sF", -- Find surrounding (to the left)
-        highlight = "<space>sh", -- Highlight surrounding
+        find = "", -- Find surrounding (to the right)
+        find_left = "", -- Find surrounding (to the left)
+        highlight = "", -- Highlight surrounding
         replace = "<space>sc", -- Replace surrounding
         update_n_lines = "", -- Update `n_lines`
     },
