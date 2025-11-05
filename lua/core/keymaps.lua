@@ -60,3 +60,18 @@ keymap("n", "<leader>/", function()
         vim.opt.hls = true
     end)
 end)
+
+-- This is so after a <COUNT>j/k, c-o will bring you back
+vim.keymap.set('n', 'j', function()
+  if vim.v.count > 0 then
+    return "m'" .. vim.v.count .. 'j'
+  end
+  return 'j'
+end, { expr = true })
+
+vim.keymap.set('n', 'k', function()
+  if vim.v.count > 0 then
+    return "m'" .. vim.v.count .. 'k'
+  end
+  return 'k'
+end, { expr = true })
