@@ -6,8 +6,8 @@ end
 local scroll_hydra = hydra({
     name = "Screen Scroll",
     heads = {
-        { "j", "<C-e>" },
-        { "k", "<C-y>" },
+        { "j", "2<C-e>" },
+        { "k", "2<C-y>" },
         { "h", "2zh" },
         { "l", "2zl", { desc = "Scroll Screen" } },
         { "q", nil, { exit = true } },
