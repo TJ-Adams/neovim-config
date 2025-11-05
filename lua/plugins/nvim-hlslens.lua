@@ -3,7 +3,12 @@ if not status_ok then
     return
 end
 
-hlslens.setup()
+hlslens.setup({
+    calm_down = {
+        -- Disable highlighting when I move the cursor out of match range
+        default = true,
+    },
+})
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
