@@ -101,6 +101,7 @@ keymap("n", "<leader>fw",  "<cmd>lua require('telescope').extensions.tmux.switch
 keymap("n", "<leader>fiw", "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>", {desc = "Grep Word Under Cursor", silent = true})
 keymap("n", "<leader>fib", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {desc = "Grep Within Buffer", silent = true})
 keymap("n", "<leader>fob", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", {desc = "Grep Within Open Buffers", silent = true})
+keymap("n", "<leader>fof", "<cmd>lua require'telescope.builtin'.oldfiles()<cr>", {desc = "Open Previously Opened Files", silent = true})
 
 keymap("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", {desc = "CD to a Project", silent = true})
 
