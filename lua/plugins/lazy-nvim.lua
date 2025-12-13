@@ -338,7 +338,6 @@ local plugins = {
         end,
 
     },
-    { "ray-x/lsp_signature.nvim" },
 
     -- DAP Plugins
     { "mfussenegger/nvim-dap" },
