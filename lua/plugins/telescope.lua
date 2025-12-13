@@ -122,26 +122,38 @@ keymap(
     { desc = "List tmux windows", silent = true }
 )
 
-keymap(
-    "n",
-    "<leader>fiw",
-    "<cmd>lua require('telescope.builtin').grep_string({word_match = '-w'})<cr>",
-    { desc = "Grep Word Under Cursor", silent = true }
-)
+keymap("n", "<leader>fiw", function()
+    local live_grep_args = require("telescope").extensions.live_grep_args
+    local word_under_cursor = vim.fn.expand "<cword>"
+    local opts = {}
 
-keymap(
-    "n",
-    "<leader>fib",
-    "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-    { desc = "Grep Within Buffer", silent = true }
-)
+    opts["default_text"] = "\\b" .. word_under_cursor .. "\\b" .. " -i"
+    live_grep_args.live_grep_args(opts)
+end, { desc = "Grep Word Under Cursor", silent = true })
 
-keymap(
-    "n",
-    "<leader>fob",
-    "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>",
-    { desc = "Grep Within Open Buffers", silent = true }
-)
+keymap("n", "<leader>fib", function()
+    local live_grep_args = require("telescope").extensions.live_grep_args
+    local opts = {}
+    local current_buffer = vim.fn.expand "%:p"
+
+    opts["search_dirs"] = { current_buffer }
+    live_grep_args.live_grep_args(opts)
+end, { desc = "Grep Within Buffer", silent = true })
+
+keymap("n", "<leader>fob", function()
+    local live_grep_args = require("telescope").extensions.live_grep_args
+    local buffers = {}
+    local opts = {}
+
+    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(buf_id) and vim.bo[buf_id].buflisted then
+            table.insert(buffers, vim.fn.expand("#" .. tostring(buf_id) .. ":p"))
+        end
+    end
+
+    opts["search_dirs"] = buffers
+    live_grep_args.live_grep_args(opts)
+end, { desc = "Grep Within Open Buffers", silent = true })
 
 keymap(
     "n",
@@ -164,12 +176,14 @@ keymap(
     { desc = "Find Files in Buffer Dir", silent = true }
 )
 
-keymap(
-    "n",
-    "<leader>fng",
-    "<cmd>lua require'telescope.builtin'.live_grep({ cwd = require'telescope.utils'.buffer_dir() })<cr>",
-    { desc = "Grep in Buffer Dir", silent = true }
-)
+keymap("n", "<leader>fng", function()
+    local live_grep_args = require("telescope").extensions.live_grep_args
+    local current_directory = vim.fn.expand "%:p:h"
+    local opts = {}
+
+    opts["search_dirs"] = { current_directory }
+    live_grep_args.live_grep_args(opts)
+end, { desc = "Grep in Buffer Dir", silent = true })
 
 keymap(
     "n",
