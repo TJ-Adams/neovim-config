@@ -175,5 +175,5 @@ keymap(
     "n",
     "<leader>fii",
     "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>",
-    { desc = "Grep Including Ignores", silent = true }
+    { desc = "Find Files, don't respect .gitignore", silent = true }
 )
