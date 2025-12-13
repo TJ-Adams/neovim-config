@@ -23,6 +23,7 @@ telescope.setup({
         mappings = {
             n = {
                 ["d"] = require("telescope.actions").delete_buffer,
+                ["r"] = require("telescope.actions").to_fuzzy_refine,
                 ["<C-e>"] = function(bufnr)
                     slow_scroll(bufnr, 1)
                 end,
