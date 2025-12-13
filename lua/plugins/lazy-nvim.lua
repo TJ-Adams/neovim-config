@@ -338,7 +338,6 @@ local plugins = {
         end,
 
     },
-    { "L3MON4D3/LuaSnip" },
     { "ray-x/lsp_signature.nvim" },
 
     -- DAP Plugins
