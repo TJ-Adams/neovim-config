@@ -7,12 +7,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Disable arrow keys in normal mode
-keymap("n", "<down>", "<NOP>", opts)
-keymap("n", "<up>", "<NOP>", opts)
-keymap("n", "<left>", "<NOP>", opts)
-keymap("n", "<right>", "<NOP>", opts)
-
 -- Close Buffer
 keymap("n", "<leader>bb", ":bp <BAR> bd #<CR>", opts)
 
