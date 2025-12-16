@@ -1,28 +1,27 @@
-local status_ok, noice = pcall(require, "noice")
-if not status_ok then
-    return
-end
+vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Noice Dismiss" })
 
-noice.setup({
-    presets = {
-        bottom_search = true,
-        command_palette = true,
+return {
+    "folke/noice.nvim",
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
     },
+    opts = {
+        presets = {
+            bottom_search = true,
+            command_palette = true,
+        },
 
-    messages = {
-        enabled = false,
-    },
-
-    lsp = {
-        signature = {
-            -- I already have a signature provider. In the
-            -- future I may consolidate though
+        messages = {
             enabled = false,
         },
+
+        lsp = {
+            signature = {
+                -- I already have a signature provider. In the
+                -- future I may consolidate though
+                enabled = false,
+            },
+        },
     },
-})
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>nd", "<cmd>Noice dismiss<cr>", opts)
+}

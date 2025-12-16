@@ -1,7 +1,4 @@
-local hydra_ok, hydra = pcall(require, "hydra")
-if not hydra_ok then
-    return
-end
+local hydra = require "hydra"
 
 local resize_hydra = hydra({
     name = "Resize Split",
@@ -39,3 +36,9 @@ vim.keymap.set("n", "<leader>rs", function()
     resize_hydra:activate()
 end)
 
+return {
+    "mrjones2014/smart-splits.nvim",
+    dependencies = {
+        "nvimtools/hydra.nvim",
+    },
+}

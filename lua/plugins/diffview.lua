@@ -1,4 +1,5 @@
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>gh", "<cmd>:DiffviewFileHistory % --no-merges<cr>", { desc = "Diffview File History" })
 
-keymap("n", "<leader>gh", "<cmd>:DiffviewFileHistory % --no-merges<cr>", opts)
+return {
+    "sindrets/diffview.nvim",
+}

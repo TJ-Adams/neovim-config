@@ -1,13 +1,29 @@
--- Shorten functions
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<C-j>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+end)
+vim.keymap.set("n", "<C-k>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+end)
+vim.keymap.set("n", "<C-h>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+end)
+vim.keymap.set("n", "<C-l>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+end)
 
-keymap("n", "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
-keymap("n", "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
-keymap("n", "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", opts)
-keymap("n", "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts)
+vim.keymap.set("t", "<C-j>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+end)
+vim.keymap.set("t", "<C-k>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+end)
+vim.keymap.set("t", "<C-h>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+end)
+vim.keymap.set("t", "<C-l>", function()
+    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+end)
 
-keymap("t", "<C-j>", "<esc><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
-keymap("t", "<C-k>", "<esc><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
-keymap("t", "<C-h>", "<esc><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", opts)
-keymap("t", "<C-l>", "<esc><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts)
+return {
+    "alexghergh/nvim-tmux-navigation",
+}

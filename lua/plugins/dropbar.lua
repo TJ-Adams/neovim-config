@@ -1,15 +1,12 @@
--- Make sure to have treesitter parsers installed for the
--- plugin to work.
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>dp", function()
+vim.keymap.set("n", "<leader>dp", function()
     require("dropbar.api").pick()
-end, opts)
+end, { desc = "Dropbar Pick" })
 
-require("dropbar").setup({
-    bar = {
-        truncate = false,
+return {
+    "Bekaboo/dropbar.nvim",
+    opts = {
+        bar = {
+            truncate = false,
+        },
     },
-})
+}

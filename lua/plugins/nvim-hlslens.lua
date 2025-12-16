@@ -1,26 +1,21 @@
-local status_ok, hlslens = pcall(require, "hlslens")
-if not status_ok then
-    return
-end
+vim.keymap.set("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], {})
+vim.keymap.set("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], {})
+vim.keymap.set("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.keymap.set("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.keymap.set("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], {})
 
-hlslens.setup({
-    calm_down = {
-        -- Disable highlighting when I move the cursor out of match range
-        default = true,
-    },
-})
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
-keymap("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
-keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
-keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
-keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
-
-keymap("n", "*", function()
+vim.keymap.set("n", "*", function()
     vim.fn.setreg("/", "\\<" .. vim.fn.expand "<cword>" .. "\\>")
     vim.opt.hls = true
     require("hlslens").start()
 end, opts)
+
+return {
+    "kevinhwang91/nvim-hlslens",
+    opts = {
+        calm_down = {
+            -- Disable highlighting when I move the cursor out of match range
+            default = true,
+        },
+    },
+}

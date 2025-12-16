@@ -1,20 +1,3 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-    return
-end
-
--- Enable Tree Sitter Syntax Highlighting
-configs.setup({
-    highlight = {
-        enable = true,
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = true,
-    },
-})
-
 vim.o.foldmethod = "expr"
 
 -- Default to treesitter folding
@@ -30,3 +13,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
+
+-- Enable Tree Sitter Syntax Highlighting
+return {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+        highlight = {
+            enable = true,
+            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+            -- Using this option may slow down your editor, and you may see some duplicate highlights.
+            -- Instead of true it can also be a list of languages
+            additional_vim_regex_highlighting = true,
+        },
+    },
+    main = "nvim-treesitter.configs",
+}

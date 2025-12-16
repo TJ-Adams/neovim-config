@@ -1,31 +1,19 @@
-local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
-    return
-end
-
-gitsigns.setup()
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>cl", "<cmd>Gitsigns toggle_current_line_blame<cr>", opts)
-keymap("n", "<leader>co", "<cmd>lua require('gitsigns').blame_line({full=true,})<cr>", opts)
-keymap("n", "<leader>cp", "<cmd>Gitsigns preview_hunk<cr>", opts)
-keymap("n", "<leader>cs", "<cmd>Gitsigns stage_hunk<cr>", opts)
-keymap("n", "<leader>cu", "<cmd>Gitsigns reset_hunk<cr>", opts)
-keymap("n", "[c", function()
+vim.keymap.set(
+    "n",
+    "<leader>co",
+    "<cmd>lua require('gitsigns').blame_line({full=true,})<cr>",
+    { desc = "Open Blame Info" }
+)
+vim.keymap.set("n", "<leader>cp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview Hunk" })
+vim.keymap.set("n", "<leader>cs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage Hunk Toggle" })
+vim.keymap.set("n", "<leader>cu", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Undo Hunk" })
+vim.keymap.set("n", "[c", function()
     require("gitsigns").nav_hunk("prev", { target = "all" })
-end, opts)
-keymap("n", "]c", function()
+end, { desc = "Go to Previous Hunk" })
+vim.keymap.set("n", "]c", function()
     require("gitsigns").nav_hunk("next", { target = "all" })
-end, opts)
+end, { desc = "Go to Next Hunk" })
 
-local function toggle_diffview()
-    vim.cmd "Gitsigns toggle_word_diff"
-    vim.cmd "Gitsigns toggle_linehl"
-    vim.cmd "Gitsigns toggle_deleted"
-end
-
-keymap("n", "<leader>dg", function()
-    toggle_diffview()
-end, opts)
+return {
+    "lewis6991/gitsigns.nvim",
+}

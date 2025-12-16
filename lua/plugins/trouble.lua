@@ -1,14 +1,8 @@
-local status_ok, trouble = pcall(require, "trouble")
-if not status_ok then
-    return
-end
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
+vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
+vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>")
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>")
 
-trouble.setup()
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", opts)
-keymap("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", opts)
-keymap("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>", opts)
-keymap("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", opts)
+return {
+    "folke/trouble.nvim",
+}

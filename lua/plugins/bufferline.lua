@@ -1,35 +1,24 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-    return
-end
-
-bufferline.setup({
-    options = {
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "File Explorer",
-                highlight = "Directory",
-                text_align = "left",
-            },
-        },
-        truncate_names = false,
-    },
-})
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
 -- Navigate buffers Based on how bufferline displays them
-keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
 
 -- Reorder buffers left and right
-keymap("n", "<leader>bl", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "<leader>bh", ":BufferLineMovePrev<CR>", opts)
+vim.keymap.set("n", "<leader>bl", ":BufferLineMoveNext<CR>", { desc = "Move Buffer Tab Right" })
+vim.keymap.set("n", "<leader>bh", ":BufferLineMovePrev<CR>", { desc = "Move Buffer Tab Left" })
 
-local wk_status, wk = pcall(require, "which-key")
-if not wk_status then
-    return
-end
-
+return {
+    "akinsho/bufferline.nvim",
+    opts = {
+        options = {
+            offsets = {
+                {
+                    filetype = "NvimTree",
+                    text = "File Explorer",
+                    highlight = "Directory",
+                    text_align = "left",
+                },
+            },
+            truncate_names = false,
+        },
+    },
+}
