@@ -1,9 +1,4 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-    return
-end
-
-vim.lsp.config("lua_ls", {
+return {
     settings = {
         Lua = {
             diagnostics = {
@@ -11,10 +6,11 @@ vim.lsp.config("lua_ls", {
             },
             workspace = {
                 library = {
+                    -- Ensure that vim.* has lsp support in my config
                     [vim.fn.expand "$VIMRUNTIME/lua"] = true,
                     [vim.fn.stdpath "config" .. "/lua"] = true,
                 },
             },
         },
     },
-})
+}
