@@ -1,5 +1,3 @@
-require "lsp/nvim-lspconfig"
-
 require "lsp/pyright"
 require "lsp/clangd"
 require "lsp/lua_ls"
