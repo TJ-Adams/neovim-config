@@ -1,5 +1,4 @@
 require "lsp/nvim-lspconfig"
-require "lsp/mason"
 
 require "lsp/pyright"
 require "lsp/clangd"
