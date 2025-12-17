@@ -37,3 +37,9 @@ vim.opt.fillchars = "fold: "
 
 -- Don't default to folding everything
 vim.opt.foldenable = false
+
+vim.o.foldmethod = "expr"
+
+-- Default to treesitter folding
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
