@@ -5,10 +5,6 @@ vim.keymap.set("o", "r", function()
     require("flash").remote()
 end, { desc = "Flash Remote Yank" })
 
-vim.keymap.set({ "n", "o", "x" }, "S", function()
-    require("flash").treesitter()
-end, { desc = "Flash Treesitter" })
-
 return {
     "folke/flash.nvim",
     opts = {
