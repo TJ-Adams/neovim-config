@@ -39,7 +39,7 @@ return {
             dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
             dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
             dashboard.button("t", " " .. " Terminal", ":terminal<CR>"),
-            dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+            dashboard.button("s", " " .. " Restore Session", ":SessionSelect<CR>"),
             dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
             dashboard.button("q", " " .. " Quit", ":q<CR>"),
         }
