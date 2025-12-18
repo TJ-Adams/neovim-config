@@ -16,6 +16,7 @@ keymap("t", "<esc>", [[<C-\><C-n>]], opts)
 
 -- Yank file paths
 keymap("n", "<leader>ya", "<cmd>let @+ = expand('%:p')<cr>", opts) -- absolute file path
+keymap("n", "<leader>yd", "<cmd>let @+ = expand('%:p:h')<cr>", opts) -- current directory
 keymap("n", "<leader>yr", "<cmd>let @+ = expand('%')<cr>", opts) -- relative file path
 
 -- Switch Tabs
