@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<cr>", opts)
+vim.keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<cr>")
 
 return {
     "folke/todo-comments.nvim",

@@ -8,7 +8,7 @@ vim.keymap.set("n", "*", function()
     vim.fn.setreg("/", "\\<" .. vim.fn.expand "<cword>" .. "\\>")
     vim.opt.hls = true
     require("hlslens").start()
-end, opts)
+end)
 
 return {
     "kevinhwang91/nvim-hlslens",
