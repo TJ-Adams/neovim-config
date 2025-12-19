@@ -6,7 +6,7 @@ local function get_current_week()
     local days_in_week = 7
 
     local current_year = get_current_year()
-    local first_day_of_year = os.time({ year = current_year, month = 1, day = 1 })
+    local first_day_of_year = os.time({ year = tostring(current_year), month = 1, day = 1 })
     local days_missing_week1 = os.date("%w", first_day_of_year)
     local year_progress_in_days = os.date "%j" + days_missing_week1
 
@@ -26,7 +26,7 @@ local function get_current_quarter()
 end
 
 -- Global Neorg Journal Keymap
-vim.keymap.set("n", "<leader>njt", "<cmd>Neorg journal today<cr>", opts)
+vim.keymap.set("n", "<leader>njt", "<cmd>Neorg journal today<cr>")
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*.norg",
@@ -73,9 +73,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.keymap.set("n", "<leader>tp", "<Plug>(neorg.qol.todo-items.todo.task-pending)")
         vim.keymap.set("n", "<leader>tu", "<Plug>(neorg.qol.todo-items.todo.task-undone)")
 
-        -- Misc
-        vim.keymap.set("n", "<leader>fni", "<cmd>Telescope neorg insert_link<cr>", opts)
-        vim.keymap.set("n", "<leader>fnh", "<cmd>Telescope neorg search_headings<cr>", opts)
     end,
 })
 
