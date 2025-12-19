@@ -32,5 +32,8 @@ return {
 
         -- Green for folder names doesn't look good
         vim.api.nvim_set_hl(0, "NvimTreeFolderName", { link = "@GruvboxBlueBold" })
+
+        -- Don't highlight markdown errors in bright red
+        vim.api.nvim_set_hl(0, "markdownError", { link = "@GruvboxBlueBold" })
     end,
 }
