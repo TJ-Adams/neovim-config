@@ -10,4 +10,5 @@ return {
     dependencies = {
         { "kkharji/sqlite.lua", module = "sqlite" },
     },
+    opts = {},
 }
