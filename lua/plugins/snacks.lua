@@ -4,6 +4,10 @@ end)
 
 return {
     "folke/snacks.nvim",
+    dependencies = {
+        { "nvim-mini/mini.nvim", version = "*" },
+        { "nvim-tree/nvim-web-devicons", opts = {} },
+    },
     opts = {
         input = {},
         styles = {
