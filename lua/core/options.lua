@@ -43,3 +43,5 @@ vim.o.foldmethod = "expr"
 -- Default to treesitter folding
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+-- https://vi.stackexchange.com/questions/37863/limit-the-amount-of-oldfiles-in-vim-and-neovim
+vim.opt.shada = "!,'200,<50,s10,h"  -- Up to 200 files in oldfiles
