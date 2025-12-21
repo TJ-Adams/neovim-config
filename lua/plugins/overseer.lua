@@ -7,27 +7,15 @@ return {
     "stevearc/overseer.nvim",
     opts = {
         task_list = {
-            bindings = {
-                ["<C-u>"] = "ScrollOutputUp",
-                ["<C-d>"] = "ScrollOutputDown",
-
-                -- Don't map these keybinds
-                ["<C-l>"] = false,
-                ["<C-h>"] = false,
-                ["<C-k>"] = false,
-                ["<C-j>"] = false,
-
-                ["q"] = "OpenQuickFix", -- open in quickfix
-                ["f"] = "OpenFloat", -- open in floating window
-            },
-        },
-        component_aliases = {
-            -- Change defaults to keep tasks until I manually remove them
-            default = {
-                { "display_duration", detail_level = 2 },
-                "on_output_summarize",
-                "on_exit_set_status",
-                "on_complete_notify",
+            keymaps = {
+                ["r"] = { "keymap.run_action", opts = { action = "restart" } },
+                ["v"] = { "keymap.run_action", opts = { action = "open vsplit" } },
+                ["w"] = { "keymap.run_action", opts = { action = "watch" } },
+                ["dd"] = false,
+                ["d"] = { "keymap.run_action", opts = { action = "dispose" } },
+                ["f"] = { "keymap.run_action", opts = { action = "open float" } },
+                ["q"] = { "keymap.run_action", opts = { action = "open output in quickfix" } },
+                ["<CR>"] = { "keymap.run_action" },
             },
         },
     },
