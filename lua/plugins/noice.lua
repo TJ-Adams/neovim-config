@@ -16,6 +16,10 @@ return {
             enabled = false,
         },
 
+        popupmenu = {
+            enabled = false,
+        },
+
         lsp = {
             signature = {
                 -- I already have a signature provider. In the

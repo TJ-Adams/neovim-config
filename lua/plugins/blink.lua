@@ -14,7 +14,8 @@ return {
 
         completion = { documentation = { auto_show = true }, list = { selection = { preselect = false } } },
         cmdline = {
-            enabled = false,
+            keymap = { preset = "super-tab" },
+            completion = { menu = { auto_show = true }, list = { selection = { preselect = false } } },
         },
 
         -- Default list of enabled providers defined so that you can extend it
