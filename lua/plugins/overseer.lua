@@ -1,5 +1,4 @@
 vim.keymap.set("n", "<leader>tr", "<cmd>OverseerRun<cr>")
-vim.keymap.set("n", "<leader>tc", "<cmd>OverseerRunCmd<cr>")
 vim.keymap.set("n", "<leader>th", "<cmd>OverseerToggle left<cr>")
 vim.keymap.set("n", "<leader>tl", "<cmd>OverseerToggle right<cr>")
 
