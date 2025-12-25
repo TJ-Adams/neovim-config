@@ -16,9 +16,8 @@ return {
             },
         },
         explorer = {
-            -- your explorer configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
+            -- don't use system trash when deleting files
+            trash = false,
         },
         picker = {
             sources = {
