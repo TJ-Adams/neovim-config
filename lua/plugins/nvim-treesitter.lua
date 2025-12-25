@@ -14,16 +14,10 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         opts = {
-            highlight = {
-                enable = true,
-                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-                -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                -- Instead of true it can also be a list of languages
-                additional_vim_regex_highlighting = true,
-            },
         },
-        main = "nvim-treesitter.configs",
+        branch = "main",
+        build = 'TSUpdate',
+        lazy = false,
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
@@ -36,6 +30,7 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
+        branch = "main",
         opts = {
             textobjects = {
                 swap = {
@@ -71,6 +66,5 @@ return {
                 },
             },
         },
-        main = "nvim-treesitter.configs",
     },
 }
