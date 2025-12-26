@@ -2,6 +2,6 @@ vim.lsp.enable({
     "clangd",
     "lua_ls",
     "marksman",
-    "pyright",
+    "basedpyright",
     "rust_analyzer",
 })
