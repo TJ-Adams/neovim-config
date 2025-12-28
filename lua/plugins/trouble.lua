@@ -5,4 +5,5 @@ vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>")
 
 return {
     "folke/trouble.nvim",
+    opts = {},
 }
