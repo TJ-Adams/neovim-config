@@ -16,7 +16,7 @@ return {
         opts = {
         },
         branch = "main",
-        build = 'TSUpdate',
+        build = ":TSUpdate",
         lazy = false,
     },
     {
