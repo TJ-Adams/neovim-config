@@ -78,6 +78,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 return {
     "nvim-neorg/neorg",
+    dependencies = { "nvim-neorg/tree-sitter-norg" },
     opts = {
         load = {
             ["core.defaults"] = {},
