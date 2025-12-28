@@ -37,6 +37,7 @@ vim.opt.fillchars = "fold: "
 
 -- Don't default to folding everything
 vim.opt.foldenable = false
+vim.opt.foldlevelstart = 99
 
 vim.o.foldmethod = "expr"
 
