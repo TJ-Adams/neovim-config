@@ -7,7 +7,10 @@ return {
         "stevearc/aerial.nvim",
         -- Prioritize lsp, fallback to treesitter
         opts = {
-            backends = { "lsp", "treesitter" },
+            backends = {
+                ["_"] = { "lsp", "treesitter" },
+                markdown = { "treesitter", "lsp" },
+            },
             nav = {
                 -- Make 'q' quit instead of C-c
                 keymaps = {
