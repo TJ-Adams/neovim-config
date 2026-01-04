@@ -4,4 +4,5 @@ vim.lsp.enable({
     "marksman",
     "basedpyright",
     "rust_analyzer",
+    "texlab",
 })
