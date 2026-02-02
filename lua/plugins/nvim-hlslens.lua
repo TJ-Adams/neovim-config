@@ -13,9 +13,6 @@ end)
 return {
     "kevinhwang91/nvim-hlslens",
     opts = {
-        calm_down = {
-            -- Disable highlighting when I move the cursor out of match range
-            default = true,
-        },
+        calm_down = false,
     },
 }
