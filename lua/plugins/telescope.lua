@@ -69,7 +69,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>fw",
-    "<cmd>lua require('telescope').extensions.tmux.switch_window()<cr>",
+    "<cmd>Telescope tmux windows<cr>",
     { desc = "List tmux windows", silent = true }
 )
 
@@ -234,10 +234,7 @@ return {
         end,
     },
     {
-        "pre-z/telescope-tmuxing.nvim",
-        config = function()
-            require("telescope").load_extension "tmux"
-        end,
+        "camgraff/telescope-tmux.nvim",
     },
     {
         "nvim-telescope/telescope-dap.nvim",
