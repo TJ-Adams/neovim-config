@@ -35,5 +35,8 @@ return {
 
         -- Don't highlight markdown errors in bright red
         vim.api.nvim_set_hl(0, "markdownError", { link = "@GruvboxBlueBold" })
+
+        -- Remove the strikethrough for deprecated. It can make text difficult to read.
+        vim.api.nvim_set_hl(0, "DiagnosticDeprecated", {})
     end,
 }
