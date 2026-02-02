@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Noice Dismiss" })
+vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss Noice" })
 
 return {
     "folke/noice.nvim",
