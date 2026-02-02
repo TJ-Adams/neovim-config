@@ -10,6 +10,11 @@ vim.keymap.set("n", "*", function()
     require("hlslens").start()
 end)
 
+-- Clear Highlights ("Dismiss Highlights" mnemonic)
+vim.keymap.set("n", "<leader>dh", function()
+    vim.cmd "noh"
+end, { desc = "Clear Highlights", silent = true })
+
 return {
     "kevinhwang91/nvim-hlslens",
     opts = {
