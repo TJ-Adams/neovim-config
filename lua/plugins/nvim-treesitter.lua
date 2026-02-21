@@ -13,8 +13,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = {
-        },
+        opts = {},
         branch = "main",
         build = ":TSUpdate",
         lazy = false,
@@ -27,44 +26,48 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
         branch = "main",
-        opts = {
-            textobjects = {
-                swap = {
-                    enable = true,
-                    swap_next = {
-                        ["<leader>J"] = "@function.outer",
-                        ["<leader>L"] = "@parameter.inner",
-                    },
-                    swap_previous = {
-                        ["<leader>K"] = "@function.outer",
-                        ["<leader>H"] = "@parameter.inner",
-                    },
-                },
-                move = {
-                    enable = true,
-                    set_jumps = true, -- whether to set jumps in the jumplist
-                    goto_next_start = {
-                        ["]f"] = "@function.outer",
-                    },
-                    goto_previous_start = {
-                        ["[f"] = "@function.outer",
-                    },
-                },
-                select = {
-                    enable = true,
-                    keymaps = {
-                        -- You can use the capture groups defined in textobjects.scm
-                        ["of"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["oc"] = "@class.outer",
-                        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                    },
-                },
-            },
-        },
+        init = function()
+            -- Disable entire built-in ftplugin mappings to avoid conflicts.
+            -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+            vim.g.no_plugin_maps = true
+        end,
+        config = function()
+            -- selct keymaps
+            vim.keymap.set({ "x", "o" }, "of", function()
+                require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "if", function()
+                require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "os", function()
+                require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "is", function()
+                require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+            end)
+
+            -- movement keymaps
+            vim.keymap.set({ "n", "x", "o" }, "]f", function()
+                require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+            end)
+            vim.keymap.set({ "n", "x", "o" }, "[f", function()
+                require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+            end)
+
+            vim.keymap.set({ "n", "x", "o" }, "]s", function()
+                require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+            end)
+            vim.keymap.set({ "n", "x", "o" }, "[s", function()
+                require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+            end)
+
+            -- Make movements repeatable
+            local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
+
+            -- vim way: ; goes to the direction you were moving.
+            vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+            vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+        end,
     },
 }
