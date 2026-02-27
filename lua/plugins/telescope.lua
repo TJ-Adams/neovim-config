@@ -66,12 +66,7 @@ vim.keymap.set(
     { desc = "Fuzzy Search Functions", silent = true }
 ) -- Fuzzy search functions
 
-vim.keymap.set(
-    "n",
-    "<leader>fw",
-    "<cmd>Telescope tmux windows<cr>",
-    { desc = "List tmux windows", silent = true }
-)
+vim.keymap.set("n", "<leader>fw", "<cmd>Telescope tmux windows<cr>", { desc = "List tmux windows", silent = true })
 
 vim.keymap.set("n", "<leader>fiw", function()
     local live_grep_args = require("telescope").extensions.live_grep_args
