@@ -156,6 +156,8 @@ return {
                         end,
                     },
                     i = {
+                        ["<C-q>"] = require("telescope.actions").smart_send_to_qflist
+                            + require("telescope.actions").open_qflist,
                         ["<c-space>"] = require("telescope.actions").to_fuzzy_refine,
                         ["<C-e>"] = function(bufnr)
                             slow_scroll(bufnr, 1)
