@@ -17,5 +17,11 @@ return {
                 ["<CR>"] = { "keymap.run_action" },
             },
         },
+        component_aliases = {
+            default = {
+                "on_exit_set_status",
+                "on_complete_notify",
+            },
+        },
     },
 }
