@@ -12,59 +12,53 @@ local slow_scroll = function(prompt_bufnr, direction)
     previewer:scroll_fn(1 * direction)
 end
 
-vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "Go To Definition", silent = true })
-vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "Go to References", silent = true })
-vim.keymap.set(
-    "n",
-    "gt",
-    "<cmd>Telescope lsp_type_definitions<cr>",
-    { desc = "Go to Definition of Type", silent = true }
-)
+vim.keymap.set("n", "gd", function()
+    require("telescope.builtin").lsp_definitions()
+end, { desc = "Go To Definition", silent = true })
+vim.keymap.set("n", "gr", function()
+    require("telescope.builtin").lsp_references()
+end, { desc = "Go to References", silent = true })
+vim.keymap.set("n", "gt", function()
+    require("telescope.builtin").lsp_type_definitions()
+end, { desc = "Go to Definition of Type", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>ic",
-    "<cmd>Telescope lsp_incoming_calls<cr>",
-    { desc = "See Incoming Calls", silent = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>oc",
-    "<cmd>Telescope lsp_outgoing_calls<cr>",
-    { desc = "See Outgoing Calls", silent = true }
-)
+vim.keymap.set("n", "<leader>ic", function()
+    require("telescope.builtin").lsp_incoming_calls()
+end, { desc = "See Incoming Calls", silent = true })
+vim.keymap.set("n", "<leader>oc", function()
+    require("telescope.builtin").lsp_outgoing_calls()
+end, { desc = "See Outgoing Calls", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>fg",
-    "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-    { desc = "Grep in CWD", silent = true }
-)
+vim.keymap.set("n", "<leader>fg", function()
+    require("telescope").extensions.live_grep_args.live_grep_args()
+end, { desc = "Grep in CWD", silent = true })
 
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files in CWD", silent = true })
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Search Through Open Buffers", silent = true })
-vim.keymap.set(
-    "n",
-    "<leader>fl",
-    "<cmd>Telescope resume<cr>",
-    { desc = "Resume Last Telescope Command", silent = true }
-)
-vim.keymap.set("n", "<leader>ft", "<cmd>Telescope<cr>", { desc = "Telescope", silent = true })
-vim.keymap.set(
-    "n",
-    "<leader>fe",
-    "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-    { desc = "File Explorer at Buffer", silent = true }
-)
+vim.keymap.set("n", "<leader>ff", function()
+    require("telescope.builtin").find_files()
+end, { desc = "Find Files in CWD", silent = true })
+vim.keymap.set("n", "<leader>fb", function()
+    require("telescope.builtin").buffers()
+end, { desc = "Search Through Open Buffers", silent = true })
+vim.keymap.set("n", "<leader>fl", function()
+    require("telescope.builtin").resume()
+end, { desc = "Resume Last Telescope Command", silent = true })
+vim.keymap.set("n", "<leader>ft", function()
+    require("telescope.builtin").builtin({ include_extensions = true })
+end, { desc = "Telescope", silent = true })
+vim.keymap.set("n", "<leader>fe", function()
+    local buffer_path = vim.fn.expand "%:p:h"
+    require("telescope").extensions.file_browser.file_browser({ path = buffer_path })
+end, { desc = "File Explorer at Buffer", silent = true })
 
-vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Search Keymaps", silent = true })
-vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Help Files", silent = true })
-vim.keymap.set(
-    "n",
-    "<leader>fu",
-    "<cmd>lua require'telescope.builtin'.lsp_document_symbols({ symbols = 'function' })<cr>",
-    { desc = "Fuzzy Search Functions", silent = true }
-) -- Fuzzy search functions
+vim.keymap.set("n", "<leader>fk", function()
+    require("telescope.builtin").keymaps()
+end, { desc = "Search Keymaps", silent = true })
+vim.keymap.set("n", "<leader>fh", function()
+    require("telescope.builtin").help_tags()
+end, { desc = "Search Help Files", silent = true })
+vim.keymap.set("n", "<leader>fu", function()
+    require("telescope.builtin").lsp_document_symbols({ symbols = "function" })
+end, { desc = "Fuzzy Search Functions", silent = true }) -- Fuzzy search functions
 
 vim.keymap.set("n", "<leader>fw", "<cmd>Telescope tmux windows<cr>", { desc = "List tmux windows", silent = true })
 
@@ -101,26 +95,17 @@ vim.keymap.set("n", "<leader>fob", function()
     live_grep_args.live_grep_args(opts)
 end, { desc = "Grep Within Open Buffers", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>fof",
-    "<cmd>lua require'telescope.builtin'.oldfiles()<cr>",
-    { desc = "Open Previously Opened Files", silent = true }
-)
+vim.keymap.set("n", "<leader>fof", function()
+    require("telescope.builtin").oldfiles()
+end, { desc = "Open Previously Opened Files", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>fp",
-    ":lua require'telescope'.extensions.project.project{}<CR>",
-    { desc = "CD to a Project", silent = true }
-)
+vim.keymap.set("n", "<leader>fp", function()
+    require("telescope").extensions.project.project({})
+end, { desc = "CD to a Project", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>fnf",
-    "<cmd>lua require'telescope.builtin'.find_files({ cwd = require'telescope.utils'.buffer_dir() })<cr>",
-    { desc = "Find Files in Buffer Dir", silent = true }
-)
+vim.keymap.set("n", "<leader>fnf", function()
+    require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() })
+end, { desc = "Find Files in Buffer Dir", silent = true })
 
 vim.keymap.set("n", "<leader>fng", function()
     local live_grep_args = require("telescope").extensions.live_grep_args
@@ -131,12 +116,9 @@ vim.keymap.set("n", "<leader>fng", function()
     live_grep_args.live_grep_args(opts)
 end, { desc = "Grep in Buffer Dir", silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>fii",
-    "<cmd>lua require'telescope.builtin'.find_files({ hidden = true, no_ignore = true, no_ignore_parent = true})<cr>",
-    { desc = "Find Files, don't respect .gitignore", silent = true }
-)
+vim.keymap.set("n", "<leader>fii", function()
+    require("telescope.builtin").find_files({ hidden = true, no_ignore = true, no_ignore_parent = true })
+end, { desc = "Find Files, don't respect .gitignore", silent = true })
 
 -- Setup.
 return {
