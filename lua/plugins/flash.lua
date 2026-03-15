@@ -22,10 +22,7 @@ return {
             search = {
                 -- when `true`, flash will be activated during regular search by default.
                 -- You can always toggle when searching with `require("flash").toggle()`
-                enabled = true,
-                search = {
-                    multi_window = false,
-                },
+                enabled = false,
             },
             char = {
                 jump_labels = true,
