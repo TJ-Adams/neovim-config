@@ -130,6 +130,8 @@ return {
                     n = {
                         ["d"] = require("telescope.actions").delete_buffer,
                         ["r"] = require("telescope.actions").to_fuzzy_refine,
+                        ["<C-q>"] = require("telescope.actions").smart_send_to_qflist
+                            + require("telescope.actions").open_qflist,
                         ["<C-e>"] = function(bufnr)
                             slow_scroll(bufnr, 1)
                         end,
