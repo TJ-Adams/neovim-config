@@ -26,7 +26,9 @@ return {
                         list = {
                             keys = {
                                 ["f"] = "focus_input", -- Map 'f' to start filtering
-                                ["/"] = false, -- Disable the default '/' filter trigger
+                                -- Disable keymaps in favor or default behavior
+                                ["/"] = false,
+                                ["?"] = false,
                             },
                         },
                     },
