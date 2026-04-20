@@ -25,23 +25,26 @@ keymap("n", "]t", "<cmd>tabnext<cr>", opts)
 
 -- Function to search for the visual selection without moving to the next match
 local function search_vselection()
-    -- Save the current visual selection into a variable
-    local start_pos = vim.fn.getpos "."
-    local end_pos = vim.fn.getpos "v"
+    local start_pos = vim.fn.getpos(".")
+    local end_pos = vim.fn.getpos("v")
 
-    local search_pattern = vim.fn.getregion(start_pos, end_pos)
+    local lines = vim.fn.getregion(start_pos, end_pos)
 
-    search_pattern = table.concat(search_pattern, "\\n")
+    -- Escape backslashes FIRST, before we add any of our own
+    for i, line in ipairs(lines) do
+        lines[i] = vim.fn.escape(line, "\\/.*$^~[]")
+    end
 
-    -- Escape special characters. Might not work with '\'
-    search_pattern = vim.fn.escape(search_pattern, "/.*$^~[]")
+    -- Now join with \n (which matches newline in Vim search)
+    local search_pattern = table.concat(lines, "\\n")
 
-    print(search_pattern)
-
-    -- Search for the pattern without jumping
     vim.fn.setreg("/", search_pattern)
     vim.opt.hls = true
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "n",
+        true
+    )
 end
 
 keymap("v", "*", function()
