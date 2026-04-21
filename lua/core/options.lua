@@ -12,7 +12,7 @@ vim.opt.listchars = { space = "·", tab = ">-" } -- Assign whitespace colors
 vim.opt.list = true -- Turn on whitespace visualization
 vim.opt.mouse = "a" -- Allow Mouse Support
 
-vim.opt.scrollback = 25000 -- See further back into terminal output
+vim.opt.scrollback = 50000 -- See further back into terminal output
 
 vim.opt.wildmode = "" -- Disable native cmdline completion (will use blink instead)
 vim.opt.wildmenu = false
