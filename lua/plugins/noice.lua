@@ -1,7 +1,6 @@
-vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss Noice" })
-
 return {
     "folke/noice.nvim",
+    lazy = false,
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
@@ -27,5 +26,8 @@ return {
                 enabled = false,
             },
         },
+    },
+    keys = {
+        { "<leader>dn", "<cmd>Noice dismiss<cr>", desc = "Dismiss Noice" },
     },
 }

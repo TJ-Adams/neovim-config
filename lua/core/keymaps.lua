@@ -74,6 +74,12 @@ vim.keymap.set('n', 'k', function()
   return 'k'
 end, { expr = true })
 
+-- Clear Highlights ("Dismiss Highlights" mnemonic)
+vim.keymap.set("n", "<leader>dh", function()
+    vim.cmd "noh"
+end, { desc = "Clear Highlights", silent = true })
+
+
 -- LSP Specific Keymaps
 keymap("n", "gD", vim.lsp.buf.declaration, {desc = "Go To Declarations", silent = true })
 keymap("n", "K", vim.lsp.buf.hover, {desc = "Info Under Cursor", silent = true })

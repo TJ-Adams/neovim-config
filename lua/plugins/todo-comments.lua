@@ -1,7 +1,6 @@
-vim.keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<cr>")
-
 return {
     "folke/todo-comments.nvim",
+    dependencies = { "folke/trouble.nvim" },
     opts = {
         signs = false,
         gui_style = {
@@ -13,7 +12,7 @@ return {
             NOTE = { color = "note" },
             HACK = { color = "warn" },
             WARN = { color = "warn" },
-            BUG  = { color = "warn" },
+            BUG = { color = "warn" },
         },
 
         highlight = {
@@ -26,8 +25,11 @@ return {
         },
         colors = {
             todo = { "@text.todo" },
-            note = { "@text.reference"},
-            warn= { "@text.warning"},
+            note = { "@text.reference" },
+            warn = { "@text.warning" },
         },
+    },
+    keys = {
+        { "<leader>xt", "<cmd>TodoTrouble<cr>" },
     },
 }

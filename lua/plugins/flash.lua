@@ -1,27 +1,16 @@
-vim.keymap.set({ "n", "x", "o" }, "s", function()
-    require("flash").jump()
-end, { desc = "Flash Jump" })
-vim.keymap.set("o", "r", function()
-    require("flash").remote()
-end, { desc = "Flash Remote Yank" })
-
 return {
     "folke/flash.nvim",
+    lazy = false,
+    ---@type Flash.Config
     opts = {
-
         label = {
-            -- Don't allow uppercase labels
             uppercase = false,
         },
         highlight = {
             backdrop = false,
         },
         modes = {
-            -- options used when flash is activated through
-            -- a regular search with `/` or `?`
             search = {
-                -- when `true`, flash will be activated during regular search by default.
-                -- You can always toggle when searching with `require("flash").toggle()`
                 enabled = false,
             },
             char = {
@@ -31,6 +20,20 @@ return {
                     backdrop = false,
                 },
             },
+        },
+    },
+    keys = {
+        {
+            "s",
+            mode = { "n", "x", "o" },
+            function() require("flash").jump() end,
+            desc = "Flash Jump",
+        },
+        {
+            "r",
+            mode = "o",
+            function() require("flash").remote() end,
+            desc = "Flash Remote Yank",
         },
     },
 }

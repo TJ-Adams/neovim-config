@@ -1,7 +1,3 @@
-vim.keymap.set("n", "<leader>ah", "<cmd>AerialToggle! left<cr>", { desc = "Aerial Outline Left", silent = true })
-vim.keymap.set("n", "<leader>al", "<cmd>AerialToggle! right<cr>", { desc = "Aerial Outline Right", silent = true })
-vim.keymap.set("n", "<leader>an", "<cmd>AerialNavToggle<cr>", { desc = "Aerial Navigation", silent = true })
-
 return {
     {
         "stevearc/aerial.nvim",
@@ -18,6 +14,11 @@ return {
                 },
             },
             highlight_mode = "last",
+        },
+        keys = {
+            { "<leader>ah", "<cmd>AerialToggle! left<cr>", desc = "Aerial Outline Left" },
+            { "<leader>al", "<cmd>AerialToggle! right<cr>", desc = "Aerial Outline Right" },
+            { "<leader>an", "<cmd>AerialNavToggle<cr>", desc = "Aerial Navigation" },
         },
     },
 }

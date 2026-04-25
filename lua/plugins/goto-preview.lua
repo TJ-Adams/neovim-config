@@ -1,10 +1,3 @@
-vim.keymap.set("n", "<leader>gd", function()
-    require("goto-preview").goto_preview_definition()
-end)
-vim.keymap.set("n", "<leader>gt", function()
-    require("goto-preview").goto_preview_type_definition()
-end)
-
 return {
     "rmagatti/goto-preview",
     opts = {
@@ -16,5 +9,19 @@ return {
             vim.keymap.set("n", "q", "q", {})
             vim.keymap.set("n", "Q", "<cmd>Q<cr>", {})
         end,
+    },
+    keys = {
+        {
+            "<leader>gd",
+            function()
+                require("goto-preview").goto_preview_definition()
+            end,
+        },
+        {
+            "<leader>gt",
+            function()
+                require("goto-preview").goto_preview_type_definition()
+            end,
+        },
     },
 }

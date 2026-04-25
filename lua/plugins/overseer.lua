@@ -1,7 +1,3 @@
-vim.keymap.set("n", "<leader>tr", "<cmd>OverseerRun<cr>")
-vim.keymap.set("n", "<leader>th", "<cmd>OverseerToggle left<cr>")
-vim.keymap.set("n", "<leader>tl", "<cmd>OverseerToggle right<cr>")
-
 return {
     "stevearc/overseer.nvim",
     opts = {
@@ -23,5 +19,10 @@ return {
                 "on_complete_notify",
             },
         },
+    },
+    keys = {
+        { "<leader>tr", "<cmd>OverseerRun<cr>" },
+        { "<leader>th", "<cmd>OverseerToggle left<cr>" },
+        { "<leader>tl", "<cmd>OverseerToggle right<cr>" },
     },
 }

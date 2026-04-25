@@ -1,7 +1,3 @@
-vim.keymap.set("n", "<leader>e", function()
-    require("snacks").explorer.reveal()
-end)
-
 return {
     "folke/snacks.nvim",
     dependencies = {
@@ -34,6 +30,14 @@ return {
                     },
                 },
             },
+        },
+    },
+    keys = {
+        {
+            "<leader>e",
+            function()
+                require("snacks").explorer.reveal()
+            end,
         },
     },
 }
