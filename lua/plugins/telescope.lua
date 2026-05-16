@@ -164,7 +164,9 @@ return {
                     prompt_position = "top",
                     height = 0.4,
                     width = 0.75,
-                    preview_width = 0.6,
+                    cursor = {
+                        preview_width = 0.6,
+                    },
                 },
                 layout_strategy = "cursor",
             },

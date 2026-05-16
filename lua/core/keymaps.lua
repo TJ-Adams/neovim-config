@@ -88,7 +88,6 @@ keymap("n", "<leader>do", function()
     local new_config = not vim.diagnostic.config().virtual_lines
     vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })
-keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action", silent = true })
 keymap("n", "<leader>bf", vim.lsp.buf.format, { desc = "Format Buffer", silent = true })
 keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename", silent = true })
 
