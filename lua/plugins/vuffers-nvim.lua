@@ -1,5 +1,6 @@
 return {
     "Hajime-Suzuki/vuffers.nvim",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         exclude = {
