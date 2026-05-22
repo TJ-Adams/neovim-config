@@ -97,3 +97,18 @@ end, {desc = "Toggle Inlay Hints", silent = true })
 
 -- Visual Mode Mappings
 keymap("v", "<leader>bf", vim.lsp.buf.format, {desc = "Format Buffer", silent = true })
+
+-- Add cursor position to quickfix list
+keymap("n", "<leader>fa", function()
+    local entry = {
+        bufnr = vim.api.nvim_get_current_buf(),
+        lnum = vim.api.nvim_win_get_cursor(0)[1],
+        col = vim.api.nvim_win_get_cursor(0)[2],
+        text = vim.api.nvim_get_current_line(),
+    }
+    vim.fn.setqflist({ entry }, 'a')
+    if vim.fn.getqflist({ winid = 0 }).winid == 0 then
+        vim.cmd('copen')
+        vim.cmd('wincmd p')
+    end
+end, { desc = "Append position to quickfix list", silent = true })

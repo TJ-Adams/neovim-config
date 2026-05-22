@@ -16,6 +16,26 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- In the quickfix list, dd removes the entry under the cursor (closes if last)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    group = vim.api.nvim_create_augroup("QuickfixDelete", { clear = true }),
+    callback = function(args)
+        vim.keymap.set('n', 'dd', function()
+            local line = vim.api.nvim_win_get_cursor(0)[1]
+            local qflist = vim.fn.getqflist()
+            table.remove(qflist, line)
+            if #qflist == 0 then
+                vim.fn.setqflist({}, 'r')
+                vim.cmd('cclose')
+            else
+                vim.fn.setqflist(qflist, 'r')
+                vim.api.nvim_win_set_cursor(0, { math.min(line, #qflist), 0 })
+            end
+        end, { buffer = args.buf })
+    end,
+})
+
 -- When pressing <C-o> from a terminal, skip past other terminal entries
 vim.api.nvim_create_autocmd("TermOpen", {
     group = vim.api.nvim_create_augroup("TerminalNoJump", { clear = true }),
