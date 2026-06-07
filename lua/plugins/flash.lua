@@ -15,7 +15,7 @@ return {
             },
             char = {
                 jump_labels = true,
-                label = { exclude = "hjkliaydcrv" },
+                label = { exclude = "hjkliaydcrvx" },
                 highlight = {
                     backdrop = false,
                 },
