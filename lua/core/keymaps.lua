@@ -12,7 +12,61 @@ keymap("n", "<leader>bb", ":bp <BAR> bd #<CR>", opts)
 
 -- Keymap for creating a terminal buffer and naming it
 keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
-keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+
+-- Smart terminal <Esc>: normally drop to Neovim's normal mode (so I can yank
+-- program output), but pass <Esc> straight through to full-screen TUI programs
+-- that need it themselves (lazygit, a nested nvim from `jj describe`, etc.).
+--
+-- We look at the foreground process group on the terminal's PTY. That group
+-- includes descendants (e.g. an inner nvim plus its LSP servers), so the rule
+-- is simply: if *any* foreground process is a known TUI, let it have the <Esc>.
+local esc_passthrough = {
+    nvim = true,
+    vim = true,
+    lazygit = true,
+    htop = true,
+    fzf = true,
+    less = true,
+    man = true,
+}
+
+local function terminal_has_foreground_tui()
+    local pid = vim.b.terminal_job_pid
+    if not pid then
+        return false
+    end
+
+    -- TTY of the terminal's job (e.g. "ttys012").
+    local tty = vim.fn.systemlist({ "ps", "-o", "tty=", "-p", tostring(pid) })[1]
+    if not tty then
+        return false
+    end
+    tty = vim.trim(tty)
+    if tty == "" or tty == "??" then
+        return false
+    end
+
+    -- Foreground processes carry '+' in their stat field.
+    local procs = vim.fn.systemlist({ "ps", "-t", tty, "-o", "stat=,comm=" })
+    for _, line in ipairs(procs) do
+        local stat, comm = line:match("^(%S+)%s+(.*)$")
+        if stat and comm and stat:find("+", 1, true) then
+            local name = vim.fn.fnamemodify(comm, ":t")
+            if esc_passthrough[name] then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+keymap("t", "<esc>", function()
+    if terminal_has_foreground_tui() then
+        return "<esc>" -- let the running program handle it
+    end
+    return [[<C-\><C-n>]] -- otherwise drop to Neovim's normal mode
+end, { noremap = true, silent = true, expr = true })
 
 -- Yank file paths
 keymap("n", "<leader>ya", "<cmd>let @+ = expand('%:p')<cr>", opts) -- absolute file path
