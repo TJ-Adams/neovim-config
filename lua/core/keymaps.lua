@@ -71,7 +71,22 @@ end, { noremap = true, silent = true, expr = true })
 -- Yank file paths
 keymap("n", "<leader>ya", "<cmd>let @+ = expand('%:p')<cr>", opts) -- absolute file path
 keymap("n", "<leader>yd", "<cmd>let @+ = expand('%:p:h')<cr>", opts) -- current directory
-keymap("n", "<leader>yr", "<cmd>let @+ = expand('%')<cr>", opts) -- relative file path
+keymap("n", "<leader>yr", function() -- relative file path
+    -- `expand('%')` / `%:.` return the full absolute path when the buffer was
+    -- opened by absolute path, or when cwd and the buffer disagree on their
+    -- symlink representation (e.g. cwd is a symlinked project dir but the file
+    -- came in resolved via telescope oldfiles). Resolve both sides first so the
+    -- relative path is computed against a common real path.
+    local file = vim.fn.resolve(vim.fn.expand("%:p"))
+    local cwd = vim.fn.resolve(vim.fn.getcwd())
+    local rel
+    if file:sub(1, #cwd + 1) == cwd .. "/" then
+        rel = file:sub(#cwd + 2)
+    else
+        rel = vim.fn.fnamemodify(file, ":.") -- fall back to Vim's relativizer
+    end
+    vim.fn.setreg("+", rel)
+end, opts)
 
 -- Switch Tabs
 keymap("n", "[t", "<cmd>tabprevious<cr>", opts)
