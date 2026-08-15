@@ -27,6 +27,20 @@ local function buffer_paths(cwd)
     return keep
 end
 
+-- Put the cursor on `path`, or on the nearest ancestor directory that's
+-- still in the list. Walking up keeps the cursor near where it was when a
+-- filter hides the item it was on, instead of dropping it at the root.
+local function reveal_nearest(picker, path)
+    local reveal = require("snacks.explorer.actions").reveal
+    while path and path ~= "" do
+        if reveal(picker, path) then
+            return true
+        end
+        local parent = vim.fs.dirname(path)
+        path = parent ~= path and parent or nil
+    end
+end
+
 return {
     "folke/snacks.nvim",
     dependencies = {
@@ -48,9 +62,9 @@ return {
             sources = {
                 explorer = {
                     -- Show a `b` flag in the title while the buffers-only
-                    -- filter is on. Snacks derives a `toggle_buffers_only`
-                    -- action from every entry here, so this also creates the
-                    -- action the keymap below uses.
+                    -- filter is on. Snacks also derives a `toggle_buffers_only`
+                    -- action from this, but it restores the cursor by row
+                    -- number, so `b` uses the action below instead.
                     toggles = { buffers_only = "b" },
 
                     -- Expand the directories leading to each open buffer
@@ -107,7 +121,7 @@ return {
                             keys = {
                                 ["f"] = "focus_input", -- Map 'f' to start filtering
                                 -- Filter the tree down to open buffers.
-                                ["b"] = "toggle_buffers_only",
+                                ["b"] = "explorer_buffers_only",
                                 -- Disable keymaps in favor or default behavior
                                 ["/"] = false,
                                 ["?"] = false,
@@ -126,6 +140,71 @@ return {
                         },
                     },
                     actions = {
+                        -- Toggle the buffers-only filter, keeping the cursor on
+                        -- a sensible item. The `toggle_buffers_only` action
+                        -- snacks generates from `toggles` can't be overridden
+                        -- (it's assigned after this table is merged) and only
+                        -- restores the cursor row, which points at an unrelated
+                        -- file once the item list changes.
+                        explorer_buffers_only = function(picker)
+                            local opts = picker.opts
+                            local current = picker:current()
+                            local cursor = current and current.file
+
+                            -- Watch for cursor movement while the filter is on.
+                            -- Comparing the item under the cursor at toggle
+                            -- time isn't enough on its own: navigating to the
+                            -- item the filter happened to leave the cursor on
+                            -- looks identical to never having moved.
+                            if not opts.buffers_only_hooked then
+                                opts.buffers_only_hooked = true
+                                picker.list.win:on("CursorMoved", function()
+                                    local item = not picker.closed and opts.buffers_only and picker:current()
+                                    if item and item.file ~= opts.buffers_only_landed then
+                                        opts.buffers_only_moved = true
+                                    end
+                                end, { buf = true })
+                            end
+
+                            if opts.buffers_only then
+                                -- Turning off: go back to the item the cursor
+                                -- was on before filtering, unless it was moved
+                                -- while the filter was on. Either signal counts
+                                -- as a move: sitting on a different item than
+                                -- the filter left us on, or a cursor movement
+                                -- that came back to it.
+                                local moved = opts.buffers_only_moved or cursor ~= opts.buffers_only_landed
+                                local target = not moved and opts.buffers_only_cursor or cursor
+                                opts.buffers_only = false
+                                opts.buffers_only_cursor, opts.buffers_only_landed = nil, nil
+                                opts.buffers_only_moved = nil
+                                picker:find({
+                                    on_done = function()
+                                        if target then
+                                            reveal_nearest(picker, target)
+                                        end
+                                    end,
+                                })
+                            else
+                                opts.buffers_only = true
+                                opts.buffers_only_cursor = cursor
+                                opts.buffers_only_moved = false
+                                picker:find({
+                                    on_done = function()
+                                        -- Stay put if the item survived the
+                                        -- filter, then record where the cursor
+                                        -- ended up: moving off that item is
+                                        -- what counts as moving.
+                                        if cursor then
+                                            reveal_nearest(picker, cursor)
+                                        end
+                                        local landed = picker:current()
+                                        opts.buffers_only_landed = landed and landed.file
+                                    end,
+                                })
+                            end
+                        end,
+
                         -- When opening a file, if more than one editor split is
                         -- open, prompt for which split to open it in. With a
                         -- single split, pick_win returns it without prompting.
