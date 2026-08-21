@@ -59,9 +59,9 @@ end, { desc = "Search Keymaps", silent = true })
 vim.keymap.set("n", "<leader>fh", function()
     require("telescope.builtin").help_tags()
 end, { desc = "Search Help Files", silent = true })
-vim.keymap.set("n", "<leader>fu", function()
-    require("telescope.builtin").lsp_document_symbols({ symbols = "function" })
-end, { desc = "Fuzzy Search Functions", silent = true }) -- Fuzzy search functions
+vim.keymap.set("n", "<leader>fs", function()
+    require("telescope.builtin").lsp_document_symbols()
+end, { desc = "Fuzzy Search Functions", silent = true }) -- Fuzzy search symbols
 
 vim.keymap.set("n", "<leader>fw", "<cmd>Telescope tmux windows<cr>", { desc = "List tmux windows", silent = true })
 
