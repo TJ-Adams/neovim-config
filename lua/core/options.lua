@@ -33,7 +33,9 @@ vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
 
 -- Folds with syntax highlighting
 vim.opt.foldtext = ""
-vim.opt.fillchars = "fold: "
+-- `diff` is the filler shown where a line exists only in the other side of a
+-- diff. Hatching reads as "nothing here" much better than a solid block.
+vim.opt.fillchars = { fold = " ", diff = "╱" }
 
 -- Don't default to folding everything
 vim.opt.foldenable = false
