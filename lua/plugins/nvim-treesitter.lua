@@ -23,6 +23,15 @@ return {
         opts = {
             enable = false,
         },
+        keys = {
+            {
+                "S",
+                function()
+                    require("treesitter-context").toggle()
+                end,
+                desc = "Toggle Treesitter Context",
+            },
+        },
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
