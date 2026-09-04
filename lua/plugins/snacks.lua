@@ -41,19 +41,10 @@ local function reveal_nearest(picker, path)
     end
 end
 
--- Path of `file` relative to nvim's cwd. Both sides are resolved first: the
--- explorer always hands out absolute paths, and cwd may be a symlinked
--- project dir while the item came in resolved (or the other way around),
--- which would otherwise leave the "relative" path absolute. Same approach as
--- `<leader>yr` in core/keymaps.lua.
-local function relative_path(file)
-    file = vim.fn.resolve(file)
-    local cwd = vim.fn.resolve(vim.fn.getcwd())
-    if file:sub(1, #cwd + 1) == cwd .. "/" then
-        return file:sub(#cwd + 2)
-    end
-    return vim.fn.fnamemodify(file, ":.") -- fall back to Vim's relativizer
-end
+-- Path relative to nvim's cwd. The explorer always hands out absolute paths,
+-- and cwd may be a symlinked project dir while the item came in resolved (or
+-- the other way around), so this resolves both sides -- see core/path.lua.
+local relative_path = require("core.path").relative
 
 -- Yank the path of every selected item (or the one under the cursor),
 -- one per line, after running each through `modify`. Mirrors snacks' own

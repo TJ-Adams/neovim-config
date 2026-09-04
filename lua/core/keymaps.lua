@@ -75,18 +75,32 @@ keymap("n", "<leader>yr", function() -- relative file path
     -- `expand('%')` / `%:.` return the full absolute path when the buffer was
     -- opened by absolute path, or when cwd and the buffer disagree on their
     -- symlink representation (e.g. cwd is a symlinked project dir but the file
-    -- came in resolved via telescope oldfiles). Resolve both sides first so the
-    -- relative path is computed against a common real path.
-    local file = vim.fn.resolve(vim.fn.expand("%:p"))
-    local cwd = vim.fn.resolve(vim.fn.getcwd())
-    local rel
-    if file:sub(1, #cwd + 1) == cwd .. "/" then
-        rel = file:sub(#cwd + 2)
-    else
-        rel = vim.fn.fnamemodify(file, ":.") -- fall back to Vim's relativizer
-    end
-    vim.fn.setreg("+", rel)
+    -- came in resolved via telescope oldfiles), so relativize it by hand.
+    vim.fn.setreg("+", require("core.path").relative(vim.fn.expand "%:p"))
 end, opts)
+
+-- Yank a snippet: the selection (or a motion's lines) as a fenced code block,
+-- labelled with its path and line range. See core/yank_snippet.lua.
+--
+-- `<leader>ys` is an operator, so it composes with motions and text objects --
+-- `<leader>ysip`, `<leader>ysof` (treesitter "outer function"), `<leader>ys}`.
+-- `<leader>yss` takes the current line, or `v:count` lines, the way `yy` does.
+local function snippet_opfunc()
+    vim.o.operatorfunc = "v:lua.require'core.yank_snippet'.opfunc"
+    return "g@"
+end
+
+keymap("n", "<leader>ys", snippet_opfunc, { expr = true, desc = "Yank snippet (motion)" })
+keymap("n", "<leader>yss", function()
+    return snippet_opfunc() .. "_"
+end, { expr = true, desc = "Yank snippet (lines)" })
+
+keymap("x", "<leader>ys", function()
+    -- Read the selection's ends while still in visual mode: `'<` and `'>` are
+    -- only updated on leaving it, so they'd describe the *previous* selection.
+    require("core.yank_snippet").yank(vim.fn.line "v", vim.fn.line ".")
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+end, { desc = "Yank snippet (selection)" })
 
 -- Switch Tabs
 keymap("n", "[t", "<cmd>tabprevious<cr>", opts)

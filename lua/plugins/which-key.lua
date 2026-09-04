@@ -17,7 +17,7 @@ return {
             { "<leader>r", group = "Rename | Resize" },
             { "<leader>t", group = "Terminal | Overseer" },
             { "<leader>x", group = "Trouble" },
-            { "<leader>y", group = "Yank Current File" },
+            { "<leader>y", group = "Yank Path | Snippet" },
         })
     end,
 }
