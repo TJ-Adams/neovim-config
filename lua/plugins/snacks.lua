@@ -41,6 +41,42 @@ local function reveal_nearest(picker, path)
     end
 end
 
+-- Path of `file` relative to nvim's cwd. Both sides are resolved first: the
+-- explorer always hands out absolute paths, and cwd may be a symlinked
+-- project dir while the item came in resolved (or the other way around),
+-- which would otherwise leave the "relative" path absolute. Same approach as
+-- `<leader>yr` in core/keymaps.lua.
+local function relative_path(file)
+    file = vim.fn.resolve(file)
+    local cwd = vim.fn.resolve(vim.fn.getcwd())
+    if file:sub(1, #cwd + 1) == cwd .. "/" then
+        return file:sub(#cwd + 2)
+    end
+    return vim.fn.fnamemodify(file, ":.") -- fall back to Vim's relativizer
+end
+
+-- Yank the path of every selected item (or the one under the cursor),
+-- one per line, after running each through `modify`. Mirrors snacks' own
+-- `explorer_yank`, which only ever yanks absolute paths.
+local function yank_paths(picker, modify)
+    local paths = {}
+    if vim.fn.mode():find("^[vV]") then
+        picker.list:select()
+    end
+    for _, item in ipairs(picker:selected({ fallback = true })) do
+        paths[#paths + 1] = modify(Snacks.picker.util.path(item))
+    end
+    picker.list:set_selected() -- clear selection
+    -- Honor an explicit register prefix (`"ayr`), but default to the
+    -- clipboard rather than the unnamed register.
+    local reg = vim.v.register
+    if reg == "" or reg == '"' then
+        reg = "+"
+    end
+    vim.fn.setreg(reg, table.concat(paths, "\n"), #paths > 1 and "l" or "c")
+    Snacks.notify.info("Yanked " .. #paths .. (#paths == 1 and " path" or " paths"))
+end
+
 return {
     "folke/snacks.nvim",
     dependencies = {
@@ -131,6 +167,12 @@ return {
                                 -- top, so we point the keys at a new action instead.
                                 ["l"] = "pick_win_confirm",
                                 ["<CR>"] = "pick_win_confirm",
+                                -- Yank paths: `ya` absolute, `yr` relative
+                                -- to cwd. Plain `y` (absolute) is dropped so
+                                -- neither has to wait out 'timeoutlen'.
+                                ["y"] = false,
+                                ["ya"] = { "explorer_yank_absolute", mode = { "n", "x" } },
+                                ["yr"] = { "explorer_yank_relative", mode = { "n", "x" } },
                             },
                         },
                         input = {
@@ -203,6 +245,16 @@ return {
                                     end,
                                 })
                             end
+                        end,
+
+                        explorer_yank_absolute = function(picker)
+                            yank_paths(picker, function(path)
+                                return path
+                            end)
+                        end,
+
+                        explorer_yank_relative = function(picker)
+                            yank_paths(picker, relative_path)
                         end,
 
                         -- When opening a file, if more than one editor split is
