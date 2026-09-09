@@ -102,6 +102,29 @@ keymap("x", "<leader>ys", function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
 end, { desc = "Yank snippet (selection)" })
 
+-- Append-yank: `Y` gathers text into the clipboard instead of replacing it.
+-- See core/yank_append.lua.
+--
+-- It's an operator, so it composes with motions and text objects the way `y`
+-- does -- `Yip`, `Yiw`, `Y}` -- and `YY` takes the current line (or `v:count`
+-- lines) the way `yy` does. Charwise pieces are joined with a space, linewise
+-- ones with a newline. `y` still replaces, so `y` starts a fresh collection.
+--
+-- This shadows the default `Y` (`y$`); `Y$` does the same thing, appending.
+local function append_opfunc()
+    vim.o.operatorfunc = "v:lua.require'core.yank_append'.opfunc"
+    return "g@"
+end
+
+keymap("n", "Y", append_opfunc, { expr = true, desc = "Append yank (motion)" })
+keymap("n", "YY", function()
+    return append_opfunc() .. "_"
+end, { expr = true, desc = "Append yank (lines)" })
+
+keymap("x", "Y", function()
+    require("core.yank_append").visual()
+end, { desc = "Append yank (selection)" })
+
 -- Switch Tabs
 keymap("n", "[t", "<cmd>tabprevious<cr>", opts)
 keymap("n", "]t", "<cmd>tabnext<cr>", opts)
