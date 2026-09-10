@@ -65,7 +65,6 @@ local function yank_paths(picker, modify)
         reg = "+"
     end
     vim.fn.setreg(reg, table.concat(paths, "\n"), #paths > 1 and "l" or "c")
-    Snacks.notify.info("Yanked " .. #paths .. (#paths == 1 and " path" or " paths"))
 end
 
 return {
