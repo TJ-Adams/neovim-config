@@ -1,5 +1,8 @@
 vim.opt.conceallevel = 0
 
+-- Plain mdformat is strict CommonMark, which has no tables, so it rewraps them
+-- as paragraphs. Install it with the GFM plugin:
+--   uv tool install mdformat --with mdformat-gfm
 -- `--number` keeps consecutive 1. 2. 3. numbering; without it mdformat
 -- collapses every ordered-list item to `1.`.
 local mdformat = { "mdformat", "--number", "--wrap", "100", "-" }
