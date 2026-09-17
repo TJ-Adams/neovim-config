@@ -185,6 +185,13 @@ vim.keymap.set("n", "<leader>dh", function()
     vim.cmd "noh"
 end, { desc = "Clear Highlights", silent = true })
 
+-- Clear multicursors ("Dismiss Multicursors" mnemonic). <C-l> would normally do
+-- this, but that is taken by tmux navigation.
+vim.keymap.set("n", "<leader>dm", function()
+    local ns = vim.api.nvim_create_namespace("nvim.multicursor")
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+end, { desc = "Clear Multicursors", silent = true })
+
 
 -- LSP Specific Keymaps
 keymap("n", "gD", vim.lsp.buf.declaration, {desc = "Go To Declarations", silent = true })
