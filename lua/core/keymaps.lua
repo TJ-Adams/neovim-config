@@ -15,7 +15,7 @@ keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
 
 -- Smart terminal <Esc>: normally drop to Neovim's normal mode (so I can yank
 -- program output), but pass <Esc> straight through to full-screen TUI programs
--- that need it themselves (lazygit, a nested nvim from `jj describe`, etc.).
+-- that need it themselves (a nested nvim from `jj describe`, etc.).
 --
 -- We look at the foreground process group on the terminal's PTY. That group
 -- includes descendants (e.g. an inner nvim plus its LSP servers), so the rule
@@ -23,7 +23,6 @@ keymap("n", "<leader>tn", "<cmd>term<cr>:file ", opts)
 local esc_passthrough = {
     nvim = true,
     vim = true,
-    lazygit = true,
     htop = true,
     fzf = true,
     less = true,

@@ -27,10 +27,6 @@ vim.opt.shiftwidth = 4 -- Make indents 4 spaces
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Assumes nvr is installed
--- Needed to open another instance of vim inside vim for lazygit
-vim.fn.setenv("GITEDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
-
 -- Folds with syntax highlighting
 vim.opt.foldtext = ""
 -- `diff` is the filler shown where a line exists only in the other side of a
