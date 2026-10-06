@@ -21,6 +21,9 @@ require("lazy").setup({ import = "plugins" }, {
         enabled = true,
         notify = false,
     },
+    rocks = {
+        hererocks = true,
+    },
 })
 
 vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<cr>")
