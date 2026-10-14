@@ -270,7 +270,7 @@ return {
         {
             "<leader>e",
             function()
-                require("snacks").explorer.reveal()
+                require("snacks").explorer.open()
             end,
         },
     },
