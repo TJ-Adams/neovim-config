@@ -36,12 +36,33 @@ local function side_winhl(winid, symbol)
 end
 
 return {
-    "sindrets/diffview.nvim",
+    -- Maintained fork of sindrets/diffview.nvim; adds a Jujutsu adapter.
+    "dlyongemallo/diffview-plus.nvim",
+    version = "*",
     lazy = false,
+    init = function()
+        -- `:DiffviewOpen <rev>` diffs <rev> against the working copy. This is
+        -- the `jj show <rev>` view instead: the changes <rev> itself made.
+        -- Anything after the rev (`-- paths`, flags) is passed through.
+        vim.api.nvim_create_user_command("DiffviewShow", function(cmd)
+            local rev = cmd.fargs[1]
+            if not rev or vim.startswith(rev, "-") then
+                -- No rev means the working copy; plain `:DiffviewOpen` keeps
+                -- that side live instead of pinning it to a snapshot.
+                vim.cmd("DiffviewOpen " .. cmd.args)
+                return
+            end
+            local rest = table.concat(vim.list_slice(cmd.fargs, 2), " ")
+            vim.cmd(("DiffviewOpen %s-..%s %s"):format(rev, rev, rest))
+        end, { nargs = "*", desc = "Diffview the changes a single revision made" })
+    end,
     keys = {
+        -- `--no-merges` is git-only; the jj adapter ignores it.
         { "<leader>gh", "<cmd>:DiffviewFileHistory % --no-merges<cr>", desc = "Diffview File History" },
     },
     opts = {
+        -- Colocated repos have both .jj and .git; detect jj first.
+        preferred_adapter = "jj",
         hooks = {
             -- Fires after diffview has applied its own winopts, so this wins.
             diff_buf_win_enter = function(_, winid, ctx)
