@@ -1,3 +1,5 @@
+-- In diff windows (diffview, :diffthis) fall back to the built-in [c/]c, which
+-- walk the diff itself; gitsigns has nothing attached to those buffers.
 return {
     "lewis6991/gitsigns.nvim",
     lazy = false,
@@ -9,14 +11,22 @@ return {
         {
             "[c",
             function()
-                require("gitsigns").nav_hunk("prev", { target = "all" })
+                if vim.wo.diff then
+                    vim.cmd.normal({ vim.v.count1 .. "[c", bang = true })
+                else
+                    require("gitsigns").nav_hunk("prev", { target = "all" })
+                end
             end,
             desc = "Go to Previous Hunk",
         },
         {
             "]c",
             function()
-                require("gitsigns").nav_hunk("next", { target = "all" })
+                if vim.wo.diff then
+                    vim.cmd.normal({ vim.v.count1 .. "]c", bang = true })
+                else
+                    require("gitsigns").nav_hunk("next", { target = "all" })
+                end
             end,
             desc = "Go to Next Hunk",
         },
