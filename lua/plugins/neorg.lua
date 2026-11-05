@@ -87,4 +87,39 @@ return {
             ["core.journal"] = {},
         },
     },
+    config = function(_, opts)
+        require("neorg").setup(opts)
+
+        -- core.journal applies the template to a new entry with `$read template | 1d | w`.
+        -- That `1d` yanks into the unnamed register, which with clipboard=unnamedplus is
+        -- the system clipboard. Wrap open_diary (used by today/tomorrow/yesterday/custom,
+        -- including the calendar picker) so the clipboard and registers survive.
+        local function patch_journal()
+            local journal = require("neorg.core").modules.get_module("core.journal")
+            if not journal or journal._clipboard_safe then
+                return
+            end
+            local open_diary = journal.open_diary
+            journal.open_diary = function(...)
+                local saved_clipboard = vim.o.clipboard
+                local saved_regs = {}
+                for _, r in ipairs({ '"', "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
+                    saved_regs[r] = vim.fn.getreginfo(r)
+                end
+                vim.o.clipboard = ""
+                local ok, err = pcall(open_diary, ...)
+                for r, info in pairs(saved_regs) do
+                    vim.fn.setreg(r, info)
+                end
+                vim.o.clipboard = saved_clipboard
+                if not ok then
+                    error(err, 0)
+                end
+            end
+            journal._clipboard_safe = true
+        end
+
+        patch_journal()
+        vim.api.nvim_create_autocmd("User", { pattern = "NeorgStarted", callback = patch_journal })
+    end,
 }
