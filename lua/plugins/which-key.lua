@@ -10,7 +10,7 @@ return {
             { "<leader>g", group = "Preview Symbols" },
             { "<leader>i", group = "Incoming Calls" },
             { "<leader>l", group = "Lazy Git | Lazy Package Manager" },
-            { "<leader>m", group = "Movement Mode | Minimap" },
+            { "<leader>m", group = "Markdown" },
             { "<leader>n", group = "Neorg" },
             { "<leader>nj", group = "Journal" },
             { "<leader>o", group = "Outgoing Calls" },
