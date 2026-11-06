@@ -48,6 +48,12 @@ return {
         -- Every buffer starts unrendered; buf_toggle flips just the current one.
         enabled = false,
 
+        -- The plugin re-checks the mode after a debounce, by which time a
+        -- <C-h> into a terminal split has put us in terminal-normal mode
+        -- ("nt"). Without it here, the markdown window un-renders while
+        -- the cursor sits in the terminal.
+        render_modes = { "n", "c", "t", "nt" },
+
         heading = {
             -- `overlay` left-pads the icon over the `#`s, so deeper headings
             -- step right one column per level, just like neorg's `*`s.
