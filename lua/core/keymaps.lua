@@ -164,20 +164,26 @@ keymap("n", "<leader>/", function()
     end)
 end)
 
--- This is so after a <COUNT>j/k, c-o will bring you back
-vim.keymap.set('n', 'j', function()
-  if vim.v.count > 0 then
-    return "m'" .. vim.v.count .. 'j'
+-- j/k in normal and visual mode:
+--   * Without a count they move by screen line when the window wraps (gj/gk),
+--     so a long wrapped line doesn't get skipped over.
+--   * With a count they move by real lines, matching what relativenumber
+--     shows. In normal mode they also set the ' mark first, so <C-o> brings
+--     you back after a <COUNT>j/k.
+-- Operator-pending mode is left alone, so dj/yk stay linewise.
+local function vertical(dir)
+  return function()
+    if vim.v.count > 0 then
+      -- The `m'` swallows the typed count, so pass it on to the motion.
+      -- Without it, the typed count reaches the motion on its own.
+      return vim.fn.mode() == 'n' and "m'" .. vim.v.count .. dir or dir
+    end
+    return vim.wo.wrap and 'g' .. dir or dir
   end
-  return 'j'
-end, { expr = true })
+end
 
-vim.keymap.set('n', 'k', function()
-  if vim.v.count > 0 then
-    return "m'" .. vim.v.count .. 'k'
-  end
-  return 'k'
-end, { expr = true })
+vim.keymap.set({ 'n', 'x' }, 'j', vertical('j'), { expr = true })
+vim.keymap.set({ 'n', 'x' }, 'k', vertical('k'), { expr = true })
 
 -- Clear Highlights ("Dismiss Highlights" mnemonic)
 vim.keymap.set("n", "<leader>dh", function()
