@@ -126,6 +126,28 @@ return {
             vim.cmd(("DiffviewOpen %s-..%s %s"):format(rev, rev, rest))
         end, { nargs = "*", desc = "Diffview the changes a single revision made" })
     end,
+    config = function(_, opts)
+        require("diffview").setup(opts)
+
+        -- The commit log panel (`L`) runs a plain `jj log`, so it uses the
+        -- default log template (`builtin_log_compact`), which only prints the
+        -- description's first line. Use `jj show -s`'s layout instead: the
+        -- detailed header (Commit ID, Author, ...), the whole description,
+        -- and the changed files. The summary is part of the template rather
+        -- than `-s` so a blank line can follow it, keeping the commits of a
+        -- range apart.
+        local template = 'builtin_log_detailed ++ self.diff().summary() ++ "\\n"'
+        local JjAdapter = require("diffview.vcs.adapters.jj").JjAdapter
+        local get_log_args = JjAdapter.get_log_args
+        function JjAdapter:get_log_args(args, paths)
+            local out = get_log_args(self, args, paths)
+            -- Right after `--no-graph`, so it stays ahead of any `-- paths`.
+            local at = (vim.list_contains(out, "--no-graph") and vim.fn.index(out, "--no-graph") + 1 or #out) + 1
+            table.insert(out, at, "-T")
+            table.insert(out, at + 1, template)
+            return out
+        end
+    end,
     keys = {
         -- `--no-merges` is git-only; the jj adapter ignores it.
         { "<leader>gh", "<cmd>:DiffviewFileHistory % --no-merges<cr>", desc = "Diffview File History" },
