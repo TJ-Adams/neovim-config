@@ -294,6 +294,10 @@ return {
     opts = {
         -- Colocated repos have both .jj and .git; detect jj first.
         preferred_adapter = "jj",
+        -- The commit log panel (`L`) wraps by default; keep its lines whole.
+        commit_log_panel = {
+            win_config = { win_opts = { wrap = false } },
+        },
         hooks = {
             -- Fires after diffview has applied its own winopts, so this wins.
             diff_buf_win_enter = function(bufnr, winid, ctx)
