@@ -74,28 +74,72 @@ vim.keymap.set("n", "<leader>fiw", function()
     live_grep_args.live_grep_args(opts)
 end, { desc = "Grep Word Under Cursor", silent = true })
 
-vim.keymap.set("n", "<leader>fib", function()
-    local live_grep_args = require("telescope").extensions.live_grep_args
-    local opts = {}
-    local current_buffer = vim.fn.expand "%:p"
+-- Grep the contents of buffers with live_grep_args.
+--
+-- ripgrep only reads files, so a buffer with nothing on disk -- a terminal
+-- (an AI tool's conversation, say), a scratch buffer -- used to give no
+-- results. Snapshot those into temp files for ripgrep to search, and point
+-- each hit back at the buffer: selecting it jumps to that buffer and line, and
+-- the previewer shows the buffer's own lines. Buffers backed by a file are
+-- grepped on disk, as before. The snapshots live in Neovim's temp dir, which
+-- is removed on exit.
+local function grep_buffers(bufs)
+    local tmpdir = vim.fn.tempname()
+    vim.fn.mkdir(tmpdir, "p")
 
-    opts["search_dirs"] = { current_buffer }
-    live_grep_args.live_grep_args(opts)
-end, { desc = "Grep Within Buffer", silent = true })
-
-vim.keymap.set("n", "<leader>fob", function()
-    local live_grep_args = require("telescope").extensions.live_grep_args
-    local buffers = {}
-    local opts = {}
-
-    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_is_loaded(buf_id) and vim.bo[buf_id].buflisted then
-            table.insert(buffers, vim.fn.expand("#" .. tostring(buf_id) .. ":p"))
+    local search_dirs, snapshot_buf = {}, {}
+    for _, buf in ipairs(bufs) do
+        local name = vim.api.nvim_buf_get_name(buf)
+        if vim.bo[buf].buftype == "" and name ~= "" and vim.uv.fs_stat(name) then
+            table.insert(search_dirs, name)
+        else
+            local snapshot = tmpdir .. "/" .. buf
+            vim.fn.writefile(vim.api.nvim_buf_get_lines(buf, 0, -1, false), snapshot)
+            table.insert(search_dirs, snapshot)
+            snapshot_buf[snapshot] = buf
         end
     end
 
-    opts["search_dirs"] = buffers
-    live_grep_args.live_grep_args(opts)
+    -- What a snapshot hit shows instead of its temp path.
+    local function label(buf)
+        local name = vim.api.nvim_buf_get_name(buf)
+        if vim.bo[buf].buftype == "terminal" then
+            -- A name given with :file (<leader>tn), as <leader>fb shows it.
+            if not vim.startswith(name, "term://") then
+                return "[term] " .. vim.fn.fnamemodify(name, ":~:.")
+            end
+            -- Else the title the program set. Until it sets one, Neovim uses
+            -- the buffer name, term://{cwd}//{pid}:{cmd}, so show the {cmd}.
+            local title = vim.b[buf].term_title or name
+            return "[term] " .. (title:match "^term://.-//%d+:(.*)$" or title)
+        end
+        return name ~= "" and name or ("[No Name " .. buf .. "]")
+    end
+
+    local opts = { search_dirs = search_dirs }
+    local make_entry = require("telescope.make_entry").gen_from_vimgrep(opts)
+    opts.entry_maker = function(line)
+        local entry = make_entry(line)
+        local buf = entry and snapshot_buf[entry.filename]
+        if buf then
+            entry.bufnr = buf
+            entry.filename = label(buf)
+        end
+        return entry
+    end
+
+    require("telescope").extensions.live_grep_args.live_grep_args(opts)
+end
+
+vim.keymap.set("n", "<leader>fib", function()
+    grep_buffers({ vim.api.nvim_get_current_buf() })
+end, { desc = "Grep Within Buffer", silent = true })
+
+vim.keymap.set("n", "<leader>fob", function()
+    local bufs = vim.tbl_filter(function(buf)
+        return vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted
+    end, vim.api.nvim_list_bufs())
+    grep_buffers(bufs)
 end, { desc = "Grep Within Open Buffers", silent = true })
 
 vim.keymap.set("n", "<leader>fof", function()
