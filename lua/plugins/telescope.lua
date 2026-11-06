@@ -202,6 +202,8 @@ return {
         },
         config = function()
             require("telescope").load_extension "fzf"
+            -- Regex terms (\b, \w, ...) in the fuzzy pickers, on top of fzf.
+            require("core.telescope_regex").setup()
         end,
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
