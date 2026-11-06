@@ -105,6 +105,126 @@ local function restore_tab_folds(tabpage)
     end
 end
 
+-- The commit log panel shows `jj log` output, and we ask jj for its colors
+-- (`--color always`) so it looks like `jj show` in a terminal. The panel is a
+-- plain buffer, though, so turn the ANSI SGR escapes into highlights: strip
+-- them from each line and remember which byte ranges they colored.
+--
+-- Palette colors (jj's defaults are `38;5;N` with N < 16) resolve through
+-- `g:terminal_color_N`, the same palette `:terminal` uses, so they follow the
+-- colorscheme. The xterm defaults below only cover a colorscheme that doesn't
+-- set them.
+local xterm_palette = {
+    [0] = "#000000", "#cd0000", "#00cd00", "#cdcd00", "#0000ee", "#cd00cd", "#00cdcd", "#e5e5e5",
+    "#7f7f7f", "#ff0000", "#00ff00", "#ffff00", "#5c5cff", "#ff00ff", "#00ffff", "#ffffff",
+}
+
+local function palette_color(n)
+    if n < 16 then
+        return vim.g["terminal_color_" .. n] or xterm_palette[n]
+    elseif n < 232 then -- 6x6x6 color cube
+        local levels = { [0] = 0, 95, 135, 175, 215, 255 }
+        n = n - 16
+        return ("#%02x%02x%02x"):format(levels[math.floor(n / 36)], levels[math.floor(n / 6) % 6], levels[n % 6])
+    end
+    local grey = 8 + (n - 232) * 10 -- grayscale ramp
+    return ("#%02x%02x%02x"):format(grey, grey, grey)
+end
+
+-- Apply one SGR sequence's parameters to `style` ({ fg, bg, bold, italic,
+-- underline }); `fg`/`bg` are hex strings.
+local function apply_sgr(style, params)
+    local codes = vim.tbl_map(tonumber, vim.split(params == "" and "0" or params, ";", { plain = true }))
+    local i = 1
+    while i <= #codes do
+        local c = codes[i]
+        if c == 0 then
+            for k in pairs(style) do
+                style[k] = nil
+            end
+        elseif c == 1 then
+            style.bold = true
+        elseif c == 3 then
+            style.italic = true
+        elseif c == 4 then
+            style.underline = true
+        elseif c == 22 then
+            style.bold = nil
+        elseif c == 23 then
+            style.italic = nil
+        elseif c == 24 then
+            style.underline = nil
+        elseif c == 38 or c == 48 then
+            local key = c == 38 and "fg" or "bg"
+            if codes[i + 1] == 5 and codes[i + 2] then
+                style[key] = palette_color(codes[i + 2])
+                i = i + 2
+            elseif codes[i + 1] == 2 and codes[i + 4] then
+                style[key] = ("#%02x%02x%02x"):format(codes[i + 2], codes[i + 3], codes[i + 4])
+                i = i + 4
+            end
+        elseif c == 39 then
+            style.fg = nil
+        elseif c == 49 then
+            style.bg = nil
+        elseif c and c >= 30 and c <= 37 then
+            style.fg = palette_color(c - 30)
+        elseif c and c >= 90 and c <= 97 then
+            style.fg = palette_color(c - 90 + 8)
+        elseif c and c >= 40 and c <= 47 then
+            style.bg = palette_color(c - 40)
+        elseif c and c >= 100 and c <= 107 then
+            style.bg = palette_color(c - 100 + 8)
+        end
+        i = i + 1
+    end
+end
+
+-- A highlight group for `style`, (re)defined on each use so it tracks the
+-- current colorscheme.
+local function style_group(style)
+    if not next(style) then
+        return nil
+    end
+    local name = ("DiffviewAnsi_%s_%s_%s%s%s"):format(
+        (style.fg or "none"):gsub("#", ""),
+        (style.bg or "none"):gsub("#", ""),
+        style.bold and "b" or "",
+        style.italic and "i" or "",
+        style.underline and "u" or ""
+    )
+    vim.api.nvim_set_hl(0, name, vim.deepcopy(style))
+    return name
+end
+
+-- Strip the escapes from `lines` (in place) and return highlights as
+-- { group, line_idx (0-based), first, last } byte ranges. Styles carry over
+-- line breaks, like in a terminal.
+local function ansi_to_highlights(lines)
+    local hls, style = {}, {}
+    for idx, line in ipairs(lines) do
+        local text, pos = {}, 1
+        local col = 0
+        while true do
+            local s, e, params = line:find("\27%[([%d;]*)m", pos)
+            local chunk = line:sub(pos, (s or 0) - 1)
+            local group = style_group(style)
+            if group and #chunk > 0 then
+                hls[#hls + 1] = { group, idx - 1, col, col + #chunk }
+            end
+            text[#text + 1] = chunk
+            col = col + #chunk
+            if not s then
+                break
+            end
+            apply_sgr(style, params)
+            pos = e + 1
+        end
+        lines[idx] = table.concat(text)
+    end
+    return hls
+end
+
 return {
     -- Maintained fork of sindrets/diffview.nvim; adds a Jujutsu adapter.
     "dlyongemallo/diffview-plus.nvim",
@@ -145,7 +265,26 @@ return {
             local at = (vim.list_contains(out, "--no-graph") and vim.fn.index(out, "--no-graph") + 1 or #out) + 1
             table.insert(out, at, "-T")
             table.insert(out, at + 1, template)
+            -- Colors too; the panel turns them into highlights (see below).
+            table.insert(out, at + 2, "--color=always")
             return out
+        end
+
+        -- Render the colored log: plain text in the buffer, with the ANSI
+        -- colors as highlights. Output without escapes (git) is left as is.
+        local CommitLogPanel = require("diffview.ui.panels.commit_log_panel").CommitLogPanel
+        local render = CommitLogPanel.render
+        function CommitLogPanel:render()
+            render(self)
+            local lines = self.render_data.lines
+            if not lines or not vim.iter(lines):any(function(l)
+                return l:find("\27[", 1, true) ~= nil
+            end) then
+                return
+            end
+            for _, hl in ipairs(ansi_to_highlights(lines)) do
+                self.render_data:add_hl(hl[1], hl[2], hl[3], hl[4])
+            end
         end
     end,
     keys = {
